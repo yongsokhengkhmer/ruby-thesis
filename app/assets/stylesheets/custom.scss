@@ -27,3 +27,17 @@
 .full-width {
   width: 100%;
 }
+
+#error_explanation {
+  color: #B23838;
+  ul {
+    color: gray;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}

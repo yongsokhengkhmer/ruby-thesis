@@ -1,0 +1,38 @@
+<div id="experiences">
+  <%= f.fields_for :experiences, wrapper: false do |ff| %>
+    <div class="fields">
+      <table>
+        <tr>
+          <td><%= ff.label :company_name %></td>
+          <td><%= ff.text_field :company_name, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= ff.label :position %></td>
+          <td><%= ff.text_field :position, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= ff.label :location %></td>
+          <td><%= ff.text_field :location, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= ff.label :date %></td>
+          <td class="input-daterange input-group">
+            <%= ff.text_field :start_date,
+              value: (l ff.object.start_date, format: :default if ff.object.start_date),
+              class: "form-control" %>
+            <span class="input-group-addon"><%= t "profiles.labels.to" %></span>
+            <%= ff.text_field :end_date,
+              value: (l ff.object.end_date, format: :default if ff.object.end_date),
+              class: "form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= ff.label :description %></td>
+          <td><%= ff.text_area :description, class: "form-control" %></td>
+        </tr>
+      </table>
+      <%= ff.link_to_remove t("profiles.actions.remove") %>
+      <hr>
+    </div>
+  <% end %>
+</div>

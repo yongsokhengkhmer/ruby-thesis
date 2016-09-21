@@ -1,0 +1,48 @@
+<div id="educations">
+  <%= f.fields_for :educations, wrapper: false do |ff| %>
+    <div class="fields">
+      <table>
+        <tr>
+          <td><%= ff.label :school %></td>
+          <td><%= ff.text_field :school, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= ff.label :date %></td>
+          <td class="input-daterange input-group">
+            <%= ff.text_field :start_date,
+              value: (l ff.object.start_date, format: :default if ff.object.start_date),
+              class: "form-control" %>
+            <span class="input-group-addon"><%= t "profiles.labels.to" %></span>
+            <%= ff.text_field :end_date,
+              value: (l ff.object.end_date, format: :default if ff.object.end_date),
+              class: "form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= ff.label :degree %></td>
+          <td><%= ff.select :degree_id,
+            options_for_select(@degrees, ff.object.degree_id), {},
+            {class: "form-control"} %></td>
+        </tr>
+        <tr>
+          <td><%= ff.label :field_of_study %></td>
+          <td><%= ff.text_field :field_of_study, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= ff.label :grade %></td>
+          <td><%= ff.text_field :grade, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= ff.label :social_activities %></td>
+          <td><%= ff.text_area :social_activies, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= ff.label :description %></td>
+          <td><%= ff.text_area :description, class: "form-control" %></td>
+        </tr>
+      </table>
+      <%= ff.link_to_remove t("profiles.actions.remove") %>
+      <hr>
+    </div>
+  <% end %>
+</div>
