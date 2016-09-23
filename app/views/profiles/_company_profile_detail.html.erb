@@ -1,0 +1,12 @@
+<div id="company-profiles">
+  <table>
+    <tr>
+      <td><%= t "profiles.website" %></td>
+      <td><%= @user.company_profile.website if @user.company_profile %></td>
+    </tr>
+    <tr>
+      <td><%= t "profiles.description" %></td>
+      <td><%= @user.company_profile.description if @user.company_profile %></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <td><%= t "profiles.company_name" %></td>
+    <td><%= experience.company_name %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.position" %></td>
+    <td><%= experience.position %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.location" %></td>
+    <td><%= experience.location %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.date" %></td>
+    <td><%= "#{l experience.start_date, format: :default} #{t "profiles.labels.to"}
+      #{l experience.end_date, format: :default}" %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.description" %></td>
+    <td><%= experience.description %></td>
+  </tr>
+</table>
+<hr>

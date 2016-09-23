@@ -1,5 +1,16 @@
 class ProfilesController < ApplicationController
-  before_action :load_data, only: [:edit, :update]
+  before_action :load_user
+  before_action :load_data, except: :index
+
+  def index
+    @user = current_user
+    if @user.applicant?
+      @skills = @user.skills
+      @experiences = @user.experiences
+      @educations = @user.educations
+      @documents = @user.documents
+    end
+  end
 
   def edit
     if @user.applicant?
@@ -22,8 +33,11 @@ class ProfilesController < ApplicationController
     params.require(:user).permit User::USER_PARAMS
   end
 
-  def load_data
+  def load_user
     @user = current_user
+  end
+
+  def load_data
     @degrees = Degree.all.collect{|degree| [degree.name, degree.id]}
   end
 end

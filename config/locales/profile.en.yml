@@ -1,5 +1,21 @@
 en:
   profiles:
+    name: "Name:"
+    email: "Email:"
+    address: "Address:"
+    phone_number: "Phone Number:"
+    current_position: "Current Position:"
+    description: "Description:"
+    company_name: "Company name:"
+    position: "Position:"
+    location: "Location:"
+    school: "School:"
+    degree: "Degree:"
+    field_of_study: "Field of study:"
+    grade: "Grade:"
+    social_activities: "social_activities:"
+    link: "Link:"
+    website: "Website:"
     panel_headings:
       other_info: "Other Information"
       skills: "Skills"
@@ -9,5 +25,6 @@ en:
     actions:
       remove: "Remove"
       add: "Add"
+      edit_profile: "Edit profile"
     labels:
       to: "to"

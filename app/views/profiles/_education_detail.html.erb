@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    <td><%= t "profiles.school" %></td>
+    <td><%= education.school %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.date" %></td>
+    <td><%= "#{l education.start_date, format: :default} #{t "profiles.labels.to"}
+      #{l education.end_date, format: :default}" %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.degree" %></td>
+    <td><%= education.degree.name %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.field_of_study" %></td>
+    <td><%= education.field_of_study %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.grade" %></td>
+    <td><%= education.grade %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.social_activities" %></td>
+    <td><%= education.social_activities %></td>
+  </tr>
+  <tr>
+    <td><%= t "profiles.description" %></td>
+    <td><%= education.description %></td>
+  </tr>
+</table>
+<hr>
