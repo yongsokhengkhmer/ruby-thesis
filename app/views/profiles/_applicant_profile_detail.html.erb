@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong><%= t "profiles.panel_headings.other_info" %></strong>
+  </div>
+  <div class="panel-body"><%= render "user_profile_detail" %></div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong><%= t "profiles.panel_headings.skills" %></strong>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "skill_detail", collection: @skills, as: :skill %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong><%= t "profiles.panel_headings.experiences" %></strong>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "experience_detail", collection: @experiences, as: :experience %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong><%= t "profiles.panel_headings.educations" %></strong>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "education_detail", collection: @educations, as: :education %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong><%= t "profiles.panel_headings.documents" %></strong>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "document_detail", collection: @documents, as: :document %>
+  </div>
+</div>

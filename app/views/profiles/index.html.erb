@@ -1,0 +1,46 @@
+<div id="profiles" class="row">
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-3">
+        <%= image_tag @user.avatar_url, class: "img-responsive" %><br>
+      </div>
+      <div class="col-md-9">
+        <table class="table-profile">
+          <tr>
+            <td><strong><%= t "profiles.name" %></strong></td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td><strong><%= t "profiles.email" %></strong></td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td><strong><%= t "profiles.address" %></strong></td>
+            <td><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td><strong><%= t "profiles.phone_number" %></strong></td>
+            <td><%= @user.phone_number %></td>
+          </tr>
+          <tr>
+            <td><strong><%= link_to t("profiles.edit_profile"),
+              edit_profile_path %></strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <% if @user.applicant? %>
+        <%= render "applicant_profile_detail" %>
+      <% else %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong><%= t "profiles.panel_headings.other_info" %></strong>
+          </div>
+          <div class="panel-body"><%= render "company_profile_detail" %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

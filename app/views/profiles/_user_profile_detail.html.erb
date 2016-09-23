@@ -1,0 +1,8 @@
+<div id="user-profiles">
+  <table>
+    <tr>
+      <td><%= t "profiles.current_position" %></td>
+      <td><%= @user.user_profile.current_position if @user.user_profile %></td>
+    </tr>
+  </table>
+</div>
