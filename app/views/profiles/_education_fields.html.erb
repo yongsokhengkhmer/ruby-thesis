@@ -1,5 +1,5 @@
 <div id="educations">
-  <%= f.fields_for :educations, wrapper: false do |ff| %>
+  <%= f.fields_for :educations, f.object.educations.order_date, wrapper: false do |ff| %>
     <div class="fields">
       <table>
         <tr>
@@ -27,14 +27,6 @@
         <tr>
           <td><%= ff.label :field_of_study %></td>
           <td><%= ff.text_field :field_of_study, class: "form-control" %></td>
-        </tr>
-        <tr>
-          <td><%= ff.label :grade %></td>
-          <td><%= ff.text_field :grade, class: "form-control" %></td>
-        </tr>
-        <tr>
-          <td><%= ff.label :social_activities %></td>
-          <td><%= ff.text_area :social_activies, class: "form-control" %></td>
         </tr>
         <tr>
           <td><%= ff.label :description %></td>

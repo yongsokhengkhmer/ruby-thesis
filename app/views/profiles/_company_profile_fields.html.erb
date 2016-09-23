@@ -1,14 +1,16 @@
-<div id="company-profiles">
-  <%= f.fields_for :company_profile, wrapper: false do |ff| %>
-    <table>
-      <tr>
-        <td><%= ff.label :website %></td>
-        <td><%= ff.text_field :website, class: "form-control" %></td>
-      </tr>
-      <tr>
-        <td><%= ff.label :description %></td>
-        <td><%= ff.text_area :description, class: "form-control" %></td>
-      </tr>
-    </table>
-  <% end %>
-</div>
+<%= f.fields_for :company_profile, wrapper: false do |ff| %>
+  <tr>
+    <td><%= ff.label :start_up_date %></td>
+    <td><%= ff.text_field :start_up_date,
+      value: (l ff.object.start_up_date, format: :default if ff.object.start_up_date),
+      class: "form-control date-picker" %></td>
+  </tr>
+  <tr>
+    <td><%= ff.label :website %></td>
+    <td><%= ff.text_field :website, class: "form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= ff.label :description %></td>
+    <td><%= ff.text_area :description, class: "form-control" %></td>
+  </tr>
+<% end %>

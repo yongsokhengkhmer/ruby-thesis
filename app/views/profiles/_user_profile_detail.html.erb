@@ -1,0 +1,28 @@
+<div id="user-profiles">
+  <table>
+    <% if @user.user_profile %>
+      <tr>
+        <td class="title"><%= t "profiles.current_position" %></td>
+        <td><%= @user.user_profile_current_position %></td>
+      </tr>
+      <tr>
+        <td class="title"><%= t "profiles.birth_date" %></td>
+        <td><%= @user.user_profile_birth_date %></td>
+      </tr>
+      <tr>
+        <td class="title"><%= t "profiles.gender" %></td>
+        <td><%= @user.user_profile_gender %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td class="title"><%= t "profiles.current_position" %></td>
+      </tr>
+      <tr>
+        <td class="title"><%= t "profiles.birth_date" %></td>
+      </tr>
+      <tr>
+        <td class="title"><%= t "profiles.gender" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

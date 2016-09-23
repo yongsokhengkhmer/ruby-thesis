@@ -1,5 +1,6 @@
 $(document).on("turbolinks:load", function() {
   set_date_picker($(".input-daterange"));
+  set_date_picker($(".date-picker"));
 });
 
 $(document).on("nested:fieldAdded", function(event){

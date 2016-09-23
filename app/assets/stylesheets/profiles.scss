@@ -1,5 +1,31 @@
 #profiles {
+  table {
+    width: 100%;
+  }
+
   td {
     padding: 2px 10px 2px 0px;
+  }
+
+  .name {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .company-name, .school {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .description {
+    font-style: italic;
+    color: #999;
+  }
+
+  #user-profiles, #company-profiles {
+    .title {
+      color: #999;
+      width: 20%;
+    }
   }
 }
