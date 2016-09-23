@@ -1,0 +1,43 @@
+<%= nested_form_for @user, url: edit_profile_path do |f| %>
+  <div class="row">
+    <%= render "shared/error_messages", object: @user %>
+    <div class="col-md-3">
+      <%= image_tag @user.avatar_url, class: "img-responsive" %><br>
+      <%= f.file_field :avatar %>
+    </div>
+    <div class="col-md-8">
+      <table class="table-profile">
+        <tr>
+          <td><%= f.label :name %></td>
+          <td><%= f.text_field :name, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :email %></td>
+          <td><%= f.text_field :email, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :address %></td>
+          <td><%= f.text_area :address, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :phone_number %></td>
+          <td><%= f.text_field :phone_number, class: "form-control" %></td>
+        </tr>
+      </table>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <% if @user.applicant? %>
+      <%= render "applicant_profile", f: f %>
+    <% else %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong><%= t "profiles.panel_headings.other_info" %></strong>
+        </div>
+        <div class="panel-body"><%= render "company_profile_fields", f: f %></div>
+      </div>
+    <% end %>
+    <%= f.submit t("actions.save"), class: "btn btn-primary pull-right" %>
+  </div>
+<% end %>

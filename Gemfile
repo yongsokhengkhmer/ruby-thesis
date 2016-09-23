@@ -10,6 +10,12 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "bootstrap-sass"
 gem "devise"
+gem "redis", "~> 3.0"
+gem "nested_form"
+gem "carrierwave", ">= 1.0.0.beta", "< 2.0"
+gem "mini_magick"
+gem "settingslogic"
+gem "bootstrap-datepicker-rails"
 
 group :development, :test do
   gem "pry"

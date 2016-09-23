@@ -1,0 +1,13 @@
+en:
+  profiles:
+    panel_headings:
+      other_info: "Other Information"
+      skills: "Skills"
+      experiences: "Experiences"
+      educations: "Educations"
+      documents: "Documents"
+    actions:
+      remove: "Remove"
+      add: "Add"
+    labels:
+      to: "to"

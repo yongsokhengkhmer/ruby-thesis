@@ -1,4 +1,43 @@
 class User < ApplicationRecord
+
+  EDUCATION_PARAMS = [:id, :school, :start_date, :end_date, :degree_id,
+    :field_of_study, :grade, :social_activies, :description, :_destroy]
+  EXPERIENCE_PARAMS = [:id, :company_name, :location, :position,
+    :start_date, :end_date, :description, :_destroy]
+  SKILL_PARAMS = [:id, :name, :description, :_destroy]
+  DOCUMENT_PARAMS = [:id, :name, :link, :description, :_destroy]
+  USER_PROFILE_PARAMS = [:id, :current_position]
+  COMPANY_PROFILE_PARAMS = [:id, :website, :description]
+  USER_PARAMS = [:name, :email, :address, :phone_number, :avatar,
+    educations_attributes: EDUCATION_PARAMS,
+    experiences_attributes: EXPERIENCE_PARAMS,
+    skills_attributes: SKILL_PARAMS,
+    user_profile_attributes: USER_PROFILE_PARAMS,
+    documents_attributes: DOCUMENT_PARAMS,
+    company_profile_attributes: COMPANY_PROFILE_PARAMS]
+
+  mount_uploader :avatar, AvatarUploader
+
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
+
+  enum role: [:admin, :applicant, :recruiter]
+
+  has_one :user_profile, dependent: :destroy
+  has_one :company_profile, dependent: :destroy
+
+  has_many :experiences, dependent: :destroy
+  has_many :educations, dependent: :destroy
+  has_many :skills, dependent: :destroy
+  has_many :documents, dependent: :destroy
+
+  accepts_nested_attributes_for :experiences, allow_destroy: true
+  accepts_nested_attributes_for :educations, allow_destroy: true
+  accepts_nested_attributes_for :skills, allow_destroy: true
+  accepts_nested_attributes_for :documents, allow_destroy: true
+  accepts_nested_attributes_for :user_profile
+  accepts_nested_attributes_for :company_profile
+
+  validates :name, presence: true
+  validates :phone_number, presence: true
 end

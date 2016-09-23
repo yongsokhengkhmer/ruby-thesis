@@ -1,0 +1,10 @@
+<div id="user-profiles">
+  <%= f.fields_for :user_profile, wrapper: false do |ff| %>
+    <table>
+      <tr>
+        <td><%= ff.label :current_position %></td>
+        <td><%= ff.text_field :current_position, class: "form-control" %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

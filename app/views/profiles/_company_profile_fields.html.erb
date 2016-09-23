@@ -1,0 +1,14 @@
+<div id="company-profiles">
+  <%= f.fields_for :company_profile, wrapper: false do |ff| %>
+    <table>
+      <tr>
+        <td><%= ff.label :website %></td>
+        <td><%= ff.text_field :website, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td><%= ff.label :description %></td>
+        <td><%= ff.text_area :description, class: "form-control" %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
