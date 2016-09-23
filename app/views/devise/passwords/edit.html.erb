@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 devise-form">
+    <div class="head-title">
+      <%= t "devise.labels.change_password" %>
+    </div>
+    <hr>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+      html: { method: :put }) do |f| %>
+
+      <%= render "shared/error_messages", object: resource %>
+      <%= f.hidden_field :reset_password_token %>
+
+      <div><%= f.password_field :password, autofocus: true, autocomplete: "off",
+        placeholder: t("devise.placeholders.password"), class: "form-control" %>
+      </div><br />
+
+      <div><%= f.password_field :password_confirmation, autocomplete: "off",
+        placeholder: t("devise.placeholders.confirm_password"),
+        class: "form-control" %>
+      </div><br />
+
+      <%= f.submit t("devise.labels.change_password"), class: "btn btn-warning full-width" %>
+    <% end %>
+  </div>
+</div>

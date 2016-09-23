@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 devise-form">
+    <div class="head head-title">
+      <h2><%= t "devise.labels.reset_password" %></h2>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+      html: { method: :post }) do |f| %>
+
+      <%= render "shared/error_messages", object: resource %>
+
+      <div><%= f.email_field :email, placeholder: t("devise.placeholders.email"),
+        autofocus: true, class: "form-control" %>
+      </div><br />
+
+      <%= f.submit "Send", class: "btn btn-warning full-width" %>
+    <% end %>
+  </div>
+</div>

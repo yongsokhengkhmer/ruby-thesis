@@ -1,0 +1,36 @@
+<div class="col-md-6 col-md-offset-3 devise-form">
+  <div class="head head-title">
+    <h2><%= t "devise.labels.register" %></h2>
+  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "shared/error_messages", object: resource %>
+
+    <%= f.text_field :name, placeholder: t("devise.placeholders.name"),
+      class: "form-control"%>
+    <br />
+
+    <%= f.email_field :email, placeholder: t("devise.placeholders.email"),
+      class: "form-control" %>
+    <br />
+
+    <%= f.password_field :password, autocomplete: "off",
+      placeholder: t("devise.placeholders.password"), class: "form-control"%>
+    <br />
+
+    <%= f.password_field :password_confirmation,  autocomplete: "off",
+      placeholder: t("devise.placeholders.confirm_password"),  class: "form-control" %>
+    <br />
+
+    <%= f.text_field :address, placeholder: t("devise.placeholders.address"),
+      class: "form-control" %>
+    <br />
+
+    <%= f.text_field :phone_number, placeholder: t("devise.placeholders.phone_number"),
+      class: "form-control" %>
+    <br />
+
+    <%= f.submit (f.object.new_record? ? t("devise.labels.create")
+      : t("devise.labels.update")), class: "btn btn-warning full-width" %>
+  <% end %>
+</div>
+
