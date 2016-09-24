@@ -16,6 +16,8 @@ class User < ApplicationRecord
     documents_attributes: DOCUMENT_PARAMS,
     company_profile_attributes: COMPANY_PROFILE_PARAMS]
 
+  USER_PASSWORD_PARAMS = [:current_password, :password, :password_confirmation]
+
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,

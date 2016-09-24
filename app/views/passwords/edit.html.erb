@@ -1,0 +1,25 @@
+<div class="row" id="profiles">
+  <div class="col-md-6">
+    <h3><%= t "profiles.labels.change_password" %></h3>
+    <hr>
+    <%= form_for current_user, url: passwords_path do |f| %>
+      <%= render "shared/error_messages", object: current_user %>
+      <table>
+        <tr>
+          <td><%= f.label :current_password %></td>
+          <td><%= f.password_field :current_password, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password %></td>
+          <td><%= f.password_field :password, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password_confirmation %></td>
+          <td><%= f.password_field :password_confirmation, class: "form-control" %></td>
+        </tr>
+      </table>
+      <br>
+      <%= f.submit t("actions.save"), class: "btn btn-primary pull-right" %>
+    <% end %>
+  </div>
+</div>
