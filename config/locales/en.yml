@@ -1,11 +1,14 @@
 en:
   actions:
     save: "Save"
-  date:
+  time:
     formats:
       default: "%d-%m-%Y"
       short: "%d-%m-%y"
-      datetime: "%d-%m-%Y %H:%M"
+      datetime: "%d %b %Y at %I:%M%P"
   errors:
     messages:
       extension_whitelist_error: "Image format is incorrect."
+  post_statuses:
+    public: "public"
+    private: "private"

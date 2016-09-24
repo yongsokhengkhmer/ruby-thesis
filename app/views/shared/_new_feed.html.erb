@@ -1,0 +1,69 @@
+<div class="new-feeds">
+  <ul class="media-list">
+    <li class="media">
+      <div class="media-left">
+        <%= link_to image_tag(activity.user.avatar_url, class: "media-object",
+          size: Settings.images.sizes.small_avatar), activity.user %>
+      </div>
+      <div class="media-body">
+        <div class="media-heading">
+          <strong><%= link_to activity.user_name, activity.user %></strong>
+          <% if share == true %>
+            <%= t "new_feeds.labels.shared" %>
+            <strong><%= link_to post.user_name, post.user %></strong>
+            <%= t "new_feeds.labels.post" %>
+          <% end %>
+        </div>
+        <div class="post-date">
+          <%= "#{activity.user.user_profile_current_position} · " if activity.user.user_profile %>
+          <%= l activity.created_at, format: :datetime %> &nbsp;
+          <%= status_post activity.trackable %>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="post-content">
+    <% if post.job_post.present? %>
+      <div class="job-post">
+        <div class="job-title">
+          <%= post.job_post_name %>
+        </div>
+        <div class="job-type">
+          <span class="badge"><%= post.job_post.job_type_name %></span>
+        </div>
+        <div class="job-location">
+          <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;
+          <%= post.job_post_location %>
+        </div>
+      </div>
+    <% end %>
+    <div class="post-article">
+      <%= post.content.html_safe if post.content %>
+    </div>
+    <div class="post-image">
+      <%= image_tag post.image_url, class: "img-responsive" if post.image_url %>
+    </div>
+  </div>
+
+  <div class="post-react">
+    <span class="like">
+      <%= link_to "#" do %>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+        <%= t "new_feeds.reacts.like" %>
+      <% end %>
+    </span>
+    <span class="comment">
+      <%= link_to "#" do %>
+        <i class="fa fa-comment" aria-hidden="true"></i>
+        <%= t "new_feeds.reacts.comment" %>
+      <% end %>
+    </span>
+    <span class="share">
+      <%= link_to "#" do %>
+        <i class="fa fa-share" aria-hidden="true"></i>
+        <%= t "new_feeds.reacts.share" %>
+      <% end %>
+    </span>
+  </div>
+</div>

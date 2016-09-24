@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920154330) do
+ActiveRecord::Schema.define(version: 20160925151343) do
+
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
+  end
 
   create_table "company_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date     "start_up_date"
@@ -65,6 +74,43 @@ ActiveRecord::Schema.define(version: 20160920154330) do
     t.index ["user_id"], name: "index_experiences_on_user_id", using: :btree
   end
 
+  create_table "job_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "location"
+    t.integer  "job_type_id"
+    t.integer  "post_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["job_type_id"], name: "index_job_posts_on_job_type_id", using: :btree
+    t.index ["post_id"], name: "index_job_posts_on_post_id", using: :btree
+  end
+
+  create_table "job_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",    limit: 65535
+    t.string   "image"
+    t.integer  "status"
+    t.integer  "user_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
+  create_table "share_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_share_posts_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_share_posts_on_user_id", using: :btree
+  end
+
   create_table "skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "description"
@@ -107,11 +153,17 @@ ActiveRecord::Schema.define(version: 20160920154330) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "company_profiles", "users"
   add_foreign_key "documents", "users"
   add_foreign_key "educations", "degrees"
   add_foreign_key "educations", "users"
   add_foreign_key "experiences", "users"
+  add_foreign_key "job_posts", "job_types"
+  add_foreign_key "job_posts", "posts"
+  add_foreign_key "posts", "users"
+  add_foreign_key "share_posts", "posts"
+  add_foreign_key "share_posts", "users"
   add_foreign_key "skills", "users"
   add_foreign_key "user_profiles", "users"
 end

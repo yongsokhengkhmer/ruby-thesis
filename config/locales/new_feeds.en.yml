@@ -1,0 +1,9 @@
+en:
+  new_feeds:
+    labels:
+      shared: "shared"
+      post: "'s post."
+    reacts:
+      like: "Like"
+      comment: "Comment"
+      share: "Share"
