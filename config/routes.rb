@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get "profiles" => "profiles#index"
   get "profiles/edit" => "profiles#edit", as: :edit_profile
   patch "profiles/edit" => "profiles#update"
+  get "passwords" => "passwords#edit"
+  patch "passwords" => "passwords#update"
 end
