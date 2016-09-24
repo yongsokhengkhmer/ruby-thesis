@@ -1,0 +1,16 @@
+<div class="company-name"><%= experience.company_name %></div>
+<div>
+  <%= t "profiles.location" %>
+  <%= experience.location %>
+</div>
+<div>
+  <%= t "profiles.position" %>
+  <%= experience.position %>
+</div>
+<div>
+  <%= t "profiles.from" %>
+  <%= "#{l experience.start_date, format: :default} #{t "profiles.labels.to"}
+    #{l experience.end_date, format: :default}" %>
+</div>
+<div class="description"><%= experience.description %></div>
+<hr>

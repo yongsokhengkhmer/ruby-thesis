@@ -2,10 +2,10 @@
   <div class="row">
     <%= render "shared/error_messages", object: @user %>
     <div class="col-md-3">
-      <%= image_tag @user.avatar_url, class: "img-responsive" %><br>
+      <%= image_tag @user.avatar_url, class: "img-responsive img-circle" %><br>
       <%= f.file_field :avatar %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 col-md-offset-1">
       <table class="table-profile">
         <tr>
           <td><%= f.label :name %></td>
@@ -15,6 +15,11 @@
           <td><%= f.label :email %></td>
           <td><%= f.text_field :email, class: "form-control" %></td>
         </tr>
+        <% if @user.recruiter? %>
+          <%= render "company_profile_fields", f: f %>
+        <% else %>
+          <%= render "user_profile_fields", f: f %>
+        <% end %>
         <tr>
           <td><%= f.label :address %></td>
           <td><%= f.text_area :address, class: "form-control" %></td>
@@ -30,13 +35,6 @@
   <div class="row">
     <% if @user.applicant? %>
       <%= render "applicant_profile", f: f %>
-    <% else %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <strong><%= t "profiles.panel_headings.other_info" %></strong>
-        </div>
-        <div class="panel-body"><%= render "company_profile_fields", f: f %></div>
-      </div>
     <% end %>
     <%= f.submit t("actions.save"), class: "btn btn-primary pull-right" %>
   </div>

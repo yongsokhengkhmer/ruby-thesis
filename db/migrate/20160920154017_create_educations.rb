@@ -6,8 +6,6 @@ class CreateEducations < ActiveRecord::Migration[5.0]
       t.date :end_date
       t.references :degree, foreign_key: true
       t.string :field_of_study
-      t.string :grade
-      t.string :social_activies
       t.string :description
       t.references :user, foreign_key: true
 

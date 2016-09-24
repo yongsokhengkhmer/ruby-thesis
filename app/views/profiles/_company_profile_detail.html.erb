@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <strong><%= t "profiles.panel_headings.basic_info" %></strong>
+  </div>
+  <div class="panel-body">
+    <div id="company-profiles">
+      <table>
+        <% if @user.company_profile %>
+          <tr>
+            <td class="title"><%= t "profiles.website" %></td>
+            <td><%= link_to @user.company_profile_website, @user.company_profile_website,
+            target: "_blank" %></td>
+          </tr>
+          <tr>
+            <td class="title"><%= t "profiles.start_up_date" %></td>
+            <td><%= @user.company_profile_start_up_date %></td>
+          </tr>
+          <tr>
+            <td class="title"><%= t "profiles.description" %></td>
+            <td><%= @user.company_profile_description %></td>
+          </tr>
+        <% else %>
+          <tr>
+            <td class="title"><%= t "profiles.website" %></td>
+          </tr>
+          <tr>
+            <td class="title"><%= t "profiles.start_up_date" %></td>
+          </tr>
+          <tr>
+            <td class="title"><%= t "profiles.description" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

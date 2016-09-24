@@ -1,12 +1,5 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <strong><%= t "profiles.panel_headings.other_info" %></strong>
-  </div>
-  <div class="panel-body"><%= render "user_profile_fields", f: f %></div>
-</div>
-
-<div class="panel panel-default">
-  <div class="panel-heading">
     <strong><%= t "profiles.panel_headings.skills" %></strong>
     <%= f.link_to_add t("profiles.actions.add"), :skills,
       data: {target: "#skills"}, class: "pull-right" %>

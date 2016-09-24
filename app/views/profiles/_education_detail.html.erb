@@ -1,0 +1,18 @@
+<div class="school"><%= education.school %></div>
+<div>
+  <%= t "profiles.from" %>
+  <%= "#{l education.start_date, format: :default} #{t "profiles.labels.to"}
+      #{l education.end_date, format: :default}" %>
+</div>
+<div>
+  <%= t "profiles.degree" %>
+  <%= education.degree_name %>
+</div>
+<div>
+  <%= t "profiles.field_of_study" %>
+  <%= education.field_of_study %>
+</div>
+<div class="description">
+  <%= education.description %>
+</div>
+<hr>

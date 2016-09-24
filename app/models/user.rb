@@ -6,8 +6,8 @@ class User < ApplicationRecord
     :start_date, :end_date, :description, :_destroy]
   SKILL_PARAMS = [:id, :name, :description, :_destroy]
   DOCUMENT_PARAMS = [:id, :name, :link, :description, :_destroy]
-  USER_PROFILE_PARAMS = [:id, :current_position]
-  COMPANY_PROFILE_PARAMS = [:id, :website, :description]
+  USER_PROFILE_PARAMS = [:id, :current_position, :gender, :birth_date]
+  COMPANY_PROFILE_PARAMS = [:id, :website, :start_up_date,:description]
   USER_PARAMS = [:name, :email, :address, :phone_number, :avatar,
     educations_attributes: EDUCATION_PARAMS,
     experiences_attributes: EXPERIENCE_PARAMS,
@@ -40,4 +40,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :phone_number, presence: true
+
+  delegate :website, :start_up_date, :description, to: :company_profile,
+    prefix: true, allow_nil: true
+  delegate :current_position, :birth_date, :gender, to: :user_profile,
+    prefix: true, allow_nil: true
 end

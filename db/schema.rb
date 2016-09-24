@@ -13,11 +13,12 @@
 ActiveRecord::Schema.define(version: 20160920154330) do
 
   create_table "company_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date     "start_up_date"
     t.string   "website"
-    t.text     "description", limit: 65535
+    t.text     "description",   limit: 65535
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["user_id"], name: "index_company_profiles_on_user_id", using: :btree
   end
 
@@ -43,12 +44,10 @@ ActiveRecord::Schema.define(version: 20160920154330) do
     t.date     "end_date"
     t.integer  "degree_id"
     t.string   "field_of_study"
-    t.string   "grade"
-    t.string   "social_activies"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["degree_id"], name: "index_educations_on_degree_id", using: :btree
     t.index ["user_id"], name: "index_educations_on_user_id", using: :btree
   end
@@ -76,8 +75,9 @@ ActiveRecord::Schema.define(version: 20160920154330) do
   end
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "current_position"
+    t.integer  "gender"
     t.date     "birth_date"
+    t.string   "current_position"
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
