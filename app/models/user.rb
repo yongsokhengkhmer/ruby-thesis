@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   enum role: [:admin, :applicant, :recruiter]
 
-  has_one :user_profile, dependent: :destroy
+  has_one :user_profile, dependent: :destroy, inverse_of: :user
   has_one :company_profile, dependent: :destroy
 
   has_many :experiences, dependent: :destroy
@@ -38,14 +38,20 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :educations, allow_destroy: true
   accepts_nested_attributes_for :skills, allow_destroy: true
   accepts_nested_attributes_for :documents, allow_destroy: true
-  accepts_nested_attributes_for :user_profile
+  accepts_nested_attributes_for :user_profile, reject_if: :role_recruiter
   accepts_nested_attributes_for :company_profile
 
   validates :name, presence: true
   validates :phone_number, presence: true
+  validates :role, presence: true
 
   delegate :website, :start_up_date, :description, to: :company_profile,
     prefix: true, allow_nil: true
   delegate :current_position, :birth_date, :gender, to: :user_profile,
     prefix: true, allow_nil: true
+
+  private
+  def role_recruiter
+    self.role == Settings.roles.recruiter
+  end
 end

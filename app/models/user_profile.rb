@@ -1,5 +1,8 @@
 class UserProfile < ApplicationRecord
   belongs_to :user
 
-  enum gender: [:male, :female, :other]
+  validates :gender, presence: true
+  validates :birth_date, presence: true
+
+  enum gender: [:male, :female]
 end

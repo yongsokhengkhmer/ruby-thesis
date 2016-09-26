@@ -29,6 +29,25 @@
       class: "form-control" %>
     <br />
 
+    <%= f.select :role, options_for_select(User.roles.keys.drop(1)
+      .map{|role| [t("devise.labels.#{role}"), role]}, f.object.role),
+      {include_blank: t("devise.placeholders.select_role")}, {class: "form-control"} %>
+    <br />
+
+    <div class="gender">
+      <%= f.fields_for :user_profile, f.object.build_user_profile do |builder| %>
+
+        <%= builder.select :gender, options_for_select(UserProfile.genders.keys
+          .map{|gender| [t("devise.labels.genders.#{gender}"), gender]}),
+          {include_blank: t("devise.placeholders.select_gender")}, class: "form-control" %>
+        <br />
+
+        <%= builder.text_field :birth_date, placeholder: t("devise.placeholders.birthday"),
+          class: "form-control date-picker" %>
+        <br />
+      <% end %>
+    </div>
+
     <%= f.submit (f.object.new_record? ? t("devise.labels.create")
       : t("devise.labels.update")), class: "btn btn-warning full-width" %>
   <% end %>

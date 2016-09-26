@@ -59,6 +59,9 @@ en:
       current_password: "Enter your current password"
       phone_number: "Enter your phone number"
       address: "Enter your address"
+      birthday: "Choose your birthday"
+      select_role: "Select role"
+      select_gender: "Select gender"
 
     labels:
       register: "Register"
@@ -70,6 +73,13 @@ en:
       log_out: "Log out"
       reset_password: "Reset Password"
       change_password: "Change Password"
+      roles:
+        applicant: "Applicant"
+        recruiter: "Recruiter"
+      genders:
+        male: "Male"
+        female: "Female"
+
 
   errors:
     messages:
