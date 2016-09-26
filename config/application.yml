@@ -1,4 +1,7 @@
 defaults: &defaults
+  images:
+    sizes:
+      small_avatar: "40x40"
 
 development:
   <<: *defaults

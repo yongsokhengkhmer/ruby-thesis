@@ -1,0 +1,64 @@
+.new-feeds {
+  padding: 10px;
+  margin: 15px 0px;
+  border: 1px solid #ddd;
+
+  .media-heading {
+    font-size: 15px;
+  }
+
+  .post-date {
+    font-size: 12px;
+    line-height: 12px;
+    color: #999;
+  }
+
+  .post-content {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+
+    .post-article {
+      margin: 10px 0px;
+    }
+
+    .job-post {
+      line-height: 28px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+
+      .job-title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .job-location {
+        font-weight: bold;
+      }
+
+      .job-type {
+        .badge {
+          color: BLACK;
+          background-color: white;
+          border: 1px solid #ddd;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  .post-react {
+    margin-top: 10px;
+
+    .like, .comment, .share {
+      margin-right: 25px;
+      color: #999;
+      font-weight: bold;
+      font-size: 13px;
+
+      a {
+        color: #999;
+      }
+    }
+  }
+
+}
