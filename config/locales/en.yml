@@ -1,14 +1,18 @@
 en:
   actions:
     save: "Save"
+    close: "Close"
   time:
     formats:
       default: "%d-%m-%Y"
       short: "%d-%m-%y"
       datetime: "%d %b %Y at %I:%M%P"
   errors:
+    something_went_wrong: "Something went wrong. Please try again."
     messages:
       extension_whitelist_error: "Image format is incorrect."
   post_statuses:
     public: "public"
     private: "private"
+  labels:
+    confirm: "Confirm"

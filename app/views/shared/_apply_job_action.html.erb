@@ -1,0 +1,9 @@
+<% if current_user.apply_job? job_post_id %>
+  <i class="fa fa-check" aria-hidden="true"></i>
+  <%= t "new_feeds.labels.applied" %>
+<% else %>
+  <%= link_to new_job_post_apply_job_path(job_post_id), remote: true do %>
+    <i class="fa fa-briefcase" aria-hidden="true"></i>
+    <%= t "new_feeds.reacts.apply" %>
+  <% end %>
+<% end %>

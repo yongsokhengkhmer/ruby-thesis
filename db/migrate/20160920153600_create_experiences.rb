@@ -7,7 +7,7 @@ class CreateExperiences < ActiveRecord::Migration[5.0]
       t.date :start_date
       t.date :end_date
       t.string :description
-      t.references :user, foreign_key: true
+      t.references :user, foreign_key: true, index: true
 
       t.timestamps
     end
