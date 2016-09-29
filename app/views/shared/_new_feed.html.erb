@@ -65,5 +65,10 @@
         <%= t "new_feeds.reacts.share" %>
       <% end %>
     </span>
+    <% if post.job_post.present? %>
+      <span class="apply job-post-<%= post.job_post_id %>">
+        <%= render "shared/apply_job_action", job_post_id: post.job_post_id %>
+      </span>
+    <% end %>
   </div>
 </div>

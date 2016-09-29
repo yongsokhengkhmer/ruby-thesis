@@ -11,5 +11,5 @@ class Post < ApplicationRecord
   enum status: [:public_post, :private_post]
 
   delegate :name, to: :user, prefix: true, allow_nil: true
-  delegate :name, :location, to: :job_post, prefix: true, allow_nil: true
+  delegate :id, :name, :location, to: :job_post, prefix: true, allow_nil: true
 end

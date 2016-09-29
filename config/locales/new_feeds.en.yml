@@ -3,7 +3,13 @@ en:
     labels:
       shared: "shared"
       post: "'s post."
+      apply_success: "Your Apply is successful. Please feel free to wait for the company's contact."
+      apply_confirm: "Are you sure to apply for <strong>%{job}</strong>?"
+      applied: "Applied"
     reacts:
       like: "Like"
       comment: "Comment"
       share: "Share"
+      apply: "Apply"
+    actions:
+      apply: "Apply"

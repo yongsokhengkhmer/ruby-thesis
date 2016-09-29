@@ -3,7 +3,7 @@ class CreateSkills < ActiveRecord::Migration[5.0]
     create_table :skills do |t|
       t.string :name
       t.string :description
-      t.references :user, foreign_key: true
+      t.references :user, foreign_key: true, index: true
 
       t.timestamps
     end

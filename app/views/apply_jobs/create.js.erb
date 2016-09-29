@@ -1,0 +1,10 @@
+<% if @apply_job.errors.any? %>
+  confirm_text = "<div class='alert alert-danger'><%= t 'errors.something_went_wrong' %></div>"
+<% else %>
+  confirm_text = "<div class='alert alert-success'><%= t 'new_feeds.labels.apply_success' %></div>"
+  $(".job-post-<%= @job_post_id %>")
+    .html("<%= j render 'shared/apply_job_action', job_post_id: @job_post_id %>");
+<% end %>
+
+$(".btn-apply").remove();
+$("#apply-confirm-modal .content").html(confirm_text);
