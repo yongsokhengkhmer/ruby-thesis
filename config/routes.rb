@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   patch "profiles/edit" => "profiles#update"
   get "passwords" => "passwords#edit"
   patch "passwords" => "passwords#update"
-  patch "update_seen_notifications" => "notification_seen_updates#update"
+  put "update_seen_notifications" => "notification_seen_updates#update"
 end

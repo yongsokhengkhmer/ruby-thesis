@@ -8,6 +8,8 @@ defaults: &defaults
     recruiter: "recruiter"
   notifications:
     limit_show: 20
+    content_keys:
+      apply_job: "apply_job"
 
 development:
   <<: *defaults

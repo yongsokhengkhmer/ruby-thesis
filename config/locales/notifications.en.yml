@@ -1,0 +1,4 @@
+en:
+  notifications:
+    content_keys:
+      apply_job: "has applied for"

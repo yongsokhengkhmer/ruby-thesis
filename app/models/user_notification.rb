@@ -7,4 +7,11 @@ class UserNotification < ApplicationRecord
   delegate :created_at, to: :notification, prefix: true, allow_nil: true
 
   enum status: [:unseen, :seen, :read]
+
+  class << self
+    def unseen_notification
+      number = unseen.size
+      number > 0 ? number : nil
+    end
+  end
 end
