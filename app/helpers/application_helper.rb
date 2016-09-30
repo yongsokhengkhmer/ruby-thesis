@@ -6,4 +6,8 @@ module ApplicationHelper
       "<i title='#{t "post_statuses.private"}' class='fa fa-lock' aria-hidden='true'></i>".html_safe
     end
   end
+
+  def notification_content notification
+    "#{notification.user_name} do something"
+  end
 end

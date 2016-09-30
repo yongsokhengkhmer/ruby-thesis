@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927140142) do
+ActiveRecord::Schema.define(version: 20161001082706) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "trackable_id"
@@ -100,6 +100,16 @@ ActiveRecord::Schema.define(version: 20160927140142) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "content_key"
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  end
+
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535
     t.string   "image"
@@ -127,6 +137,16 @@ ActiveRecord::Schema.define(version: 20160927140142) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_skills_on_user_id", using: :btree
+  end
+
+  create_table "user_notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "notification_id"
+    t.integer  "user_id"
+    t.integer  "status",          default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["notification_id"], name: "index_user_notifications_on_notification_id", using: :btree
+    t.index ["user_id"], name: "index_user_notifications_on_user_id", using: :btree
   end
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -172,9 +192,12 @@ ActiveRecord::Schema.define(version: 20160927140142) do
   add_foreign_key "experiences", "users"
   add_foreign_key "job_posts", "job_types"
   add_foreign_key "job_posts", "posts"
+  add_foreign_key "notifications", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "share_posts", "posts"
   add_foreign_key "share_posts", "users"
   add_foreign_key "skills", "users"
+  add_foreign_key "user_notifications", "notifications"
+  add_foreign_key "user_notifications", "users"
   add_foreign_key "user_profiles", "users"
 end

@@ -1,6 +1,77 @@
 .navbar-fixed-top {
   margin-bottom: 0px;
   border-radius: 0px;
+
+  .dropdown-avatar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .dropdown-global {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .ico-global {
+    font-size: 24px;
+  }
+
+  .notification-badge {
+    position: absolute;
+    background: red;
+    font-size: 10px;
+    top: 8px;
+    left: 30px;
+    padding: 3px 4px;
+    border-radius: 4px;
+  }
+
+  .dropdown-notification {
+    padding: 0px;
+    width: 350px;
+
+    .notification-header {
+      padding: 5px;
+      border-bottom: 1px solid #f4f4f4;
+    }
+
+    .notification-content {
+      overflow: auto;
+    }
+
+    .notification-content li {
+      padding: 10px;
+      line-height: 20px;
+      border-bottom: 1px solid #f4f4f4;
+
+      .content-img {
+        margin-right: 10px;
+      }
+
+      .content-text {
+        color: #444444;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .content-date {
+        color: #999;
+        font-size: 12px;
+      }
+    }
+
+    .notification-content li:hover {
+      background-color: #fcfcfc;
+    }
+
+    .notification-footer {
+      padding: 5px;
+      text-align: center;
+      border-top: 1px solid #f4f4f4;
+    }
+
+  }
 }
 
 .content-wrapper {
