@@ -1,0 +1,18 @@
+<% if @post.errors.any? %>
+  <% if @post.job_post.nil? %>
+    $("#post-errors").html("<div class='text-danger'><%= t 'posts.post_error' %></div>");
+  <% else %>
+    $("#job-post-errors").html("<div class='text-danger'><%= t 'posts.job_post_error' %></div>");
+  <% end %>
+<% else %>
+  <% if @post.job_post.nil? %>
+    $("#post-errors").html("");
+    $("#new-post")[0].reset();
+  <% else %>
+    $("#job-post-errors").html("");
+    $("#new-job-post")[0].reset();
+    $("#job-type-post")[0].selectize.clear();
+    CKEDITOR.instances["post-content"].setData("");
+  <% end %>
+  $("#activity").prepend("<%= j render 'shared/new_feed', post: @post, share: false, activity: @post.activity %>");
+<% end %>

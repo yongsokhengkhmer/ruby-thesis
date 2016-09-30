@@ -4,6 +4,7 @@ en:
     save: "Save"
     close: "Close"
     details: "Details"
+    post: "Post"
   time:
     formats:
       default: "%d-%m-%Y"

@@ -16,4 +16,7 @@
 //= require jquery_nested_form
 //= require bootstrap-datepicker
 //= require bootstrap-sprockets
+//= require selectize
+//= require ckeditor/init
+//= require jquery.remotipart
 //= require_tree .

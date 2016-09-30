@@ -1,0 +1,6 @@
+<%= form_for @post, remote: true, html: {id: "new-post"} do |f| %>
+  <div id="post-errors"></div>
+  <div><%= f.text_area :content, placeholder: t("posts.write_here") ,class: "form-control" %></div>
+
+  <%= render "posts/button", ff: f %>
+<% end %>

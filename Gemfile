@@ -20,6 +20,10 @@ gem "font-awesome-rails"
 gem "bootstrap-kaminari-views"
 gem "kaminari"
 gem "cancancan", "~> 1.10"
+gem "selectize-rails"
+gem "ckeditor"
+gem "remotipart", "~> 1.2"
+
 group :development, :test do
   gem "pry"
 end

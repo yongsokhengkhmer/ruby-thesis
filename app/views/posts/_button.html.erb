@@ -1,0 +1,15 @@
+<div class="button">
+  <label class="btn btn-default btn-file pull-left">
+    <%= t "posts.upload_photo" %>
+    <input type="file" style="display: none;" name="post[image]" id="post_image">
+  </label>
+  <div class="pull-right">
+    <span class="pull-left">
+      <%= ff.select :status, options_for_select(Post.statuses.keys
+        .collect{|status| [t("post_statuses.#{status}"), status]}), {}, {class: "form-control"} %>
+    </span>
+    <span>
+      <%= ff.submit t("actions.post"), class: "btn btn-primary pull-right" %>
+    </span>
+  </div>
+</div>
