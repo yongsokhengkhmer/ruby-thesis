@@ -2,9 +2,12 @@ defaults: &defaults
   images:
     sizes:
       small_avatar: "40x40"
+      xsmall_avatar: "30x30"
   roles:
     admin: "admin"
     recruiter: "recruiter"
+  notifications:
+    limit_show: 20
 
 development:
   <<: *defaults

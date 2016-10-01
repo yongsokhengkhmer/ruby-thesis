@@ -34,6 +34,7 @@ class User < ApplicationRecord
   has_many :documents, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :apply_jobs, dependent: :destroy
+  has_many :user_notifications, dependent: :destroy
 
   accepts_nested_attributes_for :experiences, allow_destroy: true
   accepts_nested_attributes_for :educations, allow_destroy: true

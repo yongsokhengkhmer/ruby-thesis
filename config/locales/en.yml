@@ -16,3 +16,6 @@ en:
     private: "private"
   labels:
     confirm: "Confirm"
+  notifications:
+    notifications: "Notifications"
+    see_all: "See All"
