@@ -18,4 +18,19 @@ module ApplicationHelper
     end
     content.html_safe
   end
+
+  def notification_link notification
+    if notification.trackable_type == "ApplyJob"
+      notification.trackable.job_post
+    end
+  end
+
+  def active_post_navbar fix_name, active_name
+    fix_name == active_name ? "active" : nil
+  end
+
+  def render_pagination collection
+    paginate collection, theme: "twitter-bootstrap-3",
+      pagination_class: "pagination-sm pull-right"
+  end
 end

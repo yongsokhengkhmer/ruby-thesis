@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :job_posts, only: :show do
     resources :apply_jobs, only: [:new, :create]
   end
+  resources :job_posts, only: [:index, :show]
 
   get "profiles" => "profiles#index"
   get "profiles/edit" => "profiles#edit", as: :edit_profile

@@ -17,6 +17,8 @@ gem "mini_magick"
 gem "settingslogic"
 gem "bootstrap-datepicker-rails"
 gem "font-awesome-rails"
+gem "bootstrap-kaminari-views"
+gem "kaminari"
 group :development, :test do
   gem "pry"
 end

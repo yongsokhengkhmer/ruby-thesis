@@ -1,0 +1,33 @@
+<div class="row post-managers" id="job-posts">
+  <div class="col-md-3">
+    <%= render "shared/post_manager_left_navbar", active_name: "job_posts"  %>
+  </div>
+  <div class="col-md-6">
+    <div class="job-details white-bg">
+      <div class="job-name"><%= @job_post.name %></div>
+      <div class="job-type">
+        <div class="badge"><%= @job_post.job_type_name %></div>
+      </div>
+      <div class="job-location">
+        <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;
+        <%= @job_post.location %>
+      </div>
+      <div class="job-post-date">
+        <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp;
+        <%= l @job_post.created_at, format: :datetime %>
+      </div>
+      <hr>
+      <div class="job-content">
+        <%= @job_post.post_content.html_safe if @job_post.post_content %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="apply-users white-bg">
+      <div class="title"><%= t "job_posts.apply_users" %></div>
+      <%= render partial: "job_posts/apply_job",
+        collection: @job_post.apply_jobs.order_by_user,
+        as: :apply_job %>
+    </div>
+  </div>
+</div>

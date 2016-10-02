@@ -3,6 +3,7 @@ en:
   actions:
     save: "Save"
     close: "Close"
+    details: "Details"
   time:
     formats:
       default: "%d-%m-%Y"
@@ -20,3 +21,5 @@ en:
   notifications:
     notifications: "Notifications"
     see_all: "See All"
+  post_managers:
+    job_posts: "Job Posts"

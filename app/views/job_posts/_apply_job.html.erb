@@ -1,0 +1,7 @@
+<div class="apply-user">
+  <%= link_to apply_job.user do %>
+    <%= image_tag apply_job.user_avatar_url,
+      size: Settings.images.sizes.xsmall_avatar, class: "img-circle" %>
+    <%= apply_job.user_name %>
+  <% end %>
+</div>

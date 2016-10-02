@@ -9,9 +9,10 @@ class ApplyJob < ApplicationRecord
   validates_uniqueness_of :user_id, scope: :job_post_id
 
   delegate :id, to: :job_post, prefix: true, allow_nil: true
-  delegate :id, to: :user, prefix: true, allow_nil: true
+  delegate :id, :avatar_url, :name, to: :user, prefix: true, allow_nil: true
 
   scope :select_by_job, ->job_post_id{where job_post_id: job_post_id}
+  scope :order_by_user, ->{joins(:user).includes(:user).order "users.name"}
 
   after_create :push_notification
 
