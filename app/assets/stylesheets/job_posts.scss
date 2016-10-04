@@ -1,0 +1,48 @@
+#job-posts {
+  table {
+    .name {
+      width: 35%
+    }
+
+    .job-type {
+      width: 25%;
+    }
+
+    .date {
+      width: 35%;
+    }
+
+    .action {
+      width: 5%;
+    }
+  }
+
+  .job-details {
+    line-height: 30px;
+
+    .job-name {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .job-type {
+      .badge {
+        color: BLACK;
+        background-color: white;
+        border: 1px solid #ddd;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .apply-users {
+    .title {
+      font-size: 16px;
+      padding-bottom: 10px;
+    }
+
+    .apply-user {
+      padding: 5px 0px;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+en:
+  job_posts:
+    apply_users: "Apply Users"
+    tables:
+      name: "Name"
+      job_type: "Job Type"
+      post_date: "Post Date"

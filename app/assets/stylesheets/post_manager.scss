@@ -1,0 +1,30 @@
+.post-managers {
+  .left-navbar {
+    line-height: 26px;
+
+    .title a {
+      color: #999;
+    }
+
+    .active a {
+      color: BLACK;
+    }
+  }
+
+  .post-list {
+    table {
+      tbody {
+        font-size: 12px;
+      }
+
+      th {
+        border: none;
+      }
+    }
+
+    .list-title {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+}
