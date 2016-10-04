@@ -1,7 +1,8 @@
 class ApplyJobsController < ApplicationController
+  load_and_authorize_resource
+
   def new
     @job_post = JobPost.find params[:job_post_id]
-    @apply_job = ApplyJob.new
   end
 
   def create

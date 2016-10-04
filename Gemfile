@@ -19,6 +19,7 @@ gem "bootstrap-datepicker-rails"
 gem "font-awesome-rails"
 gem "bootstrap-kaminari-views"
 gem "kaminari"
+gem "cancancan", "~> 1.10"
 group :development, :test do
   gem "pry"
 end

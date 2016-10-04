@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = exception.message
+    redirect_to root_path
+  end
+
   protected
 
   def configure_permitted_parameters
