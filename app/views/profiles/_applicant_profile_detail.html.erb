@@ -1,11 +1,12 @@
-<%= render "basic_info" %>
+<%= render "profiles/basic_info" %>
 
 <div class="panel panel-default">
   <div class="panel-heading">
     <strong><%= t "profiles.panel_headings.skills" %></strong>
   </div>
   <div class="panel-body">
-    <ul><%= render partial: "skill_detail", collection: @skills, as: :skill %></ul>
+    <ul><%= render partial: "profiles/skill_detail", collection: @skills,
+      as: :skill %></ul>
   </div>
 </div>
 
@@ -14,7 +15,8 @@
     <strong><%= t "profiles.panel_headings.experiences" %></strong>
   </div>
   <div class="panel-body">
-    <%= render partial: "experience_detail", collection: @experiences, as: :experience %>
+    <%= render partial: "profiles/experience_detail", collection: @experiences,
+      as: :experience %>
   </div>
 </div>
 
@@ -23,7 +25,8 @@
     <strong><%= t "profiles.panel_headings.educations" %></strong>
   </div>
   <div class="panel-body">
-    <%= render partial: "education_detail", collection: @educations, as: :education %>
+    <%= render partial: "profiles/education_detail", collection: @educations,
+      as: :education %>
   </div>
 </div>
 
@@ -33,7 +36,8 @@
   </div>
   <div class="panel-body">
     <ul>
-      <%= render partial: "document_detail", collection: @documents, as: :document %>
+      <%= render partial: "profiles/document_detail", collection: @documents,
+        as: :document %>
     </ul>
   </div>
 </div>
