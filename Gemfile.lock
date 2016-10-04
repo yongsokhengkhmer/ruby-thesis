@@ -51,6 +51,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
+    cancancan (1.15.0)
     carrierwave (1.0.0.beta)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -198,6 +199,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   bootstrap-kaminari-views
   bootstrap-sass
+  cancancan (~> 1.10)
   carrierwave (>= 1.0.0.beta, < 2.0)
   coffee-rails (~> 4.2)
   devise

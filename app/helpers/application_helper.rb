@@ -3,6 +3,15 @@ module ApplicationHelper
     title.present? ? "#{title} | #{t 'site'}" : t("site")
   end
 
+  def flash_class level
+    case level
+    when :notice then "alert-info"
+    when :error then "alert-error"
+    when :alert then "alert-warning"
+    when :success then "alert-success"
+    end
+  end
+
   def status_post post
     if post.public_post?
       "<i title='#{t "post_statuses.public"}' class='fa fa-globe' aria-hidden='true'></i>".html_safe
