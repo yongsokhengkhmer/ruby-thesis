@@ -12,20 +12,22 @@
           <div class="phone_number"><%= @user.phone_number %></div>
         </i>
         <br>
-        <%= link_to edit_profile_path do %>
-          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-          <%= t "profiles.actions.edit_profile" %>
+        <% if @user == current_user %>
+          <%= link_to edit_profile_path do %>
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            <%= t "profiles.actions.edit_profile" %>
+          <% end %>
         <% end %>
       </div>
     </div>
 
     <div class="row">
       <% if @user.applicant? %>
-        <%= render "applicant_profile_detail" %>
+        <%= render "profiles/applicant_profile_detail" %>
       <% elsif @user.admin? %>
-        <%= render "basic_info" %>
+        <%= render "profiles/basic_info" %>
       <% else %>
-        <%= render "company_profile_detail" %>
+        <%= render "profiles/company_profile_detail" %>
       <% end %>
     </div>
   </div>
