@@ -13,3 +13,5 @@ en:
       apply: "Apply"
     actions:
       apply: "Apply"
+      save_post: "Save post"
+      unsave_post: "Unsave post"

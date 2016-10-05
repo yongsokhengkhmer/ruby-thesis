@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :apply_jobs, only: [:new, :create]
   end
   resources :job_posts, only: [:index, :show]
+  resources :save_posts, only: [:create, :destroy]
 
   get "profiles" => "profiles#index"
   get "profiles/edit" => "profiles#edit", as: :edit_profile
