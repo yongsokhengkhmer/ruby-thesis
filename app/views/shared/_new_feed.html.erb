@@ -59,10 +59,7 @@
 
   <div class="post-react">
     <span class="like">
-      <%= link_to "#" do %>
-        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-        <%= t "new_feeds.reacts.like" %>
-      <% end %>
+      <%= render "shared/button_like", activity: activity %>
     </span>
     <span class="comment">
       <%= link_to "#" do %>

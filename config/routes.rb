@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   put "update_seen_notifications" => "notification_seen_updates#update"
 
   resources :posts, only: [:create]
+  resources :like_posts, only: [:create, :destroy]
 end

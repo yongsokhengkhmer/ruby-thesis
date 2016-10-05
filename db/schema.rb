@@ -100,6 +100,15 @@ ActiveRecord::Schema.define(version: 20161005145057) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "like_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["activity_id"], name: "index_like_posts_on_activity_id", using: :btree
+    t.index ["user_id"], name: "index_like_posts_on_user_id", using: :btree
+  end
+
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "content_key"
@@ -202,6 +211,8 @@ ActiveRecord::Schema.define(version: 20161005145057) do
   add_foreign_key "experiences", "users"
   add_foreign_key "job_posts", "job_types"
   add_foreign_key "job_posts", "posts"
+  add_foreign_key "like_posts", "activities"
+  add_foreign_key "like_posts", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "save_posts", "activities"
