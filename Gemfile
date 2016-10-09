@@ -26,6 +26,7 @@ gem "remotipart", "~> 1.2"
 
 group :development, :test do
   gem "pry"
+  gem "faker", "1.4.2"
 end
 
 group :development do
