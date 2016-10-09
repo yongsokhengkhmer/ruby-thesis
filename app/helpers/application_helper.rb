@@ -42,4 +42,8 @@ module ApplicationHelper
     paginate collection, theme: "twitter-bootstrap-3",
       pagination_class: "pagination-sm pull-right"
   end
+
+  def truncate_content content
+    truncate content, length: Settings.truncates.content_post_length, separator: ""
+  end
 end

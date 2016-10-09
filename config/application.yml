@@ -3,6 +3,7 @@ defaults: &defaults
     sizes:
       small_avatar: "40x40"
       xsmall_avatar: "30x30"
+      media_post: "80"
   roles:
     admin: "admin"
     recruiter: "recruiter"
@@ -10,6 +11,8 @@ defaults: &defaults
     limit_show: 20
     content_keys:
       apply_job: "apply_job"
+  truncates:
+    content_post_length: 150
 
 development:
   <<: *defaults

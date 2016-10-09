@@ -1,0 +1,6 @@
+en:
+  save_posts:
+    tables:
+      content: "Content"
+      save_from: "Save from"
+      save_date: "Save date"

@@ -1,0 +1,22 @@
+<tr>
+  <td>
+    <div class="media">
+      <div class="media-left">
+        <%= link_to image_tag(post.image_url,
+          width: Settings.images.sizes.media_post), post.activity,
+          target: "_blank" if post.image? %>
+      </div>
+      <div class="media-body">
+        <% if post.job_post.present? %>
+          <%= link_to post.job_post_name, post.activity, target: "_blank" %>
+        <% else %>
+          <%= link_to truncate_content(post.content), post.activity,
+          title: post.content, target: "_blank" %>
+        <% end %>
+      </div>
+    </div>
+  </td>
+  <td><%= link_to save_post.activity.user_name, save_post.activity,
+    target: "_blank" %></td>
+  <td><%= l save_post.created_at, format: :datetime %></td>
+</tr>

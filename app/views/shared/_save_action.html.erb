@@ -1,4 +1,4 @@
-<% save_post = current_user.save_posts.load_save_posts activity.id %>
+<% save_post = current_user.save_posts.by_activity activity.id %>
 <% if save_post.present? %>
   <%= link_to t("new_feeds.actions.unsave_post"), "javascript:void(0)",
     class: "unsave-post-action", data: {save_post_id: save_post.first.id} %>

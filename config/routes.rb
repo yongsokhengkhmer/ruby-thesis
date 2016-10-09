@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
   root "static_pages#home"
   resources :users, only: :show
-  resources :job_posts, only: :show do
+  resources :job_posts, only: [:index, :show] do
     resources :apply_jobs, only: [:new, :create]
   end
-  resources :job_posts, only: [:index, :show]
-  resources :save_posts, only: [:create, :destroy]
+  resources :save_posts, only: [:index, :create, :destroy]
+  resources :activities, only: :show
 
   get "profiles" => "profiles#index"
   get "profiles/edit" => "profiles#edit", as: :edit_profile
