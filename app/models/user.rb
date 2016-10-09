@@ -38,6 +38,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :save_posts, dependent: :destroy
   has_many :like_posts, dependent: :destroy
+  has_many :share_posts, dependent: :destroy
 
   accepts_nested_attributes_for :experiences, allow_destroy: true
   accepts_nested_attributes_for :educations, allow_destroy: true

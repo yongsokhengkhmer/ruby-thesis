@@ -1,0 +1,32 @@
+<%= form_for share_post, remote: true do |f| %>
+  <div class="modal fade" id="share-post-confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-content" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><%= t "labels.confirm" %></h4>
+        </div>
+        <div class="modal-body">
+          <%= f.hidden_field :post_id, value: post.id %>
+          <%= f.text_area :content, class: "form-control" %>
+          <%= render "shared/share_post_content", post: post %>
+        </div>
+        <div class="modal-footer">
+          <div class="pull-right">
+            <span class="pull-left">
+              <%= f.select :status, options_for_select(Post.statuses.keys
+                .collect{|status| [t("post_statuses.#{status}"), status]}), {},
+                {class: "form-control"} %>
+            </span> &nbsp;
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <%= t "actions.close" %>
+            </button> &nbsp;
+            <span>
+              <%= f.submit t("actions.post"), class: "btn btn-primary pull-right" %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

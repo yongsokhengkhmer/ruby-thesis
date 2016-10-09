@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20161005145057) do
   end
 
   create_table "share_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
     t.integer  "user_id"
     t.integer  "post_id"
     t.integer  "status"

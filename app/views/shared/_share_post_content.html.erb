@@ -1,0 +1,21 @@
+<div class="new-feeds white-bg share-post">
+  <ul class="media-list">
+    <li class="media">
+      <div class="media-left">
+        <%= link_to image_tag(post.user.avatar_url, class: "media-object",
+          size: Settings.images.sizes.small_avatar), post.user %>
+      </div>
+      <div class="media-body">
+        <div class="media-heading">
+          <strong><%= link_to post.user_name, post.user %></strong>
+        </div>
+        <div class="post-date">
+          <%= "#{post.user.user_profile_current_position} · " if post.user.user_profile %>
+          <%= l post.created_at, format: :datetime %> &nbsp;
+          <%= status_post post %>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <%= render "shared/post_content", post: post %>
+</div>

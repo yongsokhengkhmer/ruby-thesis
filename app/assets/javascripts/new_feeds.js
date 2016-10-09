@@ -13,17 +13,22 @@ $(document).on("turbolinks:load ajaxComplete", function() {
       });
     });
 
-    $(".like-post").unbind("click").on("click", function(){
-        activity_id = $(this).data("activity-id");
-        $.post("/like_posts", {like_post: {activity_id: activity_id}});
-      });
+    $(".like-post").unbind("click").on("click", function() {
+      activity_id = $(this).data("activity-id");
+      $.post("/like_posts", {like_post: {activity_id: activity_id}});
+    });
 
-    $(".unlike-post").unbind("click").on("click", function(){
+    $(".unlike-post").unbind("click").on("click", function() {
       like_post_id = $(this).data("like-post-id");
       $.ajax({
         url: "/like_posts/" + like_post_id,
         type: "DELETE"
       });
+    });
+
+    $(".share-post-action").unbind("click").on("click", function() {
+      var post_id = $(this).data("post-id");
+      $.get("/share_posts/new", {share_post: {post_id: post_id}});
     });
   }
 });

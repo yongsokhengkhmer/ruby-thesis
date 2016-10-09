@@ -1,6 +1,5 @@
 .new-feeds {
   margin: 15px 0px;
-  border: 1px solid #ddd;
 
   .media-heading {
     font-size: 15px;
@@ -14,7 +13,6 @@
 
   .post-content {
     padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
 
     .post-article {
       margin: 10px 0px;
@@ -72,5 +70,9 @@
 
   .unlike-post {
     color: #4C7AB7 !important;
+  }
+
+  .share-post {
+    border: 1px solid #ddd;
   }
 }

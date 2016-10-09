@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :save_posts, only: [:index, :create, :destroy]
   resources :activities, only: :show
+  resources :share_posts, only: [:new, :create]
 
   get "profiles" => "profiles#index"
   get "profiles/edit" => "profiles#edit", as: :edit_profile

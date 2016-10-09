@@ -35,3 +35,7 @@ en:
     new_feeds:
       like:
         error: "Something error!"
+    share_posts:
+      create:
+        success: "Share post success."
+        fail: "Share post fail."
