@@ -1,0 +1,44 @@
+#post-form {
+  border: 1px solid #ddd;
+  background: WHITE;
+
+  #new-post, #new-job-post {
+    padding: 15px 20px 50px 20px;
+
+    .button {
+      margin-top: 10px;
+    }
+  }
+
+  #post_status {
+    width: 110px;
+    margin-right: 10px;
+  }
+
+  .nav-tabs {
+    padding-left: 22px;
+    background-color: #eee;
+    li {
+      text-align: center;
+      padding-top: 10px;
+      background-color: #eee;
+
+      a {
+        padding: 7px 20px;
+      }
+    }
+  }
+
+  #cke_1_contents {
+    height: 150px !important;
+  }
+
+  #post_content {
+    height: 70px;
+  }
+
+  .btn, #post_status {
+    height: 27px;
+    padding: 3px 10px;
+  }
+}

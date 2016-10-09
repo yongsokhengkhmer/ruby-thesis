@@ -1,0 +1,20 @@
+<%= form_for @post, remote: true, html: {id: "new-job-post"} do |f| %>
+  <div id="job-post-errors"></div>
+
+  <%= f.fields_for :job_post do |builder| %>
+    <div>
+      <%= builder.text_field :name, placeholder: t("posts.name"), class: "job-name form-control" %>
+    </div><br />
+    <div>
+      <%= builder.text_field :location, placeholder: t("posts.location"), class: "job-location form-control" %>
+    </div><br />
+    <div>
+      <%= builder.select :job_type_id, options_for_select(JobType.all.map{|u| [u.name, u.id]}),
+      { prompt: t("posts.job_type")}, {id: "job-type-post"} %>
+    </div><br />
+
+    <div><%= f.text_area :content, id: "post-content" %></div>
+  <% end %>
+
+  <%= render "posts/button", ff: f %>
+<% end %>

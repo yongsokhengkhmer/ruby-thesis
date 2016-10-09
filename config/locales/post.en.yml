@@ -1,0 +1,12 @@
+en:
+  posts:
+    name: "Name"
+    location: "Location"
+    post_status: "Post status"
+    post_job: "Post job"
+    upload_photo: "Upload photo"
+    job_type: "Job type"
+    write_here: "Write something here"
+    post_error: "This post appears to be blank. Please write somthing or attach a photo."
+    job_post_error: "Please fill in job's information."
+

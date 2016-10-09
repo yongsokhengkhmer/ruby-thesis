@@ -4,6 +4,10 @@ class JobPost < ApplicationRecord
 
   has_many :apply_jobs, dependent: :destroy
 
+  validates :name, presence: true
+  validates :location, presence: true
+  validates :job_type_id, presence: true
+
   delegate :name, to: :job_type, prefix: true, allow_nil: true
   delegate :user_id, :content, to: :post, prefix: true, allow_nil: true
 

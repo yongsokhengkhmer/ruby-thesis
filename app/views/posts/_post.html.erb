@@ -1,0 +1,23 @@
+<div id="post-form">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#article-post" aria-controls="article-post" role="tab" data-toggle="tab">
+        <%= t "posts.post_status" %>
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#job-post" aria-controls="job-post" role="tab" data-toggle="tab">
+        <%= t "posts.post_job" %>
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="article-post">
+      <%= render "posts/post_form" %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="job-post">
+      <%= render "posts/job_post_form" %>
+    </div>
+  </div>
+</div>
