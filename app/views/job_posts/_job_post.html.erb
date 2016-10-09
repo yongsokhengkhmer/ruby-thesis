@@ -1,6 +1,5 @@
 <tr>
-  <td><%= job_post.name %></td>
+  <td><%= link_to job_post.name, job_post %></td>
   <td><%= job_post.job_type_name %></td>
   <td><%= l job_post.created_at, format: :datetime %></td>
-  <td><%= link_to t("actions.details"), job_post %></td>
 </tr>

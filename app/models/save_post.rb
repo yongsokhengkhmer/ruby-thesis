@@ -8,5 +8,6 @@ class SavePost < ApplicationRecord
   validates :activity_id, presence: true
   validates_uniqueness_of :user_id, scope: :activity_id
 
-  scope :load_save_posts, ->activity_id{where activity_id: activity_id}
+  scope :by_activity, ->activity_id{where activity_id: activity_id}
+  scope :load_save_posts, ->{preload activity: [{trackable: :activity}, :user]}
 end

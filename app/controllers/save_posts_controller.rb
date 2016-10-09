@@ -1,6 +1,10 @@
 class SavePostsController < ApplicationController
   load_and_authorize_resource
 
+  def index
+    @save_posts = current_user.save_posts.load_save_posts.page params[:page]
+  end
+
   def create
     @save_post = current_user.save_posts.new save_post_params
     if @save_post.save
