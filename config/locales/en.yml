@@ -24,3 +24,10 @@ en:
     see_all: "See All"
   post_managers:
     job_posts: "Job Posts"
+  flashes:
+    save_posts:
+      create:
+        success: "Save post success."
+        fail: "Save post fail."
+      destroy:
+        success: "Unsave post success."

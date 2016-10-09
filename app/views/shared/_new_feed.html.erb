@@ -20,6 +20,17 @@
           <%= status_post activity.trackable %>
         </div>
       </div>
+      <div class="media-right">
+        <div class="dropdown post-actions">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="save-post-<%= activity.id %>">
+              <%= render "shared/save_action", activity: activity %>
+            </li>
+          </ul>
+        </div>
+      </div>
     </li>
   </ul>
 
