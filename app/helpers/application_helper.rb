@@ -25,6 +25,8 @@ module ApplicationHelper
     user_name = user_notification.sender_name
     if notification.notify_type == Settings.notifications.notify_types.apply_job
       content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.apply_job'} <strong>#{notification.trackable.job_post_name}</strong>"
+    elsif notification.notify_type == Settings.notifications.notify_types.share_post
+      content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.share_post'}"
     end
     content.html_safe
   end
@@ -33,6 +35,8 @@ module ApplicationHelper
     notification = user_notification.notification
     if notification.notify_type == Settings.notifications.notify_types.apply_job
       notification.trackable.job_post
+    elsif notification.notify_type == Settings.notifications.notify_types.share_post
+      notification.trackable.activity
     end
   end
 

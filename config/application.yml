@@ -11,6 +11,7 @@ defaults: &defaults
     limit_show: 20
     notify_types:
       apply_job: "apply_job"
+      share_post: "share_post"
   truncates:
     content_post_length: 150
 
