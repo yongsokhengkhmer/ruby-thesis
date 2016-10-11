@@ -3,6 +3,7 @@ class Activity < ApplicationRecord
   belongs_to :user
 
   has_many :save_posts, dependent: :destroy
+  has_many :like_posts
 
   delegate :avatar, :name, to: :user, prefix: true, allow_nil: true
 

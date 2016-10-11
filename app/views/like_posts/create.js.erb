@@ -1,0 +1,6 @@
+<% if @like_post.errors.any? %>
+  $(".flash").html("<%= j render 'layouts/flash' %>");
+<% else %>
+  $("#activity-like-<%= @like_post.activity_id %>")
+    .replaceWith("<%= j render 'shared/button_like', activity: @like_post.activity %>");
+<% end %>

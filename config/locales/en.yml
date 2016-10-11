@@ -32,3 +32,6 @@ en:
         fail: "Save post fail."
       destroy:
         success: "Unsave post success."
+    new_feeds:
+      like:
+        error: "Something error!"

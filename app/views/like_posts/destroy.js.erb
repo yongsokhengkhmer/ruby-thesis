@@ -1,0 +1,2 @@
+$("#activity-like-<%= @activity.id %>")
+  .replaceWith("<%= j render 'shared/button_like', activity: @activity %>");
