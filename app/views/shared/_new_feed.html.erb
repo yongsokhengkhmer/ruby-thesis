@@ -34,28 +34,12 @@
     </li>
   </ul>
 
-  <div class="post-content">
-    <% if post.job_post.present? %>
-      <div class="job-post">
-        <div class="job-title">
-          <%= post.job_post_name %>
-        </div>
-        <div class="job-type">
-          <span class="badge"><%= post.job_post.job_type_name %></span>
-        </div>
-        <div class="job-location">
-          <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;
-          <%= post.job_post_location %>
-        </div>
-      </div>
-    <% end %>
-    <div class="post-article">
-      <%= post.content.html_safe if post.content %>
-    </div>
-    <div class="post-image">
-      <%= image_tag post.image_url, class: "img-responsive" if post.image_url %>
-    </div>
-  </div>
+  <% if share == true %>
+    <%= activity.trackable_content %>
+    <%= render "shared/share_post_content", post: post %>
+  <% else %>
+    <%= render "shared/post_content", post: post %>
+  <% end %>
 
   <div class="post-react">
     <span class="like">
@@ -68,7 +52,8 @@
       <% end %>
     </span>
     <span class="share">
-      <%= link_to "#" do %>
+      <%= link_to "javascript:void(0)", class: "share-post-action",
+        data: {post_id: post.id} do %>
         <i class="fa fa-share" aria-hidden="true"></i>
         <%= t "new_feeds.reacts.share" %>
       <% end %>

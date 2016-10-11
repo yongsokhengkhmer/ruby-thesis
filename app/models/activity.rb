@@ -6,6 +6,7 @@ class Activity < ApplicationRecord
   has_many :like_posts
 
   delegate :avatar, :name, to: :user, prefix: true, allow_nil: true
+  delegate :content, to: :trackable, prefix: true, allow_nil: true
 
   def get_post
     trackable_type == "Post" ? trackable : trackable.post

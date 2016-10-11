@@ -1,0 +1,22 @@
+<div class="post-content">
+  <% if post.job_post.present? %>
+    <div class="job-post">
+      <div class="job-title">
+        <%= post.job_post_name %>
+      </div>
+      <div class="job-type">
+        <span class="badge"><%= post.job_post.job_type_name %></span>
+      </div>
+      <div class="job-location">
+        <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;
+        <%= post.job_post_location %>
+      </div>
+    </div>
+  <% end %>
+  <div class="post-article">
+    <%= post.content.html_safe if post.content %>
+  </div>
+  <div class="post-image">
+    <%= image_tag post.image_url, class: "img-responsive" if post.image_url %>
+  </div>
+</div>
