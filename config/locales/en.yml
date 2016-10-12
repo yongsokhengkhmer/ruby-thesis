@@ -23,6 +23,7 @@ en:
     notifications: "Notifications"
     see_all: "See All"
   post_managers:
+    home: "Home"
     job_posts: "Job Posts"
     save_posts: "Save Posts"
   flashes:
@@ -39,3 +40,8 @@ en:
       create:
         success: "Share post success."
         fail: "Share post fail."
+  layouts:
+    labels:
+      home: "Home"
+      profile: "Profile"
+      edit_password: "Edit password"
