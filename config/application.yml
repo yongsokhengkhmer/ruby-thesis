@@ -9,7 +9,7 @@ defaults: &defaults
     recruiter: "recruiter"
   notifications:
     limit_show: 20
-    content_keys:
+    notify_types:
       apply_job: "apply_job"
   truncates:
     content_post_length: 150

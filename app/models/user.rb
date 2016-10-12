@@ -34,7 +34,10 @@ class User < ApplicationRecord
   has_many :documents, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :apply_jobs, dependent: :destroy
-  has_many :user_notifications, dependent: :destroy
+  has_many :sent_notifications, class_name: UserNotification,
+    foreign_key: :sender_id, dependent: :destroy
+  has_many :received_notifications, class_name: UserNotification,
+    foreign_key: :receiver_id, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :save_posts, dependent: :destroy
   has_many :like_posts, dependent: :destroy

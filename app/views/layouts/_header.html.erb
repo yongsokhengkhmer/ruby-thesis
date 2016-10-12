@@ -41,7 +41,8 @@
             <%= link_to "#", class: "dropdown-toggle dropdown-global",
               data: {toggle: "dropdown"} do %>
               <i class="fa fa-globe ico-global" aria-hidden="true"></i>
-              <span class="badge notification-badge"><%= current_user.user_notifications.unseen_notification %></span>
+              <span class="badge notification-badge"><%= current_user
+                .received_notifications.unseen_notification %></span>
             <% end %>
 
             <ul class="dropdown-menu dropdown-notification">
@@ -49,11 +50,11 @@
                 <span><strong><%= t "notifications.notifications" %></strong></span>
               </div>
               <div class="notification-content">
-                <% current_user.user_notifications
-                  .load_notifications(Settings.notifications.limit_show).each do |user_notification| %>
-                    <%= render "shared/notification",
-                      notification: user_notification.notification %>
-                <% end %>
+                <%= render partial: "shared/user_notification",
+                  collection: current_user
+                    .received_notifications
+                    .load_notifications(Settings.notifications.limit_show),
+                  as: :user_notification %>
               </div>
               <div class="notification-footer">
                 <span><strong><%= link_to t("notifications.see_all"), "" %></strong></span>

@@ -1,0 +1,12 @@
+<li>
+  <%= link_to notification_link(user_notification) do %>
+    <%= image_tag user_notification.sender.avatar_url,
+      class: "img-circle pull-left content-img", size: Settings.images.sizes.small_avatar %>
+      <div class="content-text">
+        <%= notification_content user_notification %>
+      </div>
+      <div class="content-date">
+        <%= l user_notification.created_at, format: :datetime %>
+      </div>
+  <% end %>
+</li>

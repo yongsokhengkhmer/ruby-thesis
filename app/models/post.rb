@@ -7,9 +7,10 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_one :job_post, dependent: :destroy, inverse_of: :post
-
   has_one :activity, as: :trackable, dependent: :destroy
+
   has_many :share_posts, dependent: :destroy
+  has_many :notifications, as: :trackable, dependent: :destroy
 
   validates :content, presence: true, if: lambda {image.blank? || job_post.present?}
 
