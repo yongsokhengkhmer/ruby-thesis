@@ -1,4 +1,7 @@
 <div class="row">
+  <div class="col-md-3 post-managers">
+    <%= render "shared/post_manager_left_navbar", active_name: "home" %>
+  </div>
   <div class="col-md-7">
     <div id="post">
       <%= render partial: "posts/post" %>

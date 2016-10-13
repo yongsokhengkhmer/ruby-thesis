@@ -5,6 +5,9 @@ body {
 .navbar-fixed-top {
   margin-bottom: 0px;
   border-radius: 0px;
+  background-color: #137491;
+  border-color: #137491;
+  box-shadow: 0 0 0px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.3);
 
   .dropdown-avatar {
     padding-top: 10px;
@@ -76,8 +79,32 @@ body {
     }
 
   }
+
+
+  .navbar-collapse {
+    li {
+      a {
+        color: WHITE !important;
+        font-weight: bold;
+      }
+
+      a:visited, a:hover, a:focus {
+        font-weight: bold;
+        background-color: #205E7C !important;
+      }
+    }
+
+    .dropdown-menu {
+      a, a:hover {
+        font-weight: normal;
+        color: inherit !important;
+        background-color: inherit !important;
+      }
+    }
+  }
 }
 
 .content-wrapper {
   padding-top: 70px;
 }
+
