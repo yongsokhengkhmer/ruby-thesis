@@ -20,16 +20,18 @@ module ApplicationHelper
     end
   end
 
-  def notification_content notification
-    user_name = notification.user_name
-    if notification.trackable_type == "ApplyJob"
-      content = "<strong>#{user_name}</strong> #{t 'notifications.content_keys.apply_job'} <strong>#{notification.trackable.job_post.name}</strong>"
+  def notification_content user_notification
+    notification = user_notification.notification
+    user_name = user_notification.sender_name
+    if notification.notify_type == Settings.notifications.notify_types.apply_job
+      content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.apply_job'} <strong>#{notification.trackable.job_post_name}</strong>"
     end
     content.html_safe
   end
 
-  def notification_link notification
-    if notification.trackable_type == "ApplyJob"
+  def notification_link user_notification
+    notification = user_notification.notification
+    if notification.notify_type == Settings.notifications.notify_types.apply_job
       notification.trackable.job_post
     end
   end

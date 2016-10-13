@@ -110,13 +110,11 @@ ActiveRecord::Schema.define(version: 20161005145057) do
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.string   "content_key"
     t.integer  "trackable_id"
     t.string   "trackable_type"
+    t.string   "notify_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -161,12 +159,14 @@ ActiveRecord::Schema.define(version: 20161005145057) do
 
   create_table "user_notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "notification_id"
-    t.integer  "user_id"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
     t.integer  "status",          default: 0
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["notification_id"], name: "index_user_notifications_on_notification_id", using: :btree
-    t.index ["user_id"], name: "index_user_notifications_on_user_id", using: :btree
+    t.index ["receiver_id"], name: "index_user_notifications_on_receiver_id", using: :btree
+    t.index ["sender_id"], name: "index_user_notifications_on_sender_id", using: :btree
   end
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -214,7 +214,6 @@ ActiveRecord::Schema.define(version: 20161005145057) do
   add_foreign_key "job_posts", "posts"
   add_foreign_key "like_posts", "activities"
   add_foreign_key "like_posts", "users"
-  add_foreign_key "notifications", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "save_posts", "activities"
   add_foreign_key "save_posts", "users"
@@ -222,6 +221,5 @@ ActiveRecord::Schema.define(version: 20161005145057) do
   add_foreign_key "share_posts", "users"
   add_foreign_key "skills", "users"
   add_foreign_key "user_notifications", "notifications"
-  add_foreign_key "user_notifications", "users"
   add_foreign_key "user_profiles", "users"
 end

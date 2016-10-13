@@ -1,10 +1,14 @@
 class UserNotification < ApplicationRecord
+  belongs_to :sender, class_name: User, foreign_key: :sender_id
+  belongs_to :receiver, class_name: User, foreign_key: :receiver_id
   belongs_to :notification
-  belongs_to :user
 
-  scope :load_notifications, ->number{limit(number).preload notification: :user}
+  scope :load_notifications, ->number do
+    limit(number).preload [{notification: :trackable}, :sender]
+  end
 
   delegate :created_at, to: :notification, prefix: true, allow_nil: true
+  delegate :name, to: :sender, prefix: true, allow_nil: true
 
   enum status: [:unseen, :seen, :read]
 

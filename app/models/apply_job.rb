@@ -2,8 +2,6 @@ class ApplyJob < ApplicationRecord
   belongs_to :user
   belongs_to :job_post
 
-  has_one :notification, as: :trackable, dependent: :destroy
-
   PARAMS_APPLY_JOB = [:job_post_id]
 
   validates_uniqueness_of :user_id, scope: :job_post_id

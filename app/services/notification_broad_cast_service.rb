@@ -1,9 +1,9 @@
 class NotificationBroadCastService
-  attr_accessor :channel, :notification
+  attr_accessor :channel, :user_notification
 
-  def initialize channel, notification
+  def initialize channel, user_notification
     @channel = channel
-    @notification = notification
+    @user_notification = user_notification
   end
 
   def broadcast
@@ -12,7 +12,7 @@ class NotificationBroadCastService
 
   private
   def render_notification
-    ApplicationController.renderer.render(partial: "shared/notification",
-      locals: {notification: notification})
+    ApplicationController.renderer.render(partial: "shared/user_notification",
+      locals: {user_notification: user_notification})
   end
 end
