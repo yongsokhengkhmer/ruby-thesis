@@ -4,7 +4,7 @@ class UserNotification < ApplicationRecord
   belongs_to :notification
 
   scope :load_notifications, ->number do
-    limit(number).preload [{notification: :trackable}, :sender]
+    order(created_at: :desc).limit(number).preload [{notification: :trackable}, :sender]
   end
 
   delegate :created_at, to: :notification, prefix: true, allow_nil: true

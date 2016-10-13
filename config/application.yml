@@ -12,6 +12,7 @@ defaults: &defaults
     notify_types:
       apply_job: "apply_job"
       share_post: "share_post"
+      like: "like"
   truncates:
     content_post_length: 150
 

@@ -1,0 +1,6 @@
+<%= link_to "javascript:void(0)",
+  class: "unlike-post", data: {like_post_id: "#{like_post.id}"} do %>
+  <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+  <%= t "new_feeds.reacts.like" %>
+<% end %>
+<%= react_number like_post.activity.like_posts.size %>
