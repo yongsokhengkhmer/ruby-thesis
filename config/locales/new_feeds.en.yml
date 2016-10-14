@@ -19,3 +19,5 @@ en:
       delete_post: "Delete post"
       unsave_post: "Unsave post"
       read_less: "Read Less"
+    comments:
+      show_more: "show more comments"

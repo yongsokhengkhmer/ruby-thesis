@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017144909) do
+ActiveRecord::Schema.define(version: 20161017155057) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "trackable_id"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20161017144909) do
     t.datetime "updated_at",  null: false
     t.index ["job_post_id"], name: "index_apply_jobs_on_job_post_id", using: :btree
     t.index ["user_id"], name: "index_apply_jobs_on_user_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",     limit: 65535
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["activity_id"], name: "index_comments_on_activity_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "company_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -213,6 +223,8 @@ ActiveRecord::Schema.define(version: 20161017144909) do
   add_foreign_key "activities", "users"
   add_foreign_key "apply_jobs", "job_posts"
   add_foreign_key "apply_jobs", "users"
+  add_foreign_key "comments", "activities"
+  add_foreign_key "comments", "users"
   add_foreign_key "company_profiles", "users"
   add_foreign_key "documents", "users"
   add_foreign_key "educations", "degrees"
