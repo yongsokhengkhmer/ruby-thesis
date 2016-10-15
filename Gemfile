@@ -23,7 +23,7 @@ gem "cancancan", "~> 1.10"
 gem "selectize-rails"
 gem "ckeditor"
 gem "remotipart", "~> 1.2"
-
+gem "jasny-bootstrap-rails"
 group :development, :test do
   gem "pry"
   gem "faker", "1.4.2"

@@ -14,5 +14,5 @@
     $("#job-type-post")[0].selectize.clear();
     CKEDITOR.instances["post-content"].setData("");
   <% end %>
-  $("#activity").prepend("<%= j render 'shared/new_feed', post: @post, share: false, activity: @post.activity %>");
+  $("#activity").prepend("<%= j render 'shared/activity', activity: @post.activity %>");
 <% end %>

@@ -28,6 +28,13 @@
             <li class="save-post-<%= activity.id %>">
               <%= render "shared/save_action", activity: activity %>
             </li>
+            <% if activity.user_id == current_user.id %>
+              <li><%= link_to t("new_feeds.actions.edit_post"),
+                edit_activity_path(activity), remote: true %></li>
+              <li><%= link_to t("new_feeds.actions.delete_post"), activity,
+                method: :delete, data: {confirm: t("confirms.confirm_delete")},
+                remote: true %></li>
+            <% end %>
           </ul>
         </div>
       </div>

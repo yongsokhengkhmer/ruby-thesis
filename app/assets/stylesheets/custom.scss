@@ -63,3 +63,13 @@ a:hover, a:focus, a:active {
     text-decoration: none;
   }
 }
+
+.btn, .btn-status {
+  height: 27px;
+  padding: 3px 10px;
+  margin-left: 5px;
+}
+
+.btn-status {
+  width: 110px;
+}

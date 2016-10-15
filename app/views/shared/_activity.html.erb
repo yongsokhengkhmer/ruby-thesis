@@ -1,7 +1,9 @@
-<% if activity.trackable.class.name == "Post" %>
-  <%= render "shared/new_feed", post: activity.trackable, share: false,
-    activity: activity %>
-<% elsif activity.trackable.class.name == "SharePost" %>
-  <%= render "shared/new_feed", post: activity.trackable.post, share: true,
-    activity: activity %>
-<% end %>
+<div class="new-feeds-activity-<%= activity.id %>">
+  <% if activity.trackable.class.name == "Post" %>
+    <%= render "shared/new_feed", post: activity.trackable, share: false,
+      activity: activity %>
+  <% elsif activity.trackable.class.name == "SharePost" %>
+    <%= render "shared/new_feed", post: activity.trackable.post, share: true,
+      activity: activity %>
+  <% end %>
+</div>

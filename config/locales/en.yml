@@ -45,3 +45,5 @@ en:
       home: "Home"
       profile: "Profile"
       edit_password: "Edit password"
+  confirms:
+    confirm_delete: "Are you sure to delete?"

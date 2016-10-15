@@ -9,4 +9,6 @@ en:
     write_here: "Write something here"
     post_error: "This post appears to be blank. Please write somthing or attach a photo."
     job_post_error: "Please fill in job's information."
-
+    change_photo: "change"
+    remove_photo: "remove"
+    edit_post: "Edit post"

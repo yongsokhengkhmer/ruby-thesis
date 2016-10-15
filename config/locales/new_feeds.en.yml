@@ -6,6 +6,7 @@ en:
       apply_success: "Your Apply is successful. Please feel free to wait for the company's contact."
       apply_confirm: "Are you sure to apply for <strong>%{job}</strong>?"
       applied: "Applied"
+      share_post: "Share post"
     reacts:
       like: "Like"
       comment: "Comment"
@@ -14,4 +15,6 @@ en:
     actions:
       apply: "Apply"
       save_post: "Save post"
+      edit_post: "Edit post"
+      delete_post: "Delete post"
       unsave_post: "Unsave post"

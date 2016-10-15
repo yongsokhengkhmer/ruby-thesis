@@ -14,5 +14,6 @@
  *= require bootstrap-datepicker3
  *= require font-awesome
  *= require selectize
+ *= require jasny-bootstrap.min
  *= require_self
  */

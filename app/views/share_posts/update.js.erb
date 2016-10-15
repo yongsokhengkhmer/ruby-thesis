@@ -1,0 +1,6 @@
+<% if @share_post.errors.any? %>
+  $(".flash").html("<%= j render 'layouts/flash' %>");
+<% else %>
+  $(".new-feeds-activity-<%= @activity.id %>").html("<%= j render 'shared/activity', activity: @activity %>")
+ $(".edit-post-modal #share-post-confirm-modal").modal("hide");
+<% end %>
