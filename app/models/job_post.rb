@@ -12,6 +12,7 @@ class JobPost < ApplicationRecord
   delegate :user_id, :content, to: :post, prefix: true, allow_nil: true
 
   scope :by_user, ->user_id do
-    joins(:post).where("posts.user_id = ?", user_id).order created_at: :desc
+    joins(:post).where("posts.user_id = ?", user_id).preload(:job_type)
+    .order created_at: :desc
   end
 end

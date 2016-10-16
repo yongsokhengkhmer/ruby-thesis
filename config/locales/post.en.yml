@@ -12,3 +12,7 @@ en:
     change_photo: "change"
     remove_photo: "remove"
     edit_post: "Edit post"
+    posts: "Posts"
+    tables:
+      content: "Content"
+      post_date: "Post date"

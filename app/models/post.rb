@@ -20,4 +20,8 @@ class Post < ApplicationRecord
 
   delegate :name, to: :user, prefix: true, allow_nil: true
   delegate :id, :name, :location, to: :job_post, prefix: true, allow_nil: true
+
+  scope :load_posts, -> do
+    includes(:job_post).where(job_posts: {post_id: nil}).order created_at: :desc
+  end
 end

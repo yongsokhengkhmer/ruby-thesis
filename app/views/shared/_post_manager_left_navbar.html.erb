@@ -2,8 +2,14 @@
   <div class="title <%= active_post_navbar 'home', active_name %>">
     <%= link_to t("post_managers.home"), root_path %>
   </div>
+  <div class="title <%= active_post_navbar 'posts', active_name %>">
+    <%= link_to t("post_managers.posts"), posts_path %>
+  </div>
   <div class="title <%= active_post_navbar 'job_posts', active_name %>">
     <%= link_to t("post_managers.job_posts"), job_posts_path %>
+  </div>
+  <div class="title <%= active_post_navbar 'apply_jobs', active_name %>">
+    <%= link_to t("post_managers.apply_jobs"), apply_jobs_path %>
   </div>
   <div class="title <%= active_post_navbar 'save_posts', active_name %>">
     <%= link_to t("post_managers.save_posts"), save_posts_path %>

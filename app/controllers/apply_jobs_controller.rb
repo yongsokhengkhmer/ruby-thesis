@@ -1,6 +1,10 @@
 class ApplyJobsController < ApplicationController
   load_and_authorize_resource
 
+  def index
+    @apply_jobs = current_user.apply_jobs.load_apply_jobs.page params[:page]
+  end
+
   def new
     @job_post = JobPost.find params[:job_post_id]
   end
