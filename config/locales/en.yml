@@ -26,6 +26,8 @@ en:
     home: "Home"
     job_posts: "Job Posts"
     save_posts: "Save Posts"
+    posts: "Posts"
+    apply_jobs: "Apply Jobs"
   flashes:
     save_posts:
       create:

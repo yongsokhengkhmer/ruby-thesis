@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
 
+  def index
+    @posts = current_user.posts.load_posts.page params[:page]
+  end
+
   def create
     @post = current_user.posts.new post_params
     if @post.save

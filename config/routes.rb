@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :save_posts, only: [:index, :create, :destroy]
   resources :activities, only: [:show, :edit, :destroy]
   resources :share_posts, only: [:new, :create, :update]
+  resources :apply_jobs, only: [:index]
 
   get "profiles" => "profiles#index"
   get "profiles/edit" => "profiles#edit", as: :edit_profile
@@ -16,6 +17,6 @@ Rails.application.routes.draw do
   patch "passwords" => "passwords#update"
   put "update_seen_notifications" => "notification_seen_updates#update"
 
-  resources :posts, only: [:create, :update]
+  resources :posts, only: [:index, :create, :update]
   resources :like_posts, only: [:create, :destroy]
 end

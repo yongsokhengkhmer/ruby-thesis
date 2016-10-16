@@ -1,0 +1,15 @@
+<tr>
+  <td>
+    <div class="media">
+      <div class="media-left">
+        <%= link_to image_tag(post.image_url,
+          width: Settings.images.sizes.media_post), post.activity if post.image? %>
+      </div>
+      <div class="media-body">
+        <%= link_to truncate_content(post.content), post.activity,
+          title: post.content %>
+      </div>
+    </div>
+  </td>
+  <td><%= l post.created_at, format: :datetime %></td>
+</tr>

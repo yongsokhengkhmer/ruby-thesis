@@ -1,0 +1,25 @@
+<div class="row post-managers" id="job-posts">
+  <div class="col-md-3">
+    <%= render "shared/post_manager_left_navbar", active_name: "apply_jobs" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title"><%= t "post_managers.apply_jobs" %></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="name"><%= t "job_posts.tables.name" %></th>
+            <th class="job-type"><%= t "job_posts.tables.job_type" %></th>
+            <th class="date"><%= t "job_posts.tables.post_date" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @apply_jobs.each do |apply_job| %>
+            <%= render "apply_jobs/apply_job", job_post: apply_job.job_post %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= render_pagination @apply_jobs %>
+    </div>
+  </div>
+</div>

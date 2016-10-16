@@ -1,0 +1,22 @@
+<div class="row post-managers" id="posts">
+  <div class="col-md-3">
+    <%= render "shared/post_manager_left_navbar", active_name: "posts" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title"><%= t "post_managers.posts" %></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="content"><%= t "posts.tables.content" %></th>
+            <th class="date"><%= t "posts.tables.post_date" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "posts/post_data", collection: @posts, as: :post %>
+        </tbody>
+      </table>
+      <%= render_pagination @posts %>
+    </div>
+  </div>
+</div>
