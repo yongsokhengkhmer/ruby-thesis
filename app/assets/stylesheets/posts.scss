@@ -1,18 +1,13 @@
-#post-form {
+#post-form, #edit-post-modal {
   background: WHITE;
   border: 1px solid #eee;
 
   #new-post, #new-job-post {
-    padding: 15px 20px 50px 20px;
+    padding: 15px 20px 10px 20px;
 
     .button {
       margin-top: 10px;
     }
-  }
-
-  #post_status {
-    width: 110px;
-    margin-right: 10px;
   }
 
   .nav-tabs {
@@ -37,8 +32,13 @@
     height: 70px;
   }
 
-  .btn, #post_status {
-    height: 27px;
-    padding: 3px 10px;
+  .thumbnail {
+    border: none;
+    margin-top: 10px;
+    width: 200px;
   }
+}
+
+#edit-post-modal {
+  background-color: transparent;
 }

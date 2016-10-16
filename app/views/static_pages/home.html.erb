@@ -2,7 +2,7 @@
   <div class="col-md-3 post-managers">
     <%= render "shared/post_manager_left_navbar", active_name: "home" %>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-6">
     <div id="post">
       <%= render partial: "posts/post" %>
     </div>
@@ -10,6 +10,5 @@
       <%= render partial: "shared/activity", collection: @activities, as: :activity %>
     </div>
   </div>
-  <div class="apply-modal"></div>
-  <div class="share-post-modal"></div>
+  <%= render "shared/modal_container" %>
 </div>

@@ -1,0 +1,10 @@
+<% if @post.errors.any? %>
+  <% if @post.job_post.present? %>
+    $(".errors").html("<div class='text-danger'><%= t 'posts.job_post_error' %></div>");
+  <% else %>
+    $(".errors").html("<div class='text-danger'><%= t 'posts.post_error' %></div>");
+  <% end  %>
+<% else %>
+  $(".new-feeds-activity-<%= @activity.id %>").html("<%= j render 'shared/activity', activity: @activity %>")
+  $("#edit-post-modal").modal("hide");
+<% end %>

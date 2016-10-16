@@ -1,15 +1,38 @@
-<div class="button">
-  <label class="btn btn-default btn-file pull-left">
-    <%= t "posts.upload_photo" %>
-    <input type="file" style="display: none;" name="post[image]" id="post_image">
-  </label>
+<div class="button clearfix">
+  <div class="fileinput fileinput-new pull-left" data-provides="fileinput">
+    <div class="actions">
+      <span class="btn btn-default btn-file pull-left">
+        <span class="fileinput-new">
+          <%= t "posts.upload_photo" %>
+        </span>
+        <span class="fileinput-exists">
+          <%= t "posts.change_photo" %>
+        </span>
+        <%= ff.file_field :image %>
+      </span>
+      <a href="#" class="btn btn-danger pull-left fileinput-exists btn-remove" data-dismiss="fileinput">
+        <%= t "posts.remove_photo" %>
+      </a>
+    </div>
+    <div class="images">
+      <% if ff.object.image? %>
+        <div class="fileinput-new thumbnail">
+          <%= image_tag ff.object.image_url, class: "img-responsive" %>
+        </div>
+      <% end %>
+      <div class="fileinput-preview fileinput-exists thumbnail"></div>
+    </div>
+  </div>
+
   <div class="pull-right">
     <span class="pull-left">
       <%= ff.select :status, options_for_select(Post.statuses.keys
-        .collect{|status| [t("post_statuses.#{status}"), status]}), {}, {class: "form-control"} %>
+        .collect{|status| [t("post_statuses.#{status}"), status]}, ff.object.status),
+        {}, {class: "form-control btn-status"} %>
     </span>
     <span>
-      <%= ff.submit t("actions.post"), class: "btn btn-primary pull-right" %>
+      <%= ff.submit ff.object.new_record? ? t("actions.post") : t("actions.save"),
+        class: "btn btn-primary pull-right" %>
     </span>
   </div>
 </div>

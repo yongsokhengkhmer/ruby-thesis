@@ -19,4 +19,5 @@
 //= require selectize
 //= require ckeditor/init
 //= require jquery.remotipart
+//= require jasny-bootstrap.min
 //= require_tree .

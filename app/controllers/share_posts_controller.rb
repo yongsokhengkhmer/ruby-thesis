@@ -23,6 +23,17 @@ class SharePostsController < ApplicationController
     end
   end
 
+  def update
+    unless @share_post.update_attributes share_post_params
+      flash.now[:alert] = t "flashes.share_posts.update.fail"
+    end
+    @activity = @share_post.activity
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
   def share_post_params
     params.require(:share_post).permit SharePost::SHARE_POST_PARAMS

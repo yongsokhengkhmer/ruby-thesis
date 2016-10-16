@@ -11,6 +11,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    @post.update_attributes post_params
+    @activity = @post.activity
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit Post::POST_PARAMS
