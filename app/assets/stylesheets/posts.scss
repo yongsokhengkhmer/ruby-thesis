@@ -52,3 +52,15 @@
 #edit-post-modal {
   background-color: transparent;
 }
+
+#posts {
+  table {
+    .content {
+      width: 80%;
+    }
+
+    .date {
+      width: 20%;
+    }
+  }
+}

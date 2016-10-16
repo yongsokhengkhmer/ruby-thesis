@@ -31,4 +31,8 @@ $(document).on("turbolinks:load ajaxComplete", function() {
       $.get("/share_posts/new", {share_post: {post_id: post_id}});
     });
   }
+
+  $(".post-article").readmore({
+    lessLink: "<a href='#'>"+ I18n.t("new_feeds.actions.read_less") +"</a>"
+  });
 });
