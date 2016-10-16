@@ -2,5 +2,5 @@
   $(".flash").html("<%= j render 'layouts/flash' %>");
 <% else %>
   $("#activity-like-<%= @like_post.activity_id %>")
-    .replaceWith("<%= j render 'shared/button_like', activity: @like_post.activity %>");
+    .html("<%= j render 'shared/unlike', like_post: @like_post %>");
 <% end %>

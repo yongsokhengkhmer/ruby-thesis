@@ -27,6 +27,8 @@ module ApplicationHelper
       content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.apply_job'} <strong>#{notification.trackable.job_post_name}</strong>"
     elsif notification.notify_type == Settings.notifications.notify_types.share_post
       content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.share_post'}"
+    elsif notification.notify_type == Settings.notifications.notify_types.like
+      content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.like'}"
     end
     content.html_safe
   end
@@ -35,7 +37,8 @@ module ApplicationHelper
     notification = user_notification.notification
     if notification.notify_type == Settings.notifications.notify_types.apply_job
       notification.trackable.job_post
-    elsif notification.notify_type == Settings.notifications.notify_types.share_post
+    elsif notification.notify_type == Settings.notifications.notify_types.share_post ||
+      notification.notify_type == Settings.notifications.notify_types.like
       notification.trackable.activity
     end
   end
@@ -51,5 +54,9 @@ module ApplicationHelper
 
   def truncate_content content
     truncate content, length: Settings.truncates.content_post_length, separator: ""
+  end
+
+  def react_number number
+    "(#{number})" if number > 0
   end
 end
