@@ -18,6 +18,16 @@
             <%= t "profiles.actions.edit_profile" %>
           <% end %>
         <% end %>
+        <% unless @user == current_user %>
+          <div class="mark-interest-actions">
+            <% if(mark_interest = current_user.mark_interests.by_marked_id @user.id).present? %>
+              <%= render "mark_interests/unmark_interest",
+                mark_interest_id: mark_interest.first.id %>
+            <% else %>
+              <%= render "mark_interests/mark_interest", marked_id: @user.id %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
 

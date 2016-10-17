@@ -42,6 +42,10 @@ en:
       create:
         success: "Share post success."
         fail: "Share post fail."
+    mark_interests:
+      create:
+        success: "Mark interest success."
+        fail: "Mark interest fail."
   layouts:
     labels:
       home: "Home"
