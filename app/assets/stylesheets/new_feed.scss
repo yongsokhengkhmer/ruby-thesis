@@ -17,7 +17,11 @@
     padding-bottom: 10px;
 
     .post-article {
-      margin: 10px 0px;
+      margin-top: 10px;
+    }
+
+    .post-image {
+      margin-top: 10px;
     }
 
     .job-post {
@@ -76,5 +80,9 @@
 
   .share-post {
     border: 1px solid #ddd;
+  }
+
+  .post-article + [data-readmore-toggle] {
+    width: 80px;
   }
 }
