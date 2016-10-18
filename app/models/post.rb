@@ -24,4 +24,12 @@ class Post < ApplicationRecord
   scope :load_posts, -> do
     includes(:job_post).where(job_posts: {post_id: nil}).order created_at: :desc
   end
+
+  after_create :create_activity_and_push_notification
+
+  private
+  def create_activity_and_push_notification
+    create_activity user_id: user_id
+   PostNotificationJob.perform_now(self) if public_post?
+  end
 end

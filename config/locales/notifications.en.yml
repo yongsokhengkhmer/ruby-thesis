@@ -3,4 +3,7 @@ en:
     notify_types:
       apply_job: "has applied for"
       share_post: "shared your post."
-      like: "likes your's post"
+      like: "likes your post"
+      shared: "shared a post."
+      post_job: "posted a job."
+      post_status: "posted a status."

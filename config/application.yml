@@ -13,6 +13,7 @@ defaults: &defaults
       apply_job: "apply_job"
       share_post: "share_post"
       like: "like"
+      post_feed: "post_feed"
   truncates:
     content_post_length: 150
 
