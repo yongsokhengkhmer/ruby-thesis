@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005145057) do
+ActiveRecord::Schema.define(version: 20161017144909) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "trackable_id"
@@ -107,6 +107,14 @@ ActiveRecord::Schema.define(version: 20161005145057) do
     t.datetime "updated_at",  null: false
     t.index ["activity_id"], name: "index_like_posts_on_activity_id", using: :btree
     t.index ["user_id"], name: "index_like_posts_on_user_id", using: :btree
+  end
+
+  create_table "mark_interests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "marker_id"
+    t.integer  "marked_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["marker_id", "marked_id"], name: "index_mark_interests_on_marker_id_and_marked_id", unique: true, using: :btree
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

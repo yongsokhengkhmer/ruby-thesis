@@ -29,6 +29,8 @@ en:
       remove: "Remove"
       add: "Add"
       edit_profile: "Edit profile"
+      mark_interest: "Mark as interest"
+      unmark_interest: "Unmark as interest"
     labels:
       to: "to"
       change_password: "Change password"
