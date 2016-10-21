@@ -19,14 +19,22 @@
           <% end %>
         <% end %>
         <% unless @user == current_user %>
-          <div class="mark-interest-actions">
+          <span class="mark-interest-actions">
             <% if(mark_interest = current_user.mark_interests.by_marked_id @user.id).present? %>
               <%= render "mark_interests/unmark_interest",
                 mark_interest_id: mark_interest.first.id %>
             <% else %>
               <%= render "mark_interests/mark_interest", marked_id: @user.id %>
             <% end %>
-          </div>
+          </span>
+
+          <span class="relationship-action">
+            <% if(relationship = current_user.follow @user).present? %>
+              <%= render "relationships/unfollow", relationship: relationship.first %>
+            <% else %>
+              <%= render "relationships/follow", followed: @user %>
+            <% end %>
+          </span>
         <% end %>
       </div>
     </div>

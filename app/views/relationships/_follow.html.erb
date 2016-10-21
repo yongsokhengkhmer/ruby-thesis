@@ -1,0 +1,5 @@
+<%= link_to "javascript:void(0)", class: "follow-action btn btn-success",
+  data: {followed_id: followed.id} do %>
+  <i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;
+  <%= t "profiles.actions.follow" %>
+<% end %>

@@ -7,3 +7,5 @@ en:
       shared: "shared a post."
       post_job: "posted a job."
       post_status: "posted a status."
+      like: "likes your post."
+      follow: "followed you."

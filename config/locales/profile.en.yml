@@ -31,6 +31,8 @@ en:
       edit_profile: "Edit profile"
       mark_interest: "Mark as interest"
       unmark_interest: "Unmark as interest"
+      follow: "Follow"
+      unfollow: "Unfollow"
     labels:
       to: "to"
       change_password: "Change password"

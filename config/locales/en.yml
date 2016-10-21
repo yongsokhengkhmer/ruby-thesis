@@ -46,6 +46,10 @@ en:
       create:
         success: "Mark interest success."
         fail: "Mark interest fail."
+    relationships:
+      create:
+        success: "Mark interest success."
+        fail: "Mark interest fail."
   layouts:
     labels:
       home: "Home"
