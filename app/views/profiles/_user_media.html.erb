@@ -1,0 +1,14 @@
+<div class="col-md-4 user-<%= user.id %>">
+  <div class="media user-media">
+    <div class="media-left">
+      <%= link_to image_tag(user.avatar_url, class: "media-object",
+        size: Settings.images.sizes.small_avatar), user %>
+    </div>
+    <div class="media-body">
+      <div class="media-heading">
+        <strong><%= link_to user.name, user %></strong> <br>
+        <small><i><%= user.user_profile_current_position if user.user_profile %></i></small>
+      </div>
+    </div>
+  </div>
+</div>

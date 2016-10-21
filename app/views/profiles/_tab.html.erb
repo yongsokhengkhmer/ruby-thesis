@@ -1,0 +1,18 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="<%= active_post_navbar 'about', tab_name %>">
+    <%= link_to t("profiles.tabs.about"),
+      (current_user.id == user.id ? profiles_path : user)%>
+  </li>
+  <li role="presentation" class="<%= active_post_navbar 'followings', tab_name %>">
+    <%= link_to user_followings_path(user) do %>
+      <%= t "profiles.tabs.followings" %>
+      <span class="badge following-number"><%= user.followeds.size %></span>
+    <% end %>
+  </li>
+  <li role="presentation" class="<%= active_post_navbar 'followers', tab_name %>">
+    <%= link_to user_followers_path(user) do %>
+      <%= t "profiles.tabs.followers" %>
+      <span class="badge follower-number"><%= user.followers.size %></span>
+    <% end %>
+  </li>
+</ul>

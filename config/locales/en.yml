@@ -5,6 +5,7 @@ en:
     close: "Close"
     details: "Details"
     post: "Post"
+    load_more: "Load More"
   time:
     formats:
       default: "%d-%m-%Y"

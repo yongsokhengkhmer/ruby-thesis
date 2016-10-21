@@ -1,0 +1,19 @@
+<%= render "profiles/tab", tab_name: "followings", user: user %>
+<div class="tab-content">
+  <div class="row following-list">
+    <%= render partial: "profiles/following", collection: followings,
+      as: :relationship %>
+  </div>
+  <div class="load-more">
+    <% if followings.next_page %>
+      <%= link_to "javascript:void(0)", class: "btn-load-more" do %>
+        <%= t "actions.load_more" %>
+        <span class="loading" hidden>
+          <i class="fa fa-spinner fa-pulse fa-x fa-fw"></i>
+          <span class="sr-only"><%= t "labels.loading" %></span>
+        </span>
+      <% end %>
+    <% end %>
+    <div hidden><%= render_pagination followings %></div>
+  </div>
+</div>
