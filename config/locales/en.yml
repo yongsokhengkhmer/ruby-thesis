@@ -28,6 +28,8 @@ en:
     save_posts: "Save Posts"
     posts: "Posts"
     apply_jobs: "Apply Jobs"
+    new_feedback: "New Feedback"
+    feedbacks: "Feedbacks"
   flashes:
     save_posts:
       create:
@@ -50,6 +52,10 @@ en:
       create:
         success: "Mark interest success."
         fail: "Mark interest fail."
+    feedbacks:
+      create:
+        success: "Thank you for your feedback."
+        fail: "Feedback fail."
   layouts:
     labels:
       home: "Home"

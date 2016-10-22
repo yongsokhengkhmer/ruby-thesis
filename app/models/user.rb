@@ -52,6 +52,7 @@ class User < ApplicationRecord
   # user follow who
   has_many :followeds, class_name: Relationship, foreign_key: :follower_id, dependent: :destroy
   has_many :notifications, as: :trackable, dependent: :destroy
+  has_many :feedbacks, dependent: :nullify
 
   accepts_nested_attributes_for :experiences, allow_destroy: true
   accepts_nested_attributes_for :educations, allow_destroy: true

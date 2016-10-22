@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   resources :mark_interests, only: [:create, :destroy]
   resources :comments, only: [:index, :create]
   resources :relationships, only: [:create, :destroy]
+  resources :feedbacks, except: [:edit, :update, :destroy]
 end

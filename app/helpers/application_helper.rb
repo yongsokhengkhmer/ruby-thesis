@@ -41,6 +41,8 @@ module ApplicationHelper
       end
     elsif notification.notify_type == Settings.notifications.notify_types.follow
       content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.follow'}"
+    elsif notification.notify_type == Settings.notifications.notify_types.feedback
+      content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.feedback'}"
     end
     content.html_safe
   end
@@ -55,6 +57,8 @@ module ApplicationHelper
       notification.trackable.activity
     elsif notification.notify_type == Settings.notifications.notify_types.follow
       user_notification.sender
+    elsif notification.notify_type == Settings.notifications.notify_types.feedback
+      notification.trackable
     end
   end
 
