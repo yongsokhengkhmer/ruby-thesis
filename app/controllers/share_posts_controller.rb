@@ -12,7 +12,6 @@ class SharePostsController < ApplicationController
   def create
     @share_post = current_user.share_posts.new share_post_params
     if @share_post.save
-      @share_post.create_activity user_id: current_user.id
       flash.now[:success] = t "flashes.share_posts.create.success"
     else
       flash.now[:alert] = t "flashes.share_posts.create.fail"

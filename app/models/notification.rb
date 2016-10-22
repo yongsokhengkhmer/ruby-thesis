@@ -5,6 +5,7 @@ class Notification < ApplicationRecord
   has_many :user_notifications, dependent: :destroy
 
   delegate :avatar_url, :name, to: :user, prefix: true, allow_nil: true
+  delegate :user_id, to: :trackable, prefix: true, allow_nil: true
 
   validates_uniqueness_of :trackable_id, scope: :notify_type
 end

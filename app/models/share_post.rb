@@ -10,10 +10,11 @@ class SharePost < ApplicationRecord
 
   delegate :user_id, to: :post, prefix: true, allow_nil: true
 
-  after_create :push_notification
+  after_create :create_activity_and_push_notification
 
   private
-  def push_notification
+  def create_activity_and_push_notification
+    create_activity user_id: user_id
     SharePostJob.perform_now(self) if public_post?
   end
 end

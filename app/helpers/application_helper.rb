@@ -26,9 +26,19 @@ module ApplicationHelper
     if notification.notify_type == Settings.notifications.notify_types.apply_job
       content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.apply_job'} <strong>#{notification.trackable.job_post_name}</strong>"
     elsif notification.notify_type == Settings.notifications.notify_types.share_post
-      content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.share_post'}"
+      if user_notification.receiver_id == notification.trackable_user_id
+        content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.share_post'}"
+      else
+        content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.shared'}"
+      end
     elsif notification.notify_type == Settings.notifications.notify_types.like
       content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.like'}"
+    elsif notification.notify_type == Settings.notifications.notify_types.post_feed
+      if notification.trackable.job_post.present?
+        content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.post_job'}"
+      else
+        content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.post_status'}"
+      end
     end
     content.html_safe
   end
@@ -38,7 +48,8 @@ module ApplicationHelper
     if notification.notify_type == Settings.notifications.notify_types.apply_job
       notification.trackable.job_post
     elsif notification.notify_type == Settings.notifications.notify_types.share_post ||
-      notification.notify_type == Settings.notifications.notify_types.like
+      notification.notify_type == Settings.notifications.notify_types.like ||
+      notification.notify_type == Settings.notifications.notify_types.post_feed
       notification.trackable.activity
     end
   end
