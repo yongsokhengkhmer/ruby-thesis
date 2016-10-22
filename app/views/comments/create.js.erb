@@ -1,0 +1,7 @@
+<% if @comment.errors.any? %>
+  $(".flash").html("<%= j render 'layouts/flash' %>");
+<% else %>
+  var comment = $(".comments-activity-<%= @comment.activity_id %>");
+  comment.find(".comments-list").append("<%= j render 'comments/comment', comment: @comment %>");
+  comment.find("input").val("");
+<% end %>

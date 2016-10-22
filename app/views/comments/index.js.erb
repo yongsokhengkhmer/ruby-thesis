@@ -1,0 +1,9 @@
+var comment = $(".comments-activity-<%= @activity.id %>");
+comment.find(".comments-list").prepend("<%= j render 'comments/comments', comments: @comments %>");
+comment.find(".comments-pagination").html("<%= j paginate @comments %>");
+<% if @comments.next_page.present? %>
+  comment.find(".load-more").show();
+<% else %>
+  comment.find(".load-more").remove();
+<% end %>
+$(".comments-spinner").hide();

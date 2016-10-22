@@ -30,6 +30,30 @@ $(document).on("turbolinks:load ajaxComplete", function() {
       var post_id = $(this).data("post-id");
       $.get("/share_posts/new", {share_post: {post_id: post_id}});
     });
+
+    $(".comments form").unbind("submit").on("submit", function(){
+      var activity_id = $(this).data("activity-id");
+      var content = $.trim($(this).find("input").val());
+      if (content != "") {
+        $.post("/comments", {comment: {activity_id: activity_id,
+          content: content}});
+      }
+    });
+
+    $(".show-comments").unbind("click").on("click", function(){
+      var activity_id = $(this).closest(".new-feeds ").find(".comments").data("activity-id");
+      $(this).unbind("click").removeClass("show-comments");
+      $(".comments-spinner").show();
+      $.get("/comments", {comment: {activity_id: activity_id}});
+    });
+
+    $(".load-more").unbind("click").on("click", function(){
+      var comment = $(this).closest(".comments");
+      var link = comment.find(".pagination .next a").attr("href");
+      var activity_id = comment.data("activity-id");
+      $(".comments-spinner").show();
+      $.get(link, {comment: {activity_id: activity_id}});
+    });
   }
 
   $(".post-article").readmore({

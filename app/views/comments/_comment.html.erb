@@ -1,0 +1,12 @@
+<li class="media">
+  <div class="media-left">
+    <%= link_to image_tag(comment.user.avatar_url, class: "media-object",
+      size: Settings.images.sizes.xsmall_avatar), comment.user %>
+  </div>
+  <div class="media-body">
+    <div class="media-heading">
+      <strong><%= link_to comment.user_name, comment.user %></strong>
+      <%= comment.content %>
+    </div>
+  </div>
+</li>

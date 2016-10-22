@@ -1,0 +1,11 @@
+<li class="media">
+  <div class="media-left">
+    <%= link_to image_tag(current_user.avatar_url, class: "media-object",
+      size: Settings.images.sizes.xsmall_avatar), current_user %>
+  </div>
+  <div class="media-body">
+    <div class="media-heading">
+      <%= text_area_tag "comment", nil, class: "form-control" %>
+    </div>
+  </div>
+</li>
