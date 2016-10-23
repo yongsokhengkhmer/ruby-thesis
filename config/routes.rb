@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :like_posts, only: [:create, :destroy]
   resources :mark_interests, only: [:create, :destroy]
   resources :comments, only: [:index, :create]
+  resources :relationships, only: [:create, :destroy]
 end

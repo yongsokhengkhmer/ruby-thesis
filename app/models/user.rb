@@ -42,9 +42,16 @@ class User < ApplicationRecord
   has_many :save_posts, dependent: :destroy
   has_many :like_posts, dependent: :destroy
   has_many :share_posts, dependent: :destroy
+  # user mark interest on who
   has_many :mark_interests, class_name: MarkInterest, foreign_key: :marker_id, dependent: :destroy
+  # who mark interest on user
   has_many :marked_interests, class_name: MarkInterest, foreign_key: :marked_id, dependent: :destroy
   has_many :comments, dependent: :destroy
+  # who follow user
+  has_many :followers, class_name: Relationship, foreign_key: :followed_id, dependent: :destroy
+  # user follow who
+  has_many :followeds, class_name: Relationship, foreign_key: :follower_id, dependent: :destroy
+  has_many :notifications, as: :trackable, dependent: :destroy
 
   accepts_nested_attributes_for :experiences, allow_destroy: true
   accepts_nested_attributes_for :educations, allow_destroy: true
@@ -64,6 +71,10 @@ class User < ApplicationRecord
 
   def apply_job? job_post_id
     apply_jobs.select_by_job(job_post_id).present?
+  end
+
+  def follow other_user
+    followeds.where followed_id: other_user.id
   end
 
   private

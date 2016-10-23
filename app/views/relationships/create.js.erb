@@ -1,0 +1,5 @@
+<% if @relationship.errors.any? %>
+  $(".flash").html("<%= j render 'layouts/flash' %>");
+<% else %>
+  $(".relationship-action").html("<%= j render 'relationships/unfollow', relationship: @relationship %>")
+<% end %>

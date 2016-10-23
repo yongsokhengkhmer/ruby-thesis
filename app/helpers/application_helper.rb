@@ -39,6 +39,8 @@ module ApplicationHelper
       else
         content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.post_status'}"
       end
+    elsif notification.notify_type == Settings.notifications.notify_types.follow
+      content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.follow'}"
     end
     content.html_safe
   end
@@ -51,6 +53,8 @@ module ApplicationHelper
       notification.notify_type == Settings.notifications.notify_types.like ||
       notification.notify_type == Settings.notifications.notify_types.post_feed
       notification.trackable.activity
+    elsif notification.notify_type == Settings.notifications.notify_types.follow
+      user_notification.sender
     end
   end
 

@@ -1,0 +1,5 @@
+<%= link_to "javascript:void(0)", class: "unfollow-action btn btn-danger",
+  data: {relationship_id: relationship.id} do %>
+  <i class="fa fa-user-times" aria-hidden="true"></i>&nbsp;
+  <%= t "profiles.actions.unfollow" %>
+<% end %>

@@ -16,6 +16,19 @@ $(document).on("turbolinks:load ajaxComplete", function() {
       type: "DELETE"
     });
   });
+
+  $(".follow-action").unbind("click").on("click", function() {
+    var followed_id = $(this).data("followed-id");
+    $.post("/relationships", {relationship: {followed_id: followed_id}});
+  });
+
+  $(".unfollow-action").unbind("click").on("click", function() {
+    var relationship_id = $(this).data("relationship-id");
+    $.ajax({
+      url: "/relationships/" + relationship_id,
+      type: "DELETE"
+    });
+  });
 });
 
 $(document).on("nested:fieldAdded", function(event){
