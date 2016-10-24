@@ -1,0 +1,18 @@
+<div class="row post-managers" id="feedbacks">
+  <div class="col-md-3">
+    <%= render "shared/post_manager_left_navbar", active_name: "feedbacks" %>
+  </div>
+  <div class="col-md-9">
+    <div class="white-bg">
+      <div class="list-title"><%= @feedback.subject %></div>
+      <small>
+        <%= l @feedback.created_at, format: :datetime %> ·
+        <i><%= link_to @feedback.user_name, @feedback.user %></i>
+      </small>
+      <hr>
+      <div class="content">
+        <%= @feedback.content.html_safe %>
+      </div>
+    </div>
+  </div>
+</div>

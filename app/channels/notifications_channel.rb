@@ -4,6 +4,7 @@ class NotificationsChannel < ApplicationCable::Channel
     current_user.mark_interests.each do |mark_interest|
       stream_from "mark_interest_notification_channel_#{mark_interest.marked_id}"
     end
+    stream_from "admin_notification_channel" if current_user.admin?
   end
 
   def unsubscribed

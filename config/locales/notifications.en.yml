@@ -9,3 +9,5 @@ en:
       post_status: "posted a status."
       like: "likes your post."
       follow: "followed you."
+      like: "likes your's post"
+      feedback: "sent a feedback."

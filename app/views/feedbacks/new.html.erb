@@ -1,0 +1,18 @@
+<div id="feedbacks">
+  <div class="row post-managers">
+    <div class="col-md-3">
+      <%= render "shared/post_manager_left_navbar", active_name: "new_feedbacks" %>
+    </div>
+    <div class="col-md-6 white-bg">
+      <p class="list-title"><%= t "post_managers.new_feedback" %></p>
+      <%= form_for @feedback do |f| %>
+        <p><%= render "shared/error_messages", object: @feedback %></p>
+        <p><%= f.text_field :subject, class: "form-control",
+          placeholder: t("feedbacks.subject") %></p>
+        <p><%= f.text_area :content, class: "form-control", id: "feedback-editor",
+          placeholder: t("feedbacks.content") %></p>
+        <%= f.submit t("feedbacks.send"), class: "btn btn-primary pull-right" %>
+      <% end %>
+    </div>
+  </div>
+</div>

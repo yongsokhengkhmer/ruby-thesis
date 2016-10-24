@@ -15,6 +15,7 @@ defaults: &defaults
       like: "like"
       post_feed: "post_feed"
       follow: "follow"
+      feedback: "feedback"
   truncates:
     content_post_length: 150
   comments:
