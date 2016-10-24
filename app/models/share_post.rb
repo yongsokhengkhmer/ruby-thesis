@@ -6,6 +6,8 @@ class SharePost < ApplicationRecord
 
   has_one :activity, as: :trackable, dependent: :destroy
 
+  has_many :notifications, as: :trackable, dependent: :destroy
+
   enum status: [:public_post, :private_post]
 
   delegate :user_id, to: :post, prefix: true, allow_nil: true

@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   def index
     @activity = Activity.find params[:comment][:activity_id]
     @comments = @activity.comments.preload(:user).order(id: :desc)
-      .page(params[:page]).per Settings.comments.limit
+      .page(params[:page]).per(Settings.comments.limit)
+      .padding params[:new_comment_count].to_i
     respond_to do |format|
       format.js
     end

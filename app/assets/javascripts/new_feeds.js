@@ -31,28 +31,39 @@ $(document).on("turbolinks:load ajaxComplete", function() {
       $.get("/share_posts/new", {share_post: {post_id: post_id}});
     });
 
-    $(".comments form").unbind("submit").on("submit", function(){
-      var activity_id = $(this).data("activity-id");
-      var content = $.trim($(this).find("input").val());
-      if (content != "") {
-        $.post("/comments", {comment: {activity_id: activity_id,
-          content: content}});
+    $(".comments .comment-form textarea").unbind("keydown").on("keydown", function(e){
+      if (e.keyCode == 13) {
+        var form = $(this).closest(".comment-form");
+        var activity_id = form.data("activity-id");
+        var content = $.trim($(this).val());
+        if (content != "") {
+          $.post("/comments", {comment: {activity_id: activity_id,
+            content: content}});
+        }
       }
     });
 
     $(".show-comments").unbind("click").on("click", function(){
-      var activity_id = $(this).closest(".new-feeds ").find(".comments").data("activity-id");
+      var new_feeds = $(this).closest(".new-feeds");
+      var comment_count = $(this).find("a").data("count");
+      new_feeds.find(".comments-content").show();
       $(this).unbind("click").removeClass("show-comments");
-      $(".comments-spinner").show();
-      $.get("/comments", {comment: {activity_id: activity_id}});
+      var new_comment_count = new_feeds.find(".comment-form").data("new-comment-count");
+
+      if (comment_count > 0) {
+        var activity_id = new_feeds.find(".comments").data("activity-id");
+        new_feeds.find(".comments-spinner").show();
+        $.get("/comments", {comment: {activity_id: activity_id}, new_comment_count: new_comment_count});
+      }
     });
 
     $(".load-more").unbind("click").on("click", function(){
       var comment = $(this).closest(".comments");
       var link = comment.find(".pagination .next a").attr("href");
       var activity_id = comment.data("activity-id");
-      $(".comments-spinner").show();
-      $.get(link, {comment: {activity_id: activity_id}});
+      var new_comment_count = comment.find(".comment-form").data("new-comment-count");
+      comment.find(".comments-spinner").show();
+      $.get(link, {comment: {activity_id: activity_id}, new_comment_count: new_comment_count});
     });
   }
 
