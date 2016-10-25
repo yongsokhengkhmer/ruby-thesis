@@ -202,6 +202,15 @@ ActiveRecord::Schema.define(version: 20161030030816) do
     t.index ["user_id"], name: "index_skills_on_user_id", using: :btree
   end
 
+  create_table "user_job_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "job_type_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["job_type_id"], name: "index_user_job_types_on_job_type_id", using: :btree
+    t.index ["user_id"], name: "index_user_job_types_on_user_id", using: :btree
+  end
+
   create_table "user_notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "notification_id"
     t.integer  "sender_id"
@@ -269,6 +278,8 @@ ActiveRecord::Schema.define(version: 20161030030816) do
   add_foreign_key "share_posts", "posts"
   add_foreign_key "share_posts", "users"
   add_foreign_key "skills", "users"
+  add_foreign_key "user_job_types", "job_types"
+  add_foreign_key "user_job_types", "users"
   add_foreign_key "user_notifications", "notifications"
   add_foreign_key "user_profiles", "users"
 end

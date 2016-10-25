@@ -20,6 +20,8 @@ en:
     private: "private"
   labels:
     confirm: "Confirm"
+    suggest_recruiters: "Recruiters you may know"
+    suggest_applicants: "Applicants you may know"
   notifications:
     notifications: "Notifications"
     see_all: "See All"

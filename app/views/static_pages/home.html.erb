@@ -10,5 +10,25 @@
       <%= render partial: "shared/activity", collection: @activities, as: :activity %>
     </div>
   </div>
+  <div class="col-md-3">
+    <div class="white-bg">
+      <strong><%= t "labels.suggest_recruiters" %></strong>
+      <% @recruiters.each do |recruiter| %>
+        <div class="suggest-box">
+          <%= render "profiles/user_media", user: recruiter %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="white-bg">
+      <strong><%= t "labels.suggest_applicants" %></strong>
+      <% @applicants.each do |applicant| %>
+        <div class="suggest-box">
+          <%= render "profiles/user_media", user: applicant %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
   <%= render "shared/modal_container" %>
 </div>

@@ -53,6 +53,8 @@ class User < ApplicationRecord
   has_many :followeds, class_name: Relationship, foreign_key: :follower_id, dependent: :destroy
   has_many :notifications, as: :trackable, dependent: :destroy
   has_many :feedbacks, dependent: :nullify
+  has_many :user_job_types, dependent: :destroy
+  has_many :job_types, through: :user_job_types
 
   accepts_nested_attributes_for :experiences, allow_destroy: true
   accepts_nested_attributes_for :educations, allow_destroy: true
@@ -69,6 +71,14 @@ class User < ApplicationRecord
     prefix: true, allow_nil: true
   delegate :current_position, :birth_date, :gender, to: :user_profile,
     prefix: true, allow_nil: true
+
+  scope :by_ids_order, -> ids do
+    if ids.any?
+      where(id: ids).order "FIELD(#{User.table_name}.id, #{ids.map(&:to_i).join ', '})"
+    else
+      none
+    end
+  end
 
   def apply_job? job_post_id
     apply_jobs.select_by_job(job_post_id).present?

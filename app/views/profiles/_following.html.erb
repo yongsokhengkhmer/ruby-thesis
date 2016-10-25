@@ -1,1 +1,3 @@
-<%= render "profiles/user_media", user: relationship.followed %>
+<div class="col-md-4 user-<%= relationship.followed_id %>">
+  <%= render "profiles/user_media", user: relationship.followed %>
+</div>
