@@ -1,4 +1,6 @@
 class JobPost < ApplicationRecord
+  update_index("jobs#job_post") {self}
+
   belongs_to :post
 
   has_many :apply_jobs, dependent: :destroy
@@ -17,8 +19,16 @@ class JobPost < ApplicationRecord
   delegate :user_id, :content, to: :post, prefix: true, allow_nil: true
 
   scope :by_user, ->user_id do
-    joins(:post).where("posts.user_id = ?", user_id).preload(:job_type)
+    joins(:post).where("posts.user_id = ?", user_id).preload(:job_types)
     .order created_at: :desc
+  end
+
+  scope :by_ids_order, -> ids do
+    if ids.any?
+      where(id: ids).order "FIELD(#{JobPost.table_name}.id, #{ids.map(&:to_i).join ', '})"
+    else
+      none
+    end
   end
 
   private

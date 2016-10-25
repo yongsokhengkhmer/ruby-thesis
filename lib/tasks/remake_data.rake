@@ -2,89 +2,151 @@ namespace :db do
   desc "remake database data"
   task remake_data: :environment do
     Rake::Task["db:migrate:reset"].invoke
+    Chewy.strategy(:atomic) do
+      puts "Create job types ..."
+      ["Information Technology", "Designer", "Customer Service", "Accounting", "Banking",
+        "Civil Engineer", "Marketing", "Lecturer", "Finance", "Audit", "Saler"].each do |type|
+        JobType.create name: type
+      end
 
-    puts "Create job types ..."
-    ["Information Technology", "Accounting", "Banking", "Civil Engineer",
-      "Marketing", "Lecturer", "Finance", "Audit", "Saler"].each do |type|
-      JobType.create name: type
-    end
+      puts "Create admin ..."
+      admin = User.create name: "Admin", email: "admin@gmail.com", password: "12345678",
+        password_confirmation: "12345678", phone_number: "0929384854", role: User.roles[:admin]
 
-    puts "Create admin ..."
-    admin = User.create name: "Admin", email: "admin@gmail.com", password: "12345678",
-      password_confirmation: "12345678", phone_number: "0929384854", role: User.roles[:admin]
+      puts "Create recruiters"
+      # Vietnam
+      framgia = User.create name: "Framgia", email: "framgia@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [1, 2, 4]
 
-    puts "Create recruiters"
+      vtc = User.create name: "VTC", email: "vtc@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [1, 2, 3]
 
-    recruiter1 = User.create name: "Framgia", email: "framgia@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter]
-    [1, 2, 3].each do |job_type|
-      recruiter1.user_job_types.create job_type_id: job_type
-    end
+      fpt = User.create name: "fpt", email: "fpt@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [1, 2, 7]
 
-    recruiter2 = User.create name: "VTC", email: "vtc@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter]
-    [3, 4, 5].each do |job_type|
-      recruiter2.user_job_types.create job_type_id: job_type
-    end
+      sony = User.create name: "sony", email: "sony@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [1, 11]
 
-    recruiter3 = User.create name: "Aceleda Bank", email: "acleda@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter]
-    [5, 6, 8].each do |job_type|
-      recruiter3.user_job_types.create job_type_id: job_type
-    end
+      line = User.create name: "Line", email: "line@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [2, 4, 11]
 
-    recruiter4 = User.create name: "ANZ", email: "delta@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter]
-    [5, 6, 8].each do |job_type|
-      recruiter4.user_job_types.create job_type_id: job_type
-    end
+      vietcobank = User.create name: "vietcombank", email: "vietcombank@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [3, 4, 5]
+
+      vib = User.create name: "VIB Bank", email: "vib@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [3, 4, 9]
+
+      accounting_company = User.create name: "Accounting Company", email: "accounting_company@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [3, 4, 9]
+
+      kpmg = User.create name: "KPMG", email: "kpmg@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [5, 9, 10]
 
 
-    puts "Create applicants"
-    applicant1 = User.create name: "Vuthy", email: "vuthy@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Cambodia", phone_number: "0929384854", role: User.roles[:applicant]
-    [2, 3].each do |job_type|
-      applicant1.user_job_types.create job_type_id: job_type
-    end
+      viet_name_airline = User.create name: "Vietnam Airline", email: "viet_name_airline@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [3, 4, 11]
 
-    applicant2 = User.create name: "Daro", email: "daro@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Cambodia", phone_number: "0929384854", role: User.roles[:applicant]
-    [5, 6, 8].each do |job_type|
-      applicant2.user_job_types.create job_type_id: job_type
-    end
+      # cambodia
+      blue_technoloy = User.create name: "Blue Technology", email: "blue_technoloy@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [1, 2, 4]
 
-    applicant3 = User.create name: "Kim", email: "kim@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Cambodia", phone_number: "0929384854", role: User.roles[:applicant]
-    [2, 3, 4].each do |job_type|
-      applicant3.user_job_types.create job_type_id: job_type
-    end
+      web_essential = User.create name: "Web Essential", email: "web_essential@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [1, 2, 3]
 
-    applicant4 = User.create name: "Duc", email: "duc@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Vietnam", phone_number: "0929384854", role: User.roles[:applicant]
-    [7].each do |job_type|
-      applicant4.user_job_types.create job_type_id: job_type
-    end
+      digi = User.create name: "Digi", email: "digi@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [1, 2, 7]
 
-    applicant5 = User.create name: "Viet", email: "viet@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Vietnam", phone_number: "0929384854", role: User.roles[:applicant]
-    [1, 4].each do |job_type|
-      applicant5.user_job_types.create job_type_id: job_type
-    end
+      sony_cambodia = User.create name: "sony cambodia", email: "sony_cambodia@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [1, 11]
 
-    applicant6 = User.create name: "Hoang", email: "hoang@gmail.com",
-      password: "12345678", password_confirmation: "12345678",
-      address: "Vietnam", phone_number: "0929384854", role: User.roles[:applicant]
-    [5, 9].each do |job_type|
-      applicant6.user_job_types.create job_type_id: job_type
+      cellcard = User.create name: "cellcard", email: "cellcard@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [2, 4, 11]
+
+      aceleda = User.create name: "aceledabank", email: "aceleda@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [3, 4, 5]
+
+      prasak = User.create name: "prasak Bank", email: "prasak@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [3, 4, 9]
+
+      accounting_cambodia = User.create name: "Accounting Cambodia", email: "accounting_cambodia@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [3, 4, 9]
+
+      kpmg_cambodia = User.create name: "KPMG Cambodia", email: "kpmg_cambodia@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [5, 9, 10]
+
+      angkor_airline = User.create name: "Angkor Airline", email: "angkor_airline@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "cambodia", phone_number: "0929384854", role: User.roles[:recruiter],
+        job_type_ids: [3, 4, 11]
+
+      puts "Create applicants"
+      applicant1 = User.create name: "Vuthy", email: "vuthy@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:applicant],
+        expected_salary: 300, job_type_ids: [2, 3]
+
+      applicant2 = User.create name: "Daro", email: "daro@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:applicant],
+        expected_salary: 400, job_type_ids: [5, 6, 8]
+
+      applicant3 = User.create name: "Kim", email: "kim@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Cambodia", phone_number: "0929384854", role: User.roles[:applicant],
+        expected_salary: 350, job_type_ids: [4, 5, 9]
+
+      applicant4 = User.create name: "Duc", email: "duc@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:applicant],
+        expected_salary: 500, job_type_ids: [7]
+
+      applicant5 = User.create name: "Viet", email: "viet@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:applicant],
+        expected_salary: 450, job_type_ids: [1, 2]
+
+      applicant6 = User.create name: "Hoang", email: "hoang@gmail.com",
+        password: "12345678", password_confirmation: "12345678",
+        address: "Vietnam", phone_number: "0929384854", role: User.roles[:applicant],
+        expected_salary: 600, job_type_ids: [5, 9]
     end
   end
 end

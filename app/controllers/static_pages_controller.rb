@@ -11,6 +11,8 @@ class StaticPagesController < ApplicationController
     elsif current_user.applicant?
       recruiter_ids = RecruitersIndex.suggest_to_applicant current_user
       applicant_ids = ApplicantsIndex.suggest_to_applicant current_user
+      suggest_jobs = JobsIndex.suggest_to_applicant(current_user).map &:id
+      @suggest_jobs = JobPost.preload(post: [:user, :activity]).by_ids_order suggest_jobs
     else
       recruiter_ids = []
       applicant_ids = []

@@ -7,10 +7,18 @@
   </div>
   <div class="col-md-3">
     <div class="apply-users white-bg">
-      <div class="title"><%= t "job_posts.apply_users" %></div>
+      <strong><%= t "job_posts.apply_users" %></strong>
       <%= render partial: "job_posts/apply_job",
         collection: @job_post.apply_jobs.order_by_user,
         as: :apply_job %>
+    </div>
+    <div class="white-bg suggest-list">
+      <strong><%= t "labels.fitted_applicants" %></strong>
+      <% @suggest_applicants.each do |applicant| %>
+        <div class="suggest-box">
+          <%= render "profiles/user_media", user: applicant %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
