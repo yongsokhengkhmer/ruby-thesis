@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
   root "static_pages#home"
-  resources :users, only: :show
+  resources :users, only: :show do
+    get "followings" => "follow_infos#followings"
+    get "followers" => "follow_infos#followers"
+  end
   resources :job_posts, only: [:index, :show] do
     resources :apply_jobs, only: [:new, :create]
   end

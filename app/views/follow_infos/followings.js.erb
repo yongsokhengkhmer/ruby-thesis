@@ -1,0 +1,8 @@
+$(".following-list").append("<%= j render partial: 'profiles/following', collection: @followings, as: :relationship %>");
+$(".loading").hide();
+$(".btn-load-more").show();
+<% if @followings.next_page %>
+  $(".pagination").html("<%= j render_pagination @followings %>");
+<% else %>
+  $(".load-more").remove();
+<% end %>

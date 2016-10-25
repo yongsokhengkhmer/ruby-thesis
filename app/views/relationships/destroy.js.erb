@@ -1,1 +1,4 @@
 $(".relationship-action").html("<%= j render 'relationships/follow', followed: @relationship.followed %>")
+var following_number = parseInt($(".follower-number").text()) - 1;
+$(".follower-number").html(following_number);
+$(".follower-list .user-<%= current_user.id %>").remove();

@@ -40,13 +40,25 @@
     </div>
 
     <div class="row">
-      <% if @user.applicant? %>
-        <%= render "profiles/applicant_profile_detail" %>
-      <% elsif @user.admin? %>
-        <%= render "profiles/basic_info" %>
-      <% else %>
-        <%= render "profiles/company_profile_detail" %>
-      <% end %>
+      <div>
+        <% if controller.action_name == "followings" %>
+          <%= render "profiles/following_list", user: @user, followings: @followings %>
+        <% elsif controller.action_name == "followers" %>
+          <%= render "profiles/follower_list", user: @user, followers: @followers %>
+        <% else %>
+          <%= render "profiles/tab", tab_name: "about", user: @user %>
+          <div class="tab-content">
+            <% if @user.applicant? %>
+              <%= render "profiles/applicant_profile_detail" %>
+            <% elsif @user.admin? %>
+              <%= render "profiles/basic_info" %>
+            <% else %>
+              <%= render "profiles/company_profile_detail" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>

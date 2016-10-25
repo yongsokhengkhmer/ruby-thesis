@@ -36,3 +36,7 @@ en:
     labels:
       to: "to"
       change_password: "Change password"
+    tabs:
+      about: "About"
+      followings: "Followings"
+      followers: "Followers"

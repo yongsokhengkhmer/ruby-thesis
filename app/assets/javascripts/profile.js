@@ -1,6 +1,16 @@
 $(document).on("turbolinks:load", function() {
   set_date_picker($(".input-daterange"));
   set_date_picker($(".date-picker"));
+
+  $(".btn-load-more").unbind("click").on("click", function() {
+    var next_url = $(".pagination .next_page a").attr("href");
+    if(next_url) {
+      $(".loading").show();
+      $(this).hide();
+      $.getScript(next_url);
+    }
+    return;
+  });
 });
 
 $(document).on("turbolinks:load ajaxComplete", function() {
