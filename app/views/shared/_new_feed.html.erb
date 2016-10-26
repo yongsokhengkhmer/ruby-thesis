@@ -53,10 +53,10 @@
       <%= render "shared/button_like", activity: activity %>
     </span>
     <span class="comment show-comments">
-      <%= link_to "javascript:void(0)" do %>
+      <%= link_to "javascript:void(0)", data: {count: (count = activity.comments.size)} do %>
         <i class="fa fa-comment" aria-hidden="true"></i>
         <%= t "new_feeds.reacts.comment" %>
-        <%= react_number activity.comments.size %>
+        <span class="comment-count"><%= react_number count %></span>
       <% end %>
     </span>
     <span class="share">
@@ -76,18 +76,19 @@
   <div class="comments comments-activity-<%= activity.id %>"
     data-activity-id="<%= activity.id %>">
     <div hidden class="comments-pagination"></div>
-    <form action="javascript:void(0)"
-      data-activity-id="<%= activity.id %>">
+    <div class="comment-form" action="javascript:void(0)"
+      data-activity-id="<%= activity.id %>" data-new-comment-count="0">
       <ul class="media-list">
         <%= link_to t("new_feeds.comments.show_more"), "javascript:void(0)",
           class: "load-more", style: "display: none;" %>
         <div hidden class="comments-spinner">
           <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
         </div>
-        <div class="comments-list"></div>
-
-        <%= render "comments/comment_form" %>
+        <div hidden class="comments-content">
+          <div class="comments-list"></div>
+          <%= render "comments/comment_form" %>
+        </div>
       </ul>
-    </form>
+    </div>
   </div>
 </div>

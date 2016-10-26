@@ -43,8 +43,10 @@ module ApplicationHelper
       content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.follow'}"
     elsif notification.notify_type == Settings.notifications.notify_types.feedback
       content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.feedback'}"
+    elsif notification.notify_type == Settings.notifications.notify_types.comment
+      content = "<strong>#{user_name}</strong> #{t 'notifications.notify_types.comment'}"
     end
-    content.html_safe
+    content.html_safe if content.present?
   end
 
   def notification_link user_notification
@@ -53,7 +55,8 @@ module ApplicationHelper
       notification.trackable.job_post
     elsif notification.notify_type == Settings.notifications.notify_types.share_post ||
       notification.notify_type == Settings.notifications.notify_types.like ||
-      notification.notify_type == Settings.notifications.notify_types.post_feed
+      notification.notify_type == Settings.notifications.notify_types.post_feed ||
+      notification.notify_type == Settings.notifications.notify_types.comment
       notification.trackable.activity
     elsif notification.notify_type == Settings.notifications.notify_types.follow
       user_notification.sender
