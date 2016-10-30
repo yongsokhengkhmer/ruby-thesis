@@ -5,11 +5,17 @@
         <%= post.job_post_name %>
       </div>
       <div class="job-type">
-        <span class="badge"><%= post.job_post.job_type_name %></span>
+        <% post.job_post.job_types.each do |job_type| %>
+          <span class="badge"><%= job_type.name %></span>
+        <% end %>
       </div>
       <div class="job-location">
         <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;
         <%= post.job_post_location %>
+      </div>
+      <div class="salary">
+        <i class="fa fa-usd" aria-hidden="true"></i></i> &nbsp;
+        <%= salary_range post.job_post %>
       </div>
     </div>
   <% end %>

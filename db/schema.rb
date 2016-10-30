@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022133554) do
+ActiveRecord::Schema.define(version: 20161030030816) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "trackable_id"
@@ -102,14 +102,24 @@ ActiveRecord::Schema.define(version: 20161022133554) do
     t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
   end
 
+  create_table "job_post_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "job_post_id"
+    t.integer  "job_type_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["job_post_id"], name: "index_job_post_types_on_job_post_id", using: :btree
+    t.index ["job_type_id"], name: "index_job_post_types_on_job_type_id", using: :btree
+  end
+
   create_table "job_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "location"
-    t.integer  "job_type_id"
+    t.float    "min_salary", limit: 24
+    t.float    "max_salary", limit: 24
+    t.boolean  "negotiable",            default: false
     t.integer  "post_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["job_type_id"], name: "index_job_posts_on_job_type_id", using: :btree
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["post_id"], name: "index_job_posts_on_post_id", using: :btree
   end
 
@@ -248,7 +258,8 @@ ActiveRecord::Schema.define(version: 20161022133554) do
   add_foreign_key "educations", "users"
   add_foreign_key "experiences", "users"
   add_foreign_key "feedbacks", "users"
-  add_foreign_key "job_posts", "job_types"
+  add_foreign_key "job_post_types", "job_posts"
+  add_foreign_key "job_post_types", "job_types"
   add_foreign_key "job_posts", "posts"
   add_foreign_key "like_posts", "activities"
   add_foreign_key "like_posts", "users"

@@ -81,4 +81,16 @@ module ApplicationHelper
   def react_number number
     "(#{number})" if number > 0
   end
+
+  def salary_range job_post
+    if job_post.negotiable?
+      t "posts.negotiable"
+    elsif job_post.min_salary.present? && job_post.max_salary.present?
+      "#{number_to_currency job_post.min_salary} - #{number_to_currency job_post.max_salary}"
+    elsif job_post.min_salary.present?
+      "#{t 'posts.from'} #{number_to_currency job_post.min_salary}"
+    elsif job_post.max_salary.present?
+      "#{t 'posts.up_to'} #{number_to_currency job_post.max_salary}"
+    end
+  end
 end
