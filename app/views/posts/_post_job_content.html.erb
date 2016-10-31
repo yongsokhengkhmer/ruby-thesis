@@ -6,10 +6,26 @@
     <%= builder.text_field :location, placeholder: t("posts.location"), class: "job-location form-control" %>
   </div><br />
   <div>
-    <%= builder.select :job_type_id, options_for_select(JobType.all.map{|u| [u.name, u.id]}, builder.object.job_type_id),
-      {prompt: t("posts.job_type")}, {id: "job-type-post"} %>
+    <%= builder.select :job_type_ids, options_for_select(JobType.all.map{|u| [u.name, u.id]}, builder.object.job_type_ids),
+      {prompt: t("posts.job_type")}, {id: "job-type-post", multiple: true}  %>
   </div><br />
-
+  <div><%= f.label :salary %></div>
+  <div>
+    <%= builder.check_box :negotiable, class: "ckbox-negotiable",
+      id: builder.object.new_record? ? "negotiable-new" : "negotiable-edit" %>
+    <%= label_tag (builder.object.new_record? ? "negotiable-new" : "negotiable-edit"),
+      t("posts.negotiable") %>
+  </div>
+  <div class="salary-input">
+    <%= t "posts.or" %>
+    <div class="input-group">
+      <%= builder.number_field :min_salary, class: "form-control",
+        placeholder: t("posts.min_salary") %>
+      <span class="input-group-addon"><%= t "posts.to" %></span>
+      <%= builder.number_field :max_salary, class: "form-control",
+        placeholder: t("posts.max_salary") %>
+    </div><br />
+  </div>
   <div>
    <% if f.object.new_record? %>
       <%= f.text_area :content, id: "post-content" %>

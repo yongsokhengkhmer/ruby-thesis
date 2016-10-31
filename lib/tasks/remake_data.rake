@@ -14,25 +14,9 @@ namespace :db do
     applicant.create_user_profile gender: UserProfile.genders[:male], birth_date: "1990/01/01"
 
     puts "Create job types ..."
-    JobType.create name: "Information Technology"
-    JobType.create name: "Accounting"
-    JobType.create name: "Banking"
-    JobType.create name: "Civil Engineer"
-    JobType.create name: "Marketing"
-    JobType.create name: "Lecturer"
-
-    puts "Create job posts ..."
-    10.times do
-      post = recruiter.posts.create content: Faker::Lorem.paragraph, status: Post.statuses[:public_post]
-      post.create_job_post name: Faker::Commerce.department, location: Faker::Address.city,
-        job_type: JobType.all.sample
-      post.create_activity user_id: recruiter.id
-    end
-
-    puts "Create posts ..."
-    10.times do
-      post = applicant.posts.create content: Faker::Lorem.paragraph, status: Post.statuses[:public_post]
-      post.create_activity user_id: applicant.id
+    ["Information Technology", "Accounting", "Banking", "Civil Engineer",
+      "Marketing", "Lecturer"].each do |type|
+      JobType.create name: type
     end
   end
 end

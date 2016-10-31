@@ -3,7 +3,9 @@ class CreateJobPosts < ActiveRecord::Migration[5.0]
     create_table :job_posts do |t|
       t.string :name
       t.string :location
-      t.references :job_type, foreign_key: true, index: true
+      t.float :min_salary
+      t.float :max_salary
+      t.boolean :negotiable, default: false
       t.references :post, foreign_key: true, index: true
 
       t.timestamps

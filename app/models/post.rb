@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   mount_uploader :image, PostImageUploader
 
   POST_PARAMS = [:image, :content, :status, job_post_attributes: [:name,
-    :location, :job_type_id]]
+    :location, :negotiable, :min_salary, :max_salary, job_type_ids: []]]
 
   belongs_to :user
 

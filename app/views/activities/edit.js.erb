@@ -2,11 +2,27 @@
   $(".edit-post-modal").html("<%= j render 'posts/edit_post_modal', post: @trackable %>");
   var modal_type_post = $("#edit-post-modal #job-type-post");
   if(modal_type_post.length > 0) {
-    modal_type_post.selectize();
+    modal_type_post.selectize({
+      plugins: ["remove_button"],
+      maxItems: 3
+    });
+    $("#edit-post-modal #salary").selectize();
     CKEDITOR.replace("post-content-modal");
+    salary_check();
+    $("#edit-post-modal .ckbox-negotiable").unbind("click").on("click", function() {
+      salary_check();
+    });
   }
   $("#edit-post-modal").modal("show");
 <% else %>
   $(".edit-post-modal").html("<%= j render 'shared/share_post_modal', share_post: @trackable, post: @trackable.post %>");
   $(".edit-post-modal #share-post-confirm-modal").modal("show");
 <% end %>
+
+function salary_check() {
+  if($("#edit-post-modal .ckbox-negotiable").is(":checked")) {
+    $("#edit-post-modal .salary-input").hide();
+  } else {
+    $("#edit-post-modal .salary-input").show();
+  }
+}
