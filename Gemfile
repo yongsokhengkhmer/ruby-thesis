@@ -25,7 +25,8 @@ gem "selectize-rails"
 gem "ckeditor"
 gem "remotipart", "~> 1.2"
 gem "jasny-bootstrap-rails"
-
+gem "unparser"
+gem "chewy"
 group :development, :test do
   gem "pry"
   gem "faker", "1.4.2"
