@@ -10,7 +10,8 @@ class JobPost < ApplicationRecord
   validates :job_types, presence: true
   validate :salary_validate
   validates :min_salary, numericality: {greater_than: 0, allow_nil: true}
-  validates :max_salary, numericality: {greater_than: :min_salary, allow_nil: true}
+  validates :max_salary, numericality: {greater_than: :min_salary, allow_nil: true},
+    if: Proc.new {min_salary.present?}
 
   delegate :name, to: :job_type, prefix: true, allow_nil: true
   delegate :user_id, :content, to: :post, prefix: true, allow_nil: true

@@ -21,6 +21,7 @@
 
 function salary_check() {
   if($("#edit-post-modal .ckbox-negotiable").is(":checked")) {
+    $("#edit-post-modal .salary-input input").val("");
     $("#edit-post-modal .salary-input").hide();
   } else {
     $("#edit-post-modal .salary-input").show();

@@ -8,8 +8,8 @@
     <div class="col-md-8 col-md-offset-1">
       <table class="table-profile">
         <tr>
-          <td><%= f.label :name %></td>
-          <td><%= f.text_field :name, class: "form-control" %></td>
+          <td class="label-name"><%= f.label :name %></td>
+          <td class="name"><%= f.text_field :name, class: "form-control" %></td>
         </tr>
         <tr>
           <td><%= f.label :email %></td>
@@ -17,9 +17,10 @@
         </tr>
         <% if @user.recruiter? %>
           <%= render "company_profile_fields", f: f %>
-        <% else %>
+        <% elsif @user.applicant? %>
           <%= render "user_profile_fields", f: f %>
         <% end %>
+
         <tr>
           <td><%= f.label :address %></td>
           <td><%= f.text_area :address, class: "form-control" %></td>
@@ -28,6 +29,20 @@
           <td><%= f.label :phone_number %></td>
           <td><%= f.text_field :phone_number, class: "form-control" %></td>
         </tr>
+        <% unless @user.admin? %>
+          <tr>
+            <td><%= f.label :job_categories %></td>
+            <td><%= f.select :job_type_ids, options_for_select(
+              JobType.all.map{|u| [u.name, u.id]}, f.object.job_type_ids), {},
+              {id: "job-type-post", multiple: true} %></td>
+          </tr>
+        <% end %>
+        <% if @user.applicant? %>
+          <tr>
+            <td><%= f.label :expected_salary %></td>
+            <td><%= f.number_field :expected_salary, class: "form-control" %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div><br>

@@ -26,6 +26,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :avatar
       t.integer :role
       t.integer :status
+      t.float :expected_salary
 
       t.timestamps null: false
     end

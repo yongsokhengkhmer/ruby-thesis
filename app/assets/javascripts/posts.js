@@ -8,6 +8,7 @@ $(document).on("turbolinks:load", function(){
     CKEDITOR.replace("post-content");
     $(".ckbox-negotiable").unbind("click").on("click", function() {
       if($(this).is(":checked")) {
+        $(".salary-input input").val("");
         $(".salary-input").hide();
       } else {
         $(".salary-input").show();
