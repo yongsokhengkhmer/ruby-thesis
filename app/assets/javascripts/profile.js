@@ -11,6 +11,10 @@ $(document).on("turbolinks:load", function() {
     }
     return;
   });
+
+  $("#job-type-post").selectize({
+    plugins: ["remove_button"]
+  });
 });
 
 $(document).on("turbolinks:load ajaxComplete", function() {

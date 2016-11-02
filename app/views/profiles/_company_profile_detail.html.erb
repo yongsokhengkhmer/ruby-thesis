@@ -30,6 +30,10 @@
             <td class="title"><%= t "profiles.description" %></td>
           </tr>
         <% end %>
+        <tr>
+          <td class="title"><%= t "profiles.recruiting_job_categories" %></td>
+          <td><%= @user.job_types.pluck(:name).join ", " %></td>
+        </tr>
       </table>
     </div>
   </div>

@@ -5,6 +5,11 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "shared/error_messages", object: resource %>
 
+    <%= f.select :role, options_for_select(User.roles.keys.drop(1)
+      .map{|role| [t("devise.labels.#{role}"), role]}, f.object.role),
+      {include_blank: t("devise.placeholders.select_role")}, {class: "form-control"} %>
+    <br />
+
     <%= f.text_field :name, placeholder: t("devise.placeholders.name"),
       class: "form-control"%>
     <br />
@@ -29,16 +34,20 @@
       class: "form-control" %>
     <br />
 
-    <%= f.select :role, options_for_select(User.roles.keys.drop(1)
-      .map{|role| [t("devise.labels.#{role}"), role]}, f.object.role),
-      {include_blank: t("devise.placeholders.select_role")}, {class: "form-control"} %>
-    <br />
+    <div>
+      <%= f.select :job_type_ids, options_for_select(JobType.all.map{|u| [u.name, u.id]},
+        f.object.job_type_ids), {prompt: t("devise.placeholders.job_types")},
+        {id: "job-type-post", multiple: true}  %>
+    </div><br />
 
     <div class="gender">
-      <%= f.fields_for :user_profile, f.object.build_user_profile do |builder| %>
+      <%= f.number_field :expected_salary, placeholder: t("devise.placeholders.expected_salary"),
+        class: "form-control" %><br />
 
+      <% f.object.build_user_profile if params[:user].nil? %>
+      <%= f.fields_for :user_profile do |builder| %>
         <%= builder.select :gender, options_for_select(UserProfile.genders.keys
-          .map{|gender| [t("devise.labels.genders.#{gender}"), gender]}),
+          .map{|gender| [t("devise.labels.genders.#{gender}"), gender]}, builder.object.gender),
           {include_blank: t("devise.placeholders.select_gender")}, class: "form-control" %>
         <br />
 

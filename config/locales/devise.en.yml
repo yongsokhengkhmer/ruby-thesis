@@ -62,7 +62,8 @@ en:
       birthday: "Choose your birthday"
       select_role: "Select role"
       select_gender: "Select gender"
-
+      expected_salary: "Enter your expected salary"
+      job_types: "Select job categories you are seeking/recruiting"
     labels:
       register: "Register"
       edit_account: "Edit Account"

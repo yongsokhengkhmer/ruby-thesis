@@ -24,5 +24,15 @@
         <td class="title"><%= t "profiles.gender" %></td>
       </tr>
     <% end %>
+    <% if @user.applicant? %>
+      <tr>
+        <td class="title"><%= t "profiles.expected_job_categories" %></td>
+        <td><%= @user.job_types.pluck(:name).join ", " %></td>
+      </tr>
+      <tr>
+        <td class="title"><%= t "profiles.expected_salary" %></td>
+        <td><%= number_to_currency @user.expected_salary %></td>
+      </tr>
+    <% end %>
   </table>
 </div>

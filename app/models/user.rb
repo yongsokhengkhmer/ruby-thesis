@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  update_index("applicants#user") {self if applicant?}
+  update_index("recruiters#user") {self if recruiter?}
+
 
   EDUCATION_PARAMS = [:id, :school, :start_date, :end_date, :degree_id,
     :field_of_study, :grade, :social_activies, :description, :_destroy]
@@ -9,6 +12,7 @@ class User < ApplicationRecord
   USER_PROFILE_PARAMS = [:id, :current_position, :gender, :birth_date]
   COMPANY_PROFILE_PARAMS = [:id, :website, :start_up_date,:description]
   USER_PARAMS = [:name, :email, :address, :phone_number, :avatar,
+    :expected_salary, job_type_ids: [],
     educations_attributes: EDUCATION_PARAMS,
     experiences_attributes: EXPERIENCE_PARAMS,
     skills_attributes: SKILL_PARAMS,
@@ -66,6 +70,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :phone_number, presence: true
   validates :role, presence: true
+  validates :job_types,  presence: true, unless: Proc.new {admin?}
+  validates :expected_salary, numericality: {greater_than: 0}, if: Proc.new {applicant?}
 
   delegate :website, :start_up_date, :description, to: :company_profile,
     prefix: true, allow_nil: true

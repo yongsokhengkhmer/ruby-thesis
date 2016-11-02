@@ -19,6 +19,9 @@ en:
     from: "From"
     birth_date: "Birthday:"
     gender: "Gender:"
+    expected_job_categories: "Expected job categories:"
+    expected_salary: "Expected salary:"
+    recruiting_job_categories: "Recruiting job categories:"
     panel_headings:
       basic_info: "BASIC INFO"
       skills: "SKILLS"
