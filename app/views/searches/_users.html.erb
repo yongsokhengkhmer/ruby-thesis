@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+  <div class="col-md-3">
+    <%= render "profiles/user_media", user: user %>
+  </div>
+<% end %>

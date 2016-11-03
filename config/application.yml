@@ -21,6 +21,8 @@ defaults: &defaults
     content_post_length: 150
   comments:
     limit: 10
+  search:
+    user_per_page: 40
 
 development:
   <<: *defaults
