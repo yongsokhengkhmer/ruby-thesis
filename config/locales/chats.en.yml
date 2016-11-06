@@ -1,0 +1,7 @@
+en:
+  chats:
+    new_conversation: "New conversation"
+    select_user: "Select or search name of a person"
+    to: "To: "
+    actions:
+      create: "Create"

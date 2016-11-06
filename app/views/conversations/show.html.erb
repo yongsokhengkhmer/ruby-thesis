@@ -1,0 +1,12 @@
+<div id="chats">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="chat-container">
+        <%= render "conversations/left", conversations: @conversations %>
+        <%= render "conversations/right", receiver: @conversation.receiver,
+          messages: @conversation.messages.load_messages %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "conversations/new_conversation_modal" %>
