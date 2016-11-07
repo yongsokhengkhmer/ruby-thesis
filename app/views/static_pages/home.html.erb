@@ -29,6 +29,16 @@
       <% end %>
     </div>
 
+    <% if current_user.applicant? %>
+      <div class="white-bg suggest-list">
+        <strong><%= t "labels.suggest_jobs" %></strong>
+        <% @suggest_jobs.each do |job| %>
+          <div class="suggest-box suggest-job">
+            <%= render "shared/suggest_job", job: job %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <%= render "shared/modal_container" %>
 </div>

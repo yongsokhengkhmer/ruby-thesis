@@ -81,3 +81,16 @@ a:hover, a:focus, a:active {
 .suggest-box {
   margin: 10px 0px;
 }
+
+.suggest-list {
+  margin-bottom: 10px;
+
+  .suggest-box {
+    margin: 10px 0px;
+  }
+
+  .suggest-job {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+}

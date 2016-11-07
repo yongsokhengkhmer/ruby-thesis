@@ -9,6 +9,8 @@ class ApplicantsIndex < Chewy::Index
     field :schools, value: -> {educations.pluck :school}
     field :skills, value: -> {skills.pluck :name}
     field :position, value: -> {user_profile.current_position if user_profile}
+    field :expected_salary, type: "float", value: -> {expected_salary}
+    field :negotiable, type: "boolean", value: -> {true}
   end
 
   class << self
@@ -49,6 +51,19 @@ class ApplicantsIndex < Chewy::Index
             }
           }}
         ]
+      })
+    end
+    def suggest_to_job job
+      query(bool: {
+        must: [
+          {match: {job_types: job.job_types.pluck(:name).join(" ")}},
+          {match: {address: job.location}}
+        ],
+        should: [
+          {range: {expected_salary: {from: job.min_salary, to: job.max_salary}}},
+          {term: {negotiable: job.negotiable}}
+        ],
+        minimum_should_match: 1
       })
     end
   end
