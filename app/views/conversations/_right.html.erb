@@ -1,0 +1,19 @@
+<div class="right">
+  <div class="top">
+    <span><%= t "chats.to" %><span class="name"><%= receiver.name %></span></span>
+  </div>
+  <div class="chat active-chat">
+    <div class="conversation-start"></div>
+    <% messages.each do |message| %>
+      <div class="bubble <%= message.user == current_user ? 'you' : 'me' %>">
+        <%= message.content %>
+      </div>
+    <% end %>
+  </div>
+  <div class="write">
+    <a href="" class="write-link attach"></a>
+    <input type="text" />
+    <a href="" class="write-link smiley"></a>
+    <a href="" class="write-link send"></a>
+  </div>
+</div>

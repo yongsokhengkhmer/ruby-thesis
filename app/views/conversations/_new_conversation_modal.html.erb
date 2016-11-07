@@ -1,0 +1,23 @@
+<%= form_for Conversation.new, remote: true do |f| %>
+  <div class="modal fade" id="new-conversation-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-content" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><%= t "chats.new_conversation" %></h4>
+        </div>
+        <div class="modal-body content">
+          <%= f.select :receiver_id, options_for_select(
+            User.all.map{|u| [u.name, u.id]}), {prompt: t("chats.select_user")},
+            {id: "receiver-select"}  %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            <%= t "actions.close" %>
+          </button>
+          <%= f.submit t("chats.actions.create"), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

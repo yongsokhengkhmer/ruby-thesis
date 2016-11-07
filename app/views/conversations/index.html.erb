@@ -1,0 +1,15 @@
+<div id="chats">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="chat-container">
+        <%= render "conversations/left", conversations: @conversations %>
+        <div class="right">
+          <div class="top">
+            <span><%= t "chats.to" %><span class="name"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "conversations/new_conversation_modal" %>
