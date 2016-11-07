@@ -1,8 +1,8 @@
 class ConversationsController < ApplicationController
   load_and_authorize_resource
-  before_action :load_conversations, only: [:index, :show]
 
   def index
+    load_conversations
   end
 
   def create
@@ -22,6 +22,10 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.js
+      format.html {load_conversations}
+    end
   end
 
   private
@@ -30,6 +34,6 @@ class ConversationsController < ApplicationController
   end
 
   def load_conversations
-    @conversations = Conversation.preload(:receiver).order created_at: :desc
+    @conversations = Conversation.load_conversations_of current_user.id
   end
 end

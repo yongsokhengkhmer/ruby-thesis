@@ -14,4 +14,13 @@ class Conversation < ApplicationRecord
     where("(sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?)",
     sender_id, receiver_id, receiver_id, sender_id)
   end
+
+  scope :load_conversations_of, -> user_id do
+    where("sender_id = ? OR receiver_id = ?", user_id, user_id)
+    .preload(:receiver, :sender).order created_at: :desc
+  end
+
+  def conversation_partner current_user
+    sender_id == current_user.id ? receiver : sender
+  end
 end

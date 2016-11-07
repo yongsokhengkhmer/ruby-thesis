@@ -6,13 +6,13 @@
   </div>
     <ul class="people">
       <% conversations.each do |conversation| %>
-        <%= link_to conversation do %>
-          <li class="person
-            <%= @conversation && @conversation.id == conversation.id ? 'active' : nil %>">
-            <%= image_tag conversation.receiver_avatar_url %>
-            <span class="name"><%= conversation.receiver_name %></span>
-          </li>
-        <% end %>
+        <li class="person conversation-<%= conversation.id %>
+          <%= @conversation && @conversation.id == conversation.id ? 'active' : nil %>"
+          data-conversation=<%= conversation.id %>>
+          <%= image_tag conversation.receiver_avatar_url %>
+          <span class="name">
+            <%= conversation.conversation_partner(current_user).name %></span>
+        </li>
       <% end %>
     </ul>
 </div>

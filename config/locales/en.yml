@@ -64,6 +64,9 @@ en:
     conversations:
       create:
         fail: "Conversation create fail."
+    messages:
+      create:
+        fail: "Conversation create fail."
   layouts:
     labels:
       home: "Home"

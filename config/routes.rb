@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :feedbacks, except: [:edit, :update, :destroy]
   resources :conversations, only: [:index, :show, :create]
+  resources :messages, only: [:create]
 end
