@@ -1,0 +1,6 @@
+<% if @message.errors.any? %>
+  $(".flash").html("<%= j render 'layouts/flash' %>");
+<% else %>
+  $(".chat").append("<%= j render 'messages/message', message: @message, user_side: 'me' %>")
+  $(".chat").slimScroll({scrollTo: $(".chat")[0].scrollHeight});
+<% end %>

@@ -1,19 +1,19 @@
 <div class="right">
   <div class="top">
-    <span><%= t "chats.to" %><span class="name"><%= receiver.name %></span></span>
+    <span><%= t "chats.to" %>
+      <span class="name"><%= conversation.conversation_partner(current_user).name %></span>
+    </span>
   </div>
   <div class="chat active-chat">
-    <div class="conversation-start"></div>
-    <% messages.each do |message| %>
-      <div class="bubble <%= message.user == current_user ? 'you' : 'me' %>">
-        <%= message.content %>
-      </div>
+    <% conversation.messages.load_messages.each do |message| %>
+      <%= render "messages/message", message: message,
+        user_side: (message.user == current_user ? "me" : "you") %>
     <% end %>
   </div>
   <div class="write">
     <a href="" class="write-link attach"></a>
-    <input type="text" />
+    <%= text_field_tag :message, nil, data: {conversation_id: conversation.id} %>
     <a href="" class="write-link smiley"></a>
-    <a href="" class="write-link send"></a>
+    <a href="javascript:void(0)" class="write-link send btn-send-message"></a>
   </div>
 </div>

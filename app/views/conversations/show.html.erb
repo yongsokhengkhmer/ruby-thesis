@@ -3,9 +3,11 @@
     <div class="col-md-12">
       <div class="chat-container">
         <%= render "conversations/left", conversations: @conversations %>
-        <%= render "conversations/right", receiver: @conversation.receiver,
-          messages: @conversation.messages.load_messages %>
+        <div class="right-conversation">
+          <%= render "conversations/right", conversation: @conversation %>
+        </div>
       </div>
+      <%= render "conversations/loading_spinner" %>
     </div>
   </div>
 </div>
