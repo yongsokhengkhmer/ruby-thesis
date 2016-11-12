@@ -6,13 +6,9 @@
   </div>
     <ul class="people">
       <% conversations.each do |conversation| %>
-        <li class="person conversation-<%= conversation.id %>
-          <%= @conversation && @conversation.id == conversation.id ? 'active' : nil %>"
-          data-conversation=<%= conversation.id %>>
-          <%= image_tag conversation.receiver_avatar_url %>
-          <span class="name">
-            <%= conversation.conversation_partner(current_user).name %></span>
-        </li>
+        <%= render "conversations/conversation", conversation: conversation,
+          active_conversation: @conversation,
+          conversation_name: conversation.conversation_partner(current_user).name %>
       <% end %>
     </ul>
 </div>

@@ -59,7 +59,8 @@ class User < ApplicationRecord
   has_many :feedbacks, dependent: :nullify
   has_many :user_job_types, dependent: :destroy
   has_many :job_types, through: :user_job_types
-  has_many :messages, dependent: :destroy
+  has_many :message_senders, class_name: "Message", foreign_key: :sender_id, dependent: :destroy
+  has_many :message_receivers, class_name: "Message", foreign_key: :receiver_id, dependent: :destroy
   has_many :conversation_senders, class_name: "Conversation", foreign_key: :sender_id, dependent: :destroy
   has_many :conversation_receivers, class_name: "Conversation", foreign_key: :receiver_id, dependent: :destroy
 

@@ -157,13 +157,15 @@ ActiveRecord::Schema.define(version: 20161106072039) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
-    t.boolean  "read"
     t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.boolean  "read",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
+    t.index ["sender_id"], name: "index_messages_on_sender_id", using: :btree
   end
 
   create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -294,7 +296,6 @@ ActiveRecord::Schema.define(version: 20161106072039) do
   add_foreign_key "like_posts", "activities"
   add_foreign_key "like_posts", "users"
   add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "save_posts", "activities"
   add_foreign_key "save_posts", "users"

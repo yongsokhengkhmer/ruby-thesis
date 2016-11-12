@@ -3,4 +3,7 @@
 <% else %>
   $(".chat").append("<%= j render 'messages/message', message: @message, user_side: 'me' %>")
   $(".chat").slimScroll({scrollTo: $(".chat")[0].scrollHeight});
+  $(".people .conversation-<%= @message.conversation_id %> .preview").html("<%= @message.content %>");
+  $(".people .conversation-<%= @message.conversation_id %> .time").html("<%= l @message.created_at, format: :datetime %>");
+  $(".people .conversation-<%= @message.conversation_id %>").insertBefore(".person:first");
 <% end %>

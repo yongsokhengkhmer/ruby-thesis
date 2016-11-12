@@ -1,4 +1,4 @@
-$(".right-conversation").html("<%= j render 'conversations/right', conversation: @conversation %>")
+$(".right-conversation").html("<%= j render 'conversations/right', conversation: @conversation, conversation_partner: @conversation.conversation_partner(current_user) %>")
 $(".chat").slimScroll({height: "85%"});
 $(".chat").slimScroll({scrollTo: $(".chat")[0].scrollHeight});
 $(".loading-spin").hide();

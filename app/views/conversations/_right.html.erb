@@ -1,18 +1,20 @@
 <div class="right">
   <div class="top">
     <span><%= t "chats.to" %>
-      <span class="name"><%= conversation.conversation_partner(current_user).name %></span>
+      <span class="name"><%= conversation_partner.name %></span>
     </span>
   </div>
-  <div class="chat active-chat">
+  <div class="chat active-chat conversation-chat-<%= conversation.id %>"
+    data-conversation-id="<%= conversation.id %>">
     <% conversation.messages.load_messages.each do |message| %>
       <%= render "messages/message", message: message,
-        user_side: (message.user == current_user ? "me" : "you") %>
+        user_side: (message.sender == current_user ? "me" : "you") %>
     <% end %>
   </div>
   <div class="write">
     <a href="" class="write-link attach"></a>
-    <%= text_field_tag :message, nil, data: {conversation_id: conversation.id} %>
+    <%= text_field_tag :message, nil, data: {conversation_id: conversation.id,
+      receiver_id: conversation_partner.id} %>
     <a href="" class="write-link smiley"></a>
     <a href="javascript:void(0)" class="write-link send btn-send-message"></a>
   </div>

@@ -21,6 +21,12 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to t("layouts.labels.home"), root_path %></li>
+          <li>
+            <%= link_to conversations_path, class: "icon-chat" do %>
+              <i class="fa fa-comment ico-chat" aria-hidden="true"></i>
+              <span class="badge chat-badge"><%= Conversation.unread_conversation current_user.id %></span>
+            <% end %>
+          </li>
           <li class="dropdown">
             <%= link_to "#", class: "dropdown-toggle dropdown-global",
               data: {toggle: "dropdown"} do %>

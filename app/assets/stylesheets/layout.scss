@@ -14,16 +14,16 @@ body {
     padding-bottom: 10px;
   }
 
-  .dropdown-global {
+  .dropdown-global, .icon-chat {
     padding-top: 12px;
     padding-bottom: 12px;
   }
 
-  .ico-global {
+  .ico-global, .ico-chat {
     font-size: 24px;
   }
 
-  .notification-badge {
+  .notification-badge, .chat-badge {
     position: absolute;
     background: red;
     font-size: 10px;

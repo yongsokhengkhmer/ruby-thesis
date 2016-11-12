@@ -1,0 +1,22 @@
+<li class="person conversation-<%= conversation.id %>
+  <%= active_conversation && conversation.id == active_conversation.id ? 'active' : nil %>"
+  data-conversation=<%= conversation.id %>>
+  <%= image_tag conversation.receiver_avatar_url %>
+  <span class="name"><%= conversation_name %></span>
+  <% if (messages = conversation.messages).present? %>
+    <% last_message = messages.last %>
+    <% if last_message.receiver_id == current_user.id && !last_message.read? %>
+      <span class="time time-bold"><%= l last_message.created_at,
+        format: :datetime %></span>
+      <span class="preview preview-bold"><%= last_message.content %></span>
+    <% else %>
+      <span class="time"><%= l last_message.created_at,
+        format: :datetime %></span>
+      <span class="preview"><%= last_message.content %></span>
+    <% end %>
+  <% else %>
+    <span class="time"></span>
+    <span class="preview"></span>
+  <% end %>
+  <div class="clearfix"></div>
+</li>
