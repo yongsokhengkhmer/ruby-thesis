@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   resources :feedbacks, except: [:edit, :update, :destroy]
   resources :conversations, only: [:index, :show, :create]
   resources :messages, only: [:create]
+  get "searches/users"
 end

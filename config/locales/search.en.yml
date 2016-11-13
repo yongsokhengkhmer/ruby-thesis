@@ -1,0 +1,6 @@
+en:
+  search:
+    placeholder:
+      name: "Name"
+      location: "Location"
+      job_type: "Job type"

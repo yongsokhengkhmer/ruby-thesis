@@ -1,0 +1,21 @@
+<div class="row post-managers" id="search">
+  <div class="col-md-11 col-md-offset-1">
+    <div class="post-list white-bg row">
+      <div class="col-md-4">
+        <%= text_field_tag :name, nil, placeholder: t("search.placeholder.name"), class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= select_tag :job_type_ids, options_for_select(
+          JobType.all.map{|u| [u.name, u.id]}), {id: "job-type-post",
+          multiple: true, include_blank: t("search.placeholder.job_type")} %></td>
+      </div>
+      <div class="col-md-4">
+        <%= text_field_tag :location, nil, placeholder: t("search.placeholder.location"), class: "form-control" %>
+      </div>
+      <div class="col-md-12"><hr></div>
+      <div class="col-md-12 user-result">
+        <%= render "searches/users" %>
+      </div>
+    </div>
+  </div>
+</div>
