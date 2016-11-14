@@ -10,7 +10,7 @@ class Message < ApplicationRecord
   validates :sender_id, presence: true
   validates :receiver_id, presence: true
 
-  scope :load_messages, ->{preload :sender}
+  scope :load_messages, ->{preload(:sender).order id: :desc}
   scope :load_unread_messages, -> user_id, conversation_id do
     where receiver_id: user_id, conversation_id: conversation_id, read: 0
   end

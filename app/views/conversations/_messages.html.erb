@@ -1,0 +1,4 @@
+<% messages.reverse.each do |message| %>
+  <%= render "messages/message", message: message,
+    user_side: (message.sender == current_user ? "me" : "you") %>
+<% end %>

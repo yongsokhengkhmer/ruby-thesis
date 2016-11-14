@@ -1,4 +1,13 @@
-$(".right-conversation").html("<%= j render 'conversations/right', conversation: @conversation, conversation_partner: @conversation.conversation_partner(current_user) %>")
-$(".chat").slimScroll({height: "85%"});
-$(".chat").slimScroll({scrollTo: $(".chat")[0].scrollHeight});
-$(".loading-spin").hide();
+<% if params[:page] %>
+  $(".chat").prepend("<%= j render 'conversations/messages', messages: @messages %>");
+  $(".message-loading").hide();
+  <% if @messages.next_page %>
+    $(".message-paginate").html("<%= j render_pagination @messages %>")
+  <% else %>
+    $(".message-paginate").remove();
+  <% end %>
+<% else %>
+  $(".right-conversation").html("<%= j render 'conversations/right', conversation: @conversation, conversation_partner: @conversation.conversation_partner(current_user), messages: @messages %>")
+  set_chat_slimscroll();
+  $(".loading-spin").hide();
+<% end %>

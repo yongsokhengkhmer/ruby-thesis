@@ -22,6 +22,8 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @messages = @conversation.messages.load_messages.page params[:page]
+
     respond_to do |format|
       format.js
       format.html {load_conversations}
