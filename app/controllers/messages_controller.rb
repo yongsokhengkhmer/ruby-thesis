@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   load_and_authorize_resource
 
   def create
-    @message = current_user.messages.new message_params
+    @message = current_user.message_senders.new message_params
     flash[:alert] = "flashes.messages.create.fail" unless @message.save
     respond_to do |format|
       format.js

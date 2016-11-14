@@ -17,10 +17,17 @@ class Conversation < ApplicationRecord
 
   scope :load_conversations_of, -> user_id do
     where("sender_id = ? OR receiver_id = ?", user_id, user_id)
-    .preload(:receiver, :sender).order created_at: :desc
+    .preload(:receiver, :sender, :messages).order updated_at: :desc
   end
 
   def conversation_partner current_user
     sender_id == current_user.id ? receiver : sender
+  end
+
+  class << self
+    def unread_conversation current_user
+      number = Message.unread_conversation_number(current_user)
+      number > 0 ? number : nil
+    end
   end
 end

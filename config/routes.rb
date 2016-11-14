@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "passwords" => "passwords#edit"
   patch "passwords" => "passwords#update"
   put "update_seen_notifications" => "notification_seen_updates#update"
+  put "update_read_messages/:conversation_id" => "notification_seen_updates#update_messages"
 
   resources :posts, only: [:index, :create, :update]
   resources :like_posts, only: [:create, :destroy]

@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-md-12">
       <div class="chat-container">
-        <%= render "conversations/left", conversations: @conversations %>
+        <%= render "conversations/left", conversations: @conversations,
+          active_conversation: nil %>
         <div class="right-conversation">
           <div class="right">
             <div class="top">

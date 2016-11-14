@@ -87,7 +87,7 @@
       .people .person {
         position: relative;
         width: 100%;
-        padding: 5px 30px 24px;
+        padding: 10px;
         cursor: pointer;
         background-color: #fff;
         clear: both;
@@ -102,36 +102,40 @@
         border-radius: 50%;
       }
       .people .person .name {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 22px;
         color: #1a1a1a;
         font-family: 'Source Sans Pro', sans-serif;
         font-weight: 600;
       }
       .people .person .time {
-        font-size: 14px;
+        font-size: 12px;
         position: absolute;
         top: 16px;
-        right: 10%;
+        right: 5%;
         padding: 0 0 5px 5px;
         color: #999;
         background-color: #fff;
       }
       .people .person .preview {
-        font-size: 14px;
-        display: inline-block;
+        font-size: 13px;
+        display: block;
         overflow: hidden !important;
         width: 70%;
         white-space: nowrap;
         text-overflow: ellipsis;
         color: #999;
+        margin-top: 2px;
+      }
+      .people .person .preview-bold, .people .person .time-bold {
+        font-weight: bold;
+        color: BLACK;
       }
       .people .person.active, .people .person:hover {
         border: 0;
-        background-color: #00b0ff;
+        background-color: #ddd;
       }
       .people .person.active span, .people .person:hover span {
-        color: #fff;
         background: transparent;
       }
       .people .person.active:after, .people .person:hover:after {
