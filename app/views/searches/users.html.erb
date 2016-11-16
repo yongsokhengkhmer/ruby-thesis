@@ -10,11 +10,14 @@
           multiple: true, include_blank: t("search.placeholder.job_type")} %></td>
       </div>
       <div class="col-md-4">
-        <%= text_field_tag :location, nil, placeholder: t("search.placeholder.location"), class: "form-control" %>
+        <%= select_tag :location, options_for_select(["Cambodia", "Vietnam", "Thailand"]),
+          {id: "location", include_blank: t("search.placeholder.location")} %>
       </div>
       <div class="col-md-12"><hr></div>
       <div class="col-md-12 user-result">
         <%= render "searches/users" %>
+      </div>
+      <div class="user-search-paginate">
       </div>
     </div>
   </div>

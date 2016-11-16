@@ -72,5 +72,7 @@ en:
       home: "Home"
       profile: "Profile"
       edit_password: "Edit password"
+      search_users: "Search users"
+      search_jobs: "Search jobs"
   confirms:
     confirm_delete: "Are you sure to delete?"
