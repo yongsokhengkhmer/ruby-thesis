@@ -18,6 +18,17 @@ $(document).on("turbolinks:load ajaxComplete", function() {
       }
     });
 
+    $(".chat").unbind("slimscroll").bind("slimscroll", function(e, pos) {
+      if(pos == "top") {
+        var next_url = $(".message-paginate .pagination .next_page a").attr("href");
+        if(next_url) {
+          $(".message-loading").show();
+          $.getScript(next_url);
+        }
+        return;
+      }
+    });
+
     function chat_submit() {
       var content = $("#message").val();
       var conversation_id = $("#message").data("conversation-id");

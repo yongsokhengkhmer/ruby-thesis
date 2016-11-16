@@ -6,7 +6,8 @@
           active_conversation: @conversation %>
         <div class="right-conversation">
           <%= render "conversations/right", conversation: @conversation,
-            conversation_partner: @conversation.conversation_partner(current_user) %>
+            conversation_partner: @conversation.conversation_partner(current_user),
+            messages: @messages %>
         </div>
       </div>
       <%= render "conversations/loading_spinner" %>
