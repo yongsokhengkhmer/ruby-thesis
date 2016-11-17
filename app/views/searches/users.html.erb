@@ -7,18 +7,23 @@
       <div class="col-md-4">
         <%= select_tag :job_type_ids, options_for_select(
           JobType.all.map{|u| [u.name, u.id]}), {id: "job-type-post",
-          multiple: true, include_blank: t("search.placeholder.job_type")} %></td>
+          multiple: true, include_blank: t("search.placeholder.job_type")} %>
       </div>
       <div class="col-md-4">
         <%= select_tag :location, options_for_select(["Cambodia", "Vietnam", "Thailand"]),
           {id: "location", include_blank: t("search.placeholder.location")} %>
       </div>
-      <div class="col-md-12"><hr></div>
-      <div class="col-md-12 user-result">
-        <%= render "searches/users" %>
-      </div>
-      <div class="user-search-paginate">
-      </div>
+    </div>
+    <hr>
+    <div class="user-result row">
+      <%= render "searches/users" %>
+    </div>
+    <div class="user-search-paginate row">
+      <%= link_to "Load more", "javascript:void(0)", class: "btn-load-more" %>
+      <span class="search-user-spinner" hidden>
+        <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+      </span>
     </div>
   </div>
 </div>

@@ -1,1 +1,12 @@
-$(".user-result").html("<%= j render 'searches/users' %>");
+<% if params[:page].to_i > 1 %>
+  $(".user-result").append("<%= j render 'searches/users' %>");
+  $(".user-search-paginate .search-user-spinner").hide();
+<% else %>
+  $(".user-result").html("<%= j render 'searches/users' %>");
+<% end %>
+
+<% if @user_results.next_page %>
+  $(".user-search-paginate .btn-load-more").show();
+<% else %>
+  $(".user-search-paginate .btn-load-more").hide();
+<% end %>

@@ -22,7 +22,7 @@ defaults: &defaults
   comments:
     limit: 10
   search:
-    user_per_page: 40
+    user_per_page: 15
 
 development:
   <<: *defaults
