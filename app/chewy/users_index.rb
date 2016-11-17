@@ -7,18 +7,29 @@ class UsersIndex < Chewy::Index
     field :id, type: "integer", value: -> {id}
     field :name, analyzer: "custom_analyzer", value: -> {name}
     field :address, value: -> {address}
-    field :job_type, value: ->(user) {user.job_types.pluck(:id).join(" ")}
+    field :job_type, value: ->(user) {user.job_types.pluck(:name).join(" ")}
   end
 
   class << self
-    def search_user params
+    def search_user name, job_type, location, current_user
       bool = {
+        must: [],
         should: []
       }
 
-      bool[:should] << {match_phrase: {name: params[:name]}} if params[:name].present?
-      bool[:should] << {match: {job_type: params[:job_type]}} if params[:job_type].present?
-      bool[:should] << {match: {address: params[:address]}} if params[:address].present?
+      bool[:must] << {wildcard: {name: "*#{name}*"}} if name.present?
+
+      if job_type.present?
+        bool[:must] << {match: {job_type: job_type}}
+      else
+        bool[:should] << {match: {job_type: current_user.job_types.pluck(:name).join(" ")}}
+      end
+
+      if location.present?
+        bool[:must] << {match: {address: location}}
+      else
+        bool[:should] << {match: {address: current_user.address}}
+      end
 
       query bool: bool
     end

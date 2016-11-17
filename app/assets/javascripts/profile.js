@@ -15,6 +15,8 @@ $(document).on("turbolinks:load", function() {
   $("#job-type-post").selectize({
     plugins: ["remove_button"]
   });
+
+  $("#location").selectize();
 });
 
 $(document).on("turbolinks:load ajaxComplete", function() {

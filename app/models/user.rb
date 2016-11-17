@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   update_index("applicants#user") {self if applicant?}
   update_index("recruiters#user") {self if recruiter?}
-
+  update_index("users#user") {self}
 
   EDUCATION_PARAMS = [:id, :school, :start_date, :end_date, :degree_id,
     :field_of_study, :grade, :social_activies, :description, :_destroy]
