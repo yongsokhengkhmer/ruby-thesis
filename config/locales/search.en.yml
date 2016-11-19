@@ -4,3 +4,4 @@ en:
       name: "Name"
       location: "Location"
       job_type: "Job type"
+      salary_type: "Select salary"

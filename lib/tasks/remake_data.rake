@@ -192,6 +192,13 @@ namespace :db do
         password: "12345678", password_confirmation: "12345678",
         address: "USA", phone_number: "0929384854", role: User.roles[:applicant],
         expected_salary: 600, job_type_ids: [5, 6]
+
+      SalaryType.create name: "< 500", max_salary: 500
+      SalaryType.create name: "500 - 1000", min_salary: 500, max_salary: 1000
+      SalaryType.create name: "1000 - 1500", min_salary: 1000, max_salary: 1500
+      SalaryType.create name: "1500 - 2000", min_salary: 1500, max_salary: 2000
+      SalaryType.create name: "2000 - 3000", min_salary: 2000, max_salary: 3000
+      SalaryType.create name: "> 3000", min_salary: 3000
     end
   end
 end
