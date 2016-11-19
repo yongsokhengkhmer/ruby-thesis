@@ -1,11 +1,10 @@
 class UsersIndex < Chewy::Index
-  include SettingAnalysis
   attr_accessor :bool_query
 
   define_type User do
     witchcraft!
     field :id, type: "integer", value: -> {id}
-    field :name, analyzer: "custom_analyzer", value: -> {name}
+    field :name, value: -> {name}
     field :address, value: -> {address}
     field :job_type, value: ->(user) {user.job_types.pluck(:name).join(" ")}
   end
@@ -17,7 +16,7 @@ class UsersIndex < Chewy::Index
         should: []
       }
 
-      bool[:must] << {wildcard: {name: "*#{name}*"}} if name.present?
+      bool[:must] << {query_string: {query: "name:*#{name}*"}} if name.present?
 
       if job_type.present?
         bool[:must] << {match: {job_type: job_type}}
