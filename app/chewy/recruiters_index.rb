@@ -4,7 +4,7 @@ class RecruitersIndex < Chewy::Index
     field :id, type: "integer", value: -> {id}
     field :name, value: -> {name}
     field :email, value: -> {email}
-    field :address, value: -> {address}
+    field :country, value: -> {country.name}
     field :job_types, value: -> {job_types.pluck :name}
   end
 
@@ -13,7 +13,7 @@ class RecruitersIndex < Chewy::Index
       query(bool: {
         must_not: {terms: {id: applicant.followeds.pluck(:followed_id)}},
         should: [
-          {match: {address: applicant.address}},
+          {match: {country: applicant.country_name}},
           {match: {
             job_types: {
               query: applicant.job_types.pluck(:name).join(" "),
@@ -32,8 +32,8 @@ class RecruitersIndex < Chewy::Index
         ],
         should: [
           {match: {
-            address: {
-              query: recruiter.address,
+            country: {
+              query: recruiter.country_name,
               boost: 2
             }
           }},

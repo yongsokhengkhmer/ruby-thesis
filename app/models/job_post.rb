@@ -2,13 +2,14 @@ class JobPost < ApplicationRecord
   update_index("jobs#job_post") {self}
 
   belongs_to :post
+  belongs_to :country
 
   has_many :apply_jobs, dependent: :destroy
   has_many :job_post_types, dependent: :destroy
   has_many :job_types, through: :job_post_types
 
   validates :name, presence: true
-  validates :location, presence: true
+  validates :country, presence: true
   validates :job_types, presence: true
   validate :salary_validate
   validates :min_salary, numericality: {greater_than: 0, allow_nil: true}
@@ -17,6 +18,7 @@ class JobPost < ApplicationRecord
 
   delegate :name, to: :job_type, prefix: true, allow_nil: true
   delegate :user_id, :content, to: :post, prefix: true, allow_nil: true
+  delegate :name, to: :country, prefix: true, allow_nil: true
 
   scope :by_user, ->user_id do
     joins(:post).where("posts.user_id = ?", user_id).preload(:job_types)

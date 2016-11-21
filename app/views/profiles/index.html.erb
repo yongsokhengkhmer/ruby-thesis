@@ -8,7 +8,7 @@
         <div class="name"><%= @user.name.capitalize %></div>
         <i>
           <div class="email"><%= @user.email %></div>
-          <div class="address"><%= @user.address %></div>
+          <div class="address"><%= "#{@user.address} · #{@user.country_name}" %></div>
           <div class="phone_number"><%= @user.phone_number %></div>
         </i>
         <br>

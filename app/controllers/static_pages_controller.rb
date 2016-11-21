@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
       recruiter_ids = []
       applicant_ids = []
     end
-    @recruiters = User.preload(:user_profile).by_ids_order recruiter_ids.map(&:id)
-    @applicants = User.preload(:user_profile).by_ids_order applicant_ids.map(&:id)
+    @recruiters = User.preload(:user_profile, :country).by_ids_order recruiter_ids.map(&:id)
+    @applicants = User.preload(:user_profile, :country).by_ids_order applicant_ids.map(&:id)
   end
 end

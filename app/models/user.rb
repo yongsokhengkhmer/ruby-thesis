@@ -11,7 +11,7 @@ class User < ApplicationRecord
   DOCUMENT_PARAMS = [:id, :name, :link, :description, :_destroy]
   USER_PROFILE_PARAMS = [:id, :current_position, :gender, :birth_date]
   COMPANY_PROFILE_PARAMS = [:id, :website, :start_up_date,:description]
-  USER_PARAMS = [:name, :email, :address, :phone_number, :avatar,
+  USER_PARAMS = [:name, :email, :country_id, :address, :phone_number, :avatar,
     :expected_salary, job_type_ids: [],
     educations_attributes: EDUCATION_PARAMS,
     experiences_attributes: EXPERIENCE_PARAMS,
@@ -28,6 +28,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: [:admin, :applicant, :recruiter]
+
+  belongs_to :country
 
   has_one :user_profile, dependent: :destroy, inverse_of: :user
   has_one :company_profile, dependent: :destroy
@@ -76,11 +78,13 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates :job_types,  presence: true, unless: Proc.new {admin?}
   validates :expected_salary, numericality: {greater_than: 0}, if: Proc.new {applicant?}
+  validates :country, presence: true
 
   delegate :website, :start_up_date, :description, to: :company_profile,
     prefix: true, allow_nil: true
   delegate :current_position, :birth_date, :gender, to: :user_profile,
     prefix: true, allow_nil: true
+  delegate :name, to: :country, prefix: true, allow_nil: true
 
   scope :by_ids_order, -> ids do
     if ids.any?

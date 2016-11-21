@@ -26,6 +26,12 @@
       placeholder: t("devise.placeholders.confirm_password"),  class: "form-control" %>
     <br />
 
+    <div>
+      <%= f.select :country_id, options_for_select(Country.all.map{|u| [u.name, u.id]},
+        f.object.country_id), {prompt: t("devise.placeholders.select_country")},
+        {id: "select-country"}  %>
+    </div><br />
+
     <%= f.text_field :address, placeholder: t("devise.placeholders.address"),
       class: "form-control" %>
     <br />

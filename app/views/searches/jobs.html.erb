@@ -10,8 +10,8 @@
           multiple: true, include_blank: t("search.placeholder.job_type")} %>
       </div>
       <div class="col-md-2">
-        <%= select_tag :location, options_for_select(["Cambodia", "Vietnam", "Thailand"]),
-          {id: "location", include_blank: t("search.placeholder.location")} %>
+        <%= select_tag :country, options_for_select(Country.all.map{|u| [u.name, u.id]}),
+          {id: "select-country", include_blank: t("search.placeholder.country")} %>
       </div>
       <div class="col-md-2">
         <%= select_tag :salary_type_ids, options_for_select(

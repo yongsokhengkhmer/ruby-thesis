@@ -59,6 +59,12 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.index ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
   end
 
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "degrees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -122,13 +128,14 @@ ActiveRecord::Schema.define(version: 20161119080525) do
 
   create_table "job_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.string   "location"
+    t.integer  "country_id"
     t.float    "min_salary", limit: 24
     t.float    "max_salary", limit: 24
     t.boolean  "negotiable",            default: false
     t.integer  "post_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.index ["country_id"], name: "index_job_posts_on_country_id", using: :btree
     t.index ["post_id"], name: "index_job_posts_on_post_id", using: :btree
   end
 
@@ -276,6 +283,7 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "last_sign_in_ip"
     t.string   "name"
     t.string   "address"
+    t.integer  "country_id"
     t.string   "phone_number"
     t.string   "avatar"
     t.integer  "role"
@@ -283,6 +291,7 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.float    "expected_salary",        limit: 24
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.index ["country_id"], name: "index_users_on_country_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -300,6 +309,7 @@ ActiveRecord::Schema.define(version: 20161119080525) do
   add_foreign_key "feedbacks", "users"
   add_foreign_key "job_post_types", "job_posts"
   add_foreign_key "job_post_types", "job_types"
+  add_foreign_key "job_posts", "countries"
   add_foreign_key "job_posts", "posts"
   add_foreign_key "like_posts", "activities"
   add_foreign_key "like_posts", "users"
@@ -314,4 +324,5 @@ ActiveRecord::Schema.define(version: 20161119080525) do
   add_foreign_key "user_job_types", "users"
   add_foreign_key "user_notifications", "notifications"
   add_foreign_key "user_profiles", "users"
+  add_foreign_key "users", "countries"
 end

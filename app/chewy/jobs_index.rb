@@ -3,7 +3,7 @@ class JobsIndex < Chewy::Index
     witchcraft!
     field :id, type: "integer", value: -> {id}
     field :name, value: -> {name}
-    field :location, value: -> {location}
+    field :country, value: -> {country.name}
     field :job_types, value: -> {job_types.pluck :name}
     field :negotiable, type: "boolean", value: -> {negotiable}
     field :min_salary, type: "float", value: -> {min_salary}
@@ -15,7 +15,7 @@ class JobsIndex < Chewy::Index
       query(bool: {
         must: [
           {match: {job_types: applicant.job_types.pluck(:name).join(" ")}},
-          {match: {location: applicant.address}}
+          {match: {country: applicant.country_name}}
         ],
         should: [
           {bool: {
@@ -42,7 +42,7 @@ class JobsIndex < Chewy::Index
       })
     end
 
-    def search_jobs name, job_types, location, salary_type_id, current_user
+    def search_jobs name, job_types, country, salary_type_id, current_user
       bool = {
         must: [],
         should: []
@@ -56,10 +56,11 @@ class JobsIndex < Chewy::Index
         bool[:should] << {match: {job_types: current_user.job_types.pluck(:name).join(" ")}}
       end
 
-      if location.present?
-        bool[:must] << {match: {location: location}}
+      if country.present?
+        country_data = Country.find country
+        bool[:must] << {match: {country: country_data.name}}
       else
-        bool[:should] << {match: {location: current_user.address}}
+        bool[:should] << {match: {country: current_user.country_name}}
       end
 
       if salary_type_id.present?
