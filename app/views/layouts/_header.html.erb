@@ -17,7 +17,7 @@
         <% if user_signed_in? %>
           <li><%= link_to t("layouts.labels.home"), root_path %></li>
           <li><%= link_to t("layouts.labels.search_users"), searches_users_path %></li>
-          <li><%= link_to t("layouts.labels.search_jobs"), searches_users_path %></li>
+          <li><%= link_to t("layouts.labels.search_jobs"), searches_jobs_path %></li>
           <li>
             <%= link_to conversations_path, class: "icon-chat" do %>
               <i class="fa fa-comment ico-chat" aria-hidden="true"></i>

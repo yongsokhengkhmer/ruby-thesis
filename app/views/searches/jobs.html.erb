@@ -1,27 +1,32 @@
 <div class="row post-managers" id="search">
-  <div class="col-md-11 col-md-offset-1 users-search">
+  <div class="col-md-11 col-md-offset-1 jobs-search">
     <div class="post-list white-bg row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <%= text_field_tag :name, nil, placeholder: t("search.placeholder.name"), class: "form-control" %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <%= select_tag :job_type_ids, options_for_select(
           JobType.all.map{|u| [u.name, u.id]}), {id: "job-type-post",
           multiple: true, include_blank: t("search.placeholder.job_type")} %>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <%= select_tag :location, options_for_select(["Cambodia", "Vietnam", "Thailand"]),
           {id: "location", include_blank: t("search.placeholder.location")} %>
       </div>
+      <div class="col-md-2">
+        <%= select_tag :salary_type_ids, options_for_select(
+          SalaryType.all.map{|u| [u.name, u.id]}), {id: "salary-type",
+          include_blank: t("search.placeholder.salary_type")} %>
+      </div>
     </div>
     <hr>
-    <div class="user-result row">
-      <%= render "searches/users" %>
+    <div class="job-result row">
+      <%= render partial: "searches/job_post", collection: @job_posts, as: :job_post %>
     </div>
-    <% if @user_results.next_page %>
-      <div class="user-search-paginate row">
+    <% if @job_results.next_page %>
+      <div class="job-search-paginate row">
         <%= link_to "Load more", "javascript:void(0)", class: "btn-load-more" %>
-        <span class="search-user-spinner" hidden>
+        <span class="search-job-spinner" hidden>
           <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
           <span class="sr-only">Loading...</span>
         </span>

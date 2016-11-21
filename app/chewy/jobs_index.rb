@@ -41,6 +41,106 @@ class JobsIndex < Chewy::Index
         minimum_should_match: 1
       })
     end
+
+    def search_jobs name, job_types, location, salary_type_id, current_user
+      bool = {
+        must: [],
+        should: []
+      }
+
+      bool[:must] << {query_string: {query: "name:*#{name}*"}} if name.present?
+
+      if job_types.present?
+        bool[:must] << {match: {job_types: job_types}}
+      else
+        bool[:should] << {match: {job_types: current_user.job_types.pluck(:name).join(" ")}}
+      end
+
+      if location.present?
+        bool[:must] << {match: {location: location}}
+      else
+        bool[:should] << {match: {location: current_user.address}}
+      end
+
+      if salary_type_id.present?
+        salary_type = SalaryType.find salary_type_id
+        if salary_type.min_salary.present? && salary_type.max_salary.present?
+          bool[:must] << range_search(salary_type.min_salary, salary_type.max_salary)
+        elsif salary_type.min_salary.present?
+          bool[:must] << range_salary_from(salary_type.min_salary)
+        else
+          bool[:must] << range_salary_max(salary_type.max_salary)
+        end
+      end
+
+      query bool: bool
+
+    end
+
+    def range_search min_salary, max_salary
+      {bool: {
+        should: [
+          {bool: {
+            must: [
+              {range: {min_salary: {lte: max_salary}}},
+              {range: {max_salary: {gte: min_salary}}}
+            ]
+          }},
+          {bool: {
+            must: [
+              {range: {min_salary: {lte: max_salary}}},
+              constant_score: {filter: {missing: {field: "max_salary"}}}
+            ]
+          }},
+          {bool: {
+            must: [
+              {range: {max_salary: {gte: min_salary}}},
+              constant_score: {filter: {missing: {field: "min_salary"}}}
+            ]
+          }},
+          {term: {negotiable: true}},
+        ],
+        minimum_should_match: 1
+      }}
+    end
+
+    def range_salary_max max_salary
+      {bool: {
+        should: [
+          {bool: {
+            must: [
+              {range: {min_salary: {lte: max_salary}}}
+            ]
+          }},
+          {bool: {
+            must: [
+              constant_score: {filter: {missing: {field: "min_salary"}}}
+            ]
+          }},
+          {term: {negotiable: true}}
+        ],
+        minimum_should_match: 1
+      }}
+    end
+
+    def range_salary_from min_salary
+      {bool: {
+        should: [
+          {bool: {
+            must: [
+              {range: {max_salary: {gte: min_salary}}}
+            ]
+          }},
+          {bool: {
+            must: [
+              constant_score: {filter: {missing: {field: "max_salary"}}}
+            ]
+          }},
+          {term: {negotiable: true}}
+        ],
+        minimum_should_match: 1
+      }}
+    end
   end
 end
 

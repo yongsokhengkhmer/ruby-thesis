@@ -1,0 +1,13 @@
+<% if params[:page].to_i > 1 %>
+  $(".job-result").append("<%= j render partial: 'searches/job_post', collection: @job_posts, as: :job_post %>");
+  $(".job-search-paginate .search-job-spinner").hide();
+<% else %>
+  $(".job-result").html("<%= j render partial: 'searches/job_post', collection: @job_posts, as: :job_post %>");
+<% end %>
+
+<% if @job_results.next_page %>
+  $(".job-search-paginate .btn-load-more").show();
+<% else %>
+  $(".job-search-paginate .btn-load-more").hide();
+<% end %>
+
