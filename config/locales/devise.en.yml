@@ -58,6 +58,7 @@ en:
       confirm_password: "Enter confirmation password"
       current_password: "Enter your current password"
       phone_number: "Enter your phone number"
+      select_country: "Select your country"
       address: "Enter your address"
       birthday: "Choose your birthday"
       select_role: "Select role"

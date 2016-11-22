@@ -1,7 +1,7 @@
 en:
   posts:
     name: "Name"
-    location: "Location"
+    country: "Select country"
     post_status: "Post status"
     post_job: "Post job"
     upload_photo: "Upload photo"

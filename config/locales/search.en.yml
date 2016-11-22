@@ -2,6 +2,6 @@ en:
   search:
     placeholder:
       name: "Name"
-      location: "Location"
+      country: "Country"
       job_type: "Job type"
       salary_type: "Select salary"

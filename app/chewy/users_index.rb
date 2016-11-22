@@ -5,12 +5,12 @@ class UsersIndex < Chewy::Index
     witchcraft!
     field :id, type: "integer", value: -> {id}
     field :name, value: -> {name}
-    field :address, value: -> {address}
+    field :country, value: -> {country_name}
     field :job_type, value: ->(user) {user.job_types.pluck(:name).join(" ")}
   end
 
   class << self
-    def search_user name, job_type, location, current_user
+    def search_user name, job_type, country, current_user
       bool = {
         must: [],
         should: []
@@ -24,10 +24,11 @@ class UsersIndex < Chewy::Index
         bool[:should] << {match: {job_type: current_user.job_types.pluck(:name).join(" ")}}
       end
 
-      if location.present?
-        bool[:must] << {match: {address: location}}
+      if country.present?
+        country_data = Country.find country
+        bool[:must] << {match: {country: country_data.name}}
       else
-        bool[:should] << {match: {address: current_user.address}}
+        bool[:should] << {match: {country: current_user.country_name}}
       end
 
       query bool: bool

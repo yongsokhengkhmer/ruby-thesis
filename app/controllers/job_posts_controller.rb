@@ -7,6 +7,6 @@ class JobPostsController < ApplicationController
 
   def show
     suggest_applicants = ApplicantsIndex.suggest_to_job(@job_post).map &:id
-    @suggest_applicants = User.preload(:user_profile).by_ids_order suggest_applicants
+    @suggest_applicants = User.preload(:user_profile, :country).by_ids_order suggest_applicants
   end
 end

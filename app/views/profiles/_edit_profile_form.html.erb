@@ -22,6 +22,10 @@
         <% end %>
 
         <tr>
+          <td><%= f.label :country %></td>
+          <td><%= f.select :country_id, options_for_select(Country.all.map{|u| [u.name, u.id]}, f.object.country_id), {}, {id: "select-country"} %></td>
+        </tr>
+        <tr>
           <td><%= f.label :address %></td>
           <td><%= f.text_area :address, class: "form-control" %></td>
         </tr>

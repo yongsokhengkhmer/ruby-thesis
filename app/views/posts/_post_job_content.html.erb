@@ -3,7 +3,8 @@
     <%= builder.text_field :name, placeholder: t("posts.name"), class: "job-name form-control" %>
   </div><br />
   <div>
-    <%= builder.text_field :location, placeholder: t("posts.location"), class: "job-location form-control" %>
+    <%= builder.select :country_id, options_for_select(Country.all.map{|u| [u.name, u.id]},
+      builder.object.country_id), {prompt: t("posts.country")}, {id: "select-country"} %>
   </div><br />
   <div>
     <%= builder.select :job_type_ids, options_for_select(JobType.all.map{|u| [u.name, u.id]}, builder.object.job_type_ids),

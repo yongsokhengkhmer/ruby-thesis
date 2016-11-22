@@ -22,6 +22,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       #user infomation
       t.string :name
       t.string :address
+      t.references :country, foreign_key: true, index: true
       t.string :phone_number
       t.string :avatar
       t.integer :role

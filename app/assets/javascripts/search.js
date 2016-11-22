@@ -7,7 +7,7 @@ $(document).on("turbolinks:load", function() {
       search();
     });
 
-    $("#search #job-type-post, #location").unbind("change").on("change", function() {
+    $("#search #job-type-post, #select-country").unbind("change").on("change", function() {
       page = 1;
       search();
     });
@@ -20,8 +20,8 @@ $(document).on("turbolinks:load", function() {
         job_type_arr.push(this.text);
       });
       var job_types = job_type_arr.join(" ");
-      var location = $.trim(search.find("#location").val());
-      $.get("/searches/users", {name: name, job_types: job_types, location: location, page: page})
+      var country = $("#select-country").val();
+      $.get("/searches/users", {name: name, job_types: job_types, country: country, page: page})
     }
 
     $(".user-search-paginate .btn-load-more").unbind("click").bind("click", function() {
@@ -41,7 +41,7 @@ $(document).on("turbolinks:load", function() {
       search();
     });
 
-    $("#search #job-type-post, #location, #salary-type").unbind("change").on("change", function() {
+    $("#search #job-type-post, #select-country, #salary-type").unbind("change").on("change", function() {
       page = 1;
       search();
     });
@@ -55,11 +55,11 @@ $(document).on("turbolinks:load", function() {
       });
       var job_types = job_type_arr.join(" ");
 
-      var location = $.trim(search.find("#location").val());
+      var country = $("#select-country").val();
       var salary_type = $("#salary-type").val();
 
       $.get("/searches/jobs", {name: name, job_types: job_types,
-        location: location, salary_type: salary_type, page: page})
+        country: country, salary_type: salary_type, page: page})
     }
 
     $(".job-search-paginate .btn-load-more").unbind("click").bind("click", function() {
