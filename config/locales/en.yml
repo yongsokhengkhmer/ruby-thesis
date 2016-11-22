@@ -6,6 +6,7 @@ en:
     details: "Details"
     post: "Post"
     load_more: "Load More"
+    delete: "Delete"
   time:
     formats:
       default: "%d-%m-%Y"
@@ -76,3 +77,10 @@ en:
       search_jobs: "Search jobs"
   confirms:
     confirm_delete: "Are you sure to delete?"
+  admin:
+    left_menus:
+      applicants: "Applicants"
+    flashes:
+      applicants:
+        destroy:
+          success: "Applicant has been deleted."

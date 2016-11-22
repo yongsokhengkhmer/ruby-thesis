@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   get "searches/users"
   get "searches/jobs"
+
+  namespace :admin do
+    resources :applicants, only: [:index, :destroy]
+  end
 end

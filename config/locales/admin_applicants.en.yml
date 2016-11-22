@@ -1,0 +1,7 @@
+en:
+  admin:
+    applicants:
+      tables:
+        name: "Name"
+        email: "Email"
+        country: "Country"
