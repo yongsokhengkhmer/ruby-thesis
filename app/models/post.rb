@@ -22,7 +22,7 @@ class Post < ApplicationRecord
   delegate :id, :name, :location, to: :job_post, prefix: true, allow_nil: true
 
   scope :load_posts, -> do
-    includes(:job_post).where(job_posts: {post_id: nil}).order created_at: :desc
+    includes(:job_post, :activity).where(job_posts: {post_id: nil}).order created_at: :desc
   end
 
   after_create :create_activity_and_push_notification

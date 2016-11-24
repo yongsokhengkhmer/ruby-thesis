@@ -81,6 +81,7 @@ en:
     left_menus:
       applicants: "Applicants"
       recruiters: "Recruiters"
+      posts: "Posts"
     flashes:
       applicants:
         destroy:
@@ -88,3 +89,6 @@ en:
       recruiters:
         destroy:
           success: "Recruiter has been deleted."
+      posts:
+        destroy:
+          success: "Post has been deleted."

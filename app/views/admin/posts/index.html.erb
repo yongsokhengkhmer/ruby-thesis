@@ -1,0 +1,23 @@
+<div class="row post-managers" id="admin-posts">
+  <div class="col-md-3">
+    <%= render "shared/admin_left_menu", active_name: "admin_posts" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title"><%= t "admin.left_menus.posts" %></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="content"><%= t "admin.posts.tables.content" %></th>
+            <th class="date"><%= t "admin.posts.tables.post_date" %></th>
+            <th class="action"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "admin/posts/post", collection: @posts, as: :post %>
+        </tbody>
+      </table>
+      <%= render_pagination @posts %>
+    </div>
+  </div>
+</div>
