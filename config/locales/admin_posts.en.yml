@@ -1,0 +1,6 @@
+en:
+  admin:
+    posts:
+      tables:
+        content: "Content"
+        post_date: "Post Date"
