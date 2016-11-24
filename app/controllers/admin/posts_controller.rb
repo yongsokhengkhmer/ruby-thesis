@@ -8,6 +8,6 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:success] = t "admin.flashes.posts.destroy.success"
-    redirect_to admin_posts_path
+    redirect_to :back
   end
 end

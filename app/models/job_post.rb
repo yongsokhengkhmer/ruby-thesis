@@ -25,6 +25,8 @@ class JobPost < ApplicationRecord
     .order created_at: :desc
   end
 
+  scope :load_job_posts, -> {preload(:job_types, :post).order created_at: :desc}
+
   scope :by_ids_order, -> ids do
     if ids.any?
       where(id: ids).order "FIELD(#{JobPost.table_name}.id, #{ids.map(&:to_i).join ', '})"

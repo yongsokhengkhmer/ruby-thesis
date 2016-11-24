@@ -82,6 +82,7 @@ en:
       applicants: "Applicants"
       recruiters: "Recruiters"
       posts: "Posts"
+      job_posts: "Job Posts"
     flashes:
       applicants:
         destroy:

@@ -1,0 +1,25 @@
+<div class="row post-managers" id="admin-job-posts">
+  <div class="col-md-3">
+    <%= render "shared/admin_left_menu", active_name: "admin_job_posts" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title"><%= t "admin.left_menus.job_posts" %></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="name"><%= t "admin.job_posts.tables.name" %></th>
+            <th class="job-type"><%= t "admin.job_posts.tables.job_type" %></th>
+            <th class="date"><%= t "admin.job_posts.tables.post_date" %></th>
+            <th class="action"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "admin/job_posts/job_post", collection: @job_posts,
+            as: :job_post %>
+        </tbody>
+      </table>
+      <%= render_pagination @job_posts %>
+    </div>
+  </div>
+</div>
