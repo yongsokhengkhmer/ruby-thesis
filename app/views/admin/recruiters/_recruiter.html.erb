@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to recruiter.name, recruiter %></td>
+  <td><%= recruiter.email %></td>
+  <td><%= recruiter.country_name %></td>
+  <td><%= link_to t("actions.delete"), admin_recruiter_path(recruiter),
+    method: :delete, data: {confirm: t("confirms.confirm_delete")} %></td>
+</tr>
