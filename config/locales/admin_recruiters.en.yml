@@ -1,0 +1,7 @@
+en:
+  admin:
+    recruiters:
+      tables:
+        name: "Name"
+        email: "Email"
+        country: "Country"

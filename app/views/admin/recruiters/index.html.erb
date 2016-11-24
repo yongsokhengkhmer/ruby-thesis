@@ -1,0 +1,25 @@
+<div class="row post-managers" id="admin-recruiters">
+  <div class="col-md-3">
+    <%= render "shared/admin_left_menu", active_name: "admin_recruiters" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title"><%= t "admin.left_menus.recruiters" %></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="name"><%= t "admin.recruiters.tables.name" %></th>
+            <th class="email"><%= t "admin.recruiters.tables.email" %></th>
+            <th class="country"><%= t "admin.recruiters.tables.country" %></th>
+            <th class="action"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "admin/recruiters/recruiter", collection: @recruiters,
+            as: :recruiter %>
+        </tbody>
+      </table>
+      <%= render_pagination @recruiters %>
+    </div>
+  </div>
+</div>

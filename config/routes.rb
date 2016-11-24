@@ -34,5 +34,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :applicants, only: [:index, :destroy]
+    resources :recruiters, only: [:index, :destroy]
   end
 end

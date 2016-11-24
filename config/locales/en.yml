@@ -80,7 +80,11 @@ en:
   admin:
     left_menus:
       applicants: "Applicants"
+      recruiters: "Recruiters"
     flashes:
       applicants:
         destroy:
           success: "Applicant has been deleted."
+      recruiters:
+        destroy:
+          success: "Recruiter has been deleted."
