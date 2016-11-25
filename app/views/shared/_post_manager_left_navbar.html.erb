@@ -14,13 +14,7 @@
   <div class="title <%= active_post_navbar 'save_posts', active_name %>">
     <%= link_to t("post_managers.save_posts"), save_posts_path %>
   </div>
-  <% if current_user.admin? %>
-    <div class="title <%= active_post_navbar 'feedbacks', active_name %>">
-      <%= link_to t("post_managers.feedbacks"), feedbacks_path %>
-    </div>
-  <% else %>
-    <div class="title <%= active_post_navbar 'new_feedbacks', active_name %>">
-      <%= link_to t("post_managers.new_feedback"), new_feedback_path %>
-    </div>
-  <% end %>
+  <div class="title <%= active_post_navbar 'new_feedbacks', active_name %>">
+    <%= link_to t("post_managers.new_feedback"), new_feedback_path %>
+  </div>
 </div>

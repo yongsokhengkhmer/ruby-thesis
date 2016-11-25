@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :mark_interests, only: [:create, :destroy]
   resources :comments, only: [:index, :create]
   resources :relationships, only: [:create, :destroy]
-  resources :feedbacks, except: [:edit, :update, :destroy]
+  resources :feedbacks, only: [:new, :create]
   resources :conversations, only: [:index, :show, :create]
   resources :messages, only: [:create]
   get "searches/users"
@@ -37,5 +37,6 @@ Rails.application.routes.draw do
     resources :recruiters, only: [:index, :destroy]
     resources :posts, only: [:index, :destroy]
     resources :job_posts, only: :index
+    resources :feedbacks, only: [:index, :show, :destroy]
   end
 end

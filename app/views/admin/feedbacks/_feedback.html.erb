@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to feedback.subject, [:admin, feedback] %></td>
+  <td><%= link_to feedback.user_name, feedback.user %></td>
+  <td><%= l feedback.created_at, format: :datetime %></td>
+  <td><%= link_to t("actions.delete"), admin_feedback_path(feedback),
+    method: :delete, data: {confirm: t("confirms.confirm_delete")} %></td>
+</tr>

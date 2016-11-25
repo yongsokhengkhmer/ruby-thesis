@@ -1,15 +1,19 @@
-#feedbacks {
+#admin-feedbacks {
   table {
     .subject {
-      width: 50%;
+      width: 55%;
     }
 
     .sender {
-      width: 30%;
+      width: 20%;
     }
 
     .sent_date {
       width: 20%;
+    }
+
+    .action {
+      width: 5%;
     }
   }
 }

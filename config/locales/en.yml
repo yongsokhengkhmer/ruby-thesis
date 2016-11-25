@@ -35,7 +35,6 @@ en:
     posts: "Posts"
     apply_jobs: "Apply Jobs"
     new_feedback: "New Feedback"
-    feedbacks: "Feedbacks"
   flashes:
     save_posts:
       create:
@@ -83,6 +82,7 @@ en:
       recruiters: "Recruiters"
       posts: "Posts"
       job_posts: "Job Posts"
+      feedbacks: "Feedbacks"
     flashes:
       applicants:
         destroy:
@@ -93,3 +93,6 @@ en:
       posts:
         destroy:
           success: "Post has been deleted."
+      feedbacks:
+        destroy:
+          success: "Feedback has been deleted."
