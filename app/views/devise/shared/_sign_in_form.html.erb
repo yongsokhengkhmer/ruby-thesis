@@ -1,26 +1,3 @@
-<div class="col-md-6 col-md-offset-3 devise-form">
-  <div class="head head-title">
-    <h2><%= t "devise.labels.sign_in" %></h2>
-  </div>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= render "shared/error_messages", object: resource %>
-
-    <div><%= f.email_field :email, placeholder: t("devise.placeholders.email"),
-      class: "form-control" %>
-    </div><br />
-
-    <div><%= f.password_field :password, placeholder: t("devise.placeholders.password"),
-      autocomplete: "off", class: "form-control" %>
-    </div><br />
-
-    <% if devise_mapping.rememberable? %>
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %><br /><br />
-    <% end %>
-
-    <%= f.submit t("devise.labels.sign_in"), class: "btn btn-warning full-width" %>
-    <br /><br />
-
-    <%= render "devise/shared/links" %>
-  <% end %>
+<div>
+  <%= emoji ":dog is :smile good bye my :dog :dog :smile:D" %>
 </div>
