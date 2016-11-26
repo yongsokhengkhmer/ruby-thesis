@@ -36,5 +36,6 @@ Rails.application.routes.draw do
     resources :applicants, only: [:index, :destroy]
     resources :recruiters, only: [:index, :destroy]
     resources :posts, only: [:index, :destroy]
+    resources :job_posts, only: :index
   end
 end
