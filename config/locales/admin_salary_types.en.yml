@@ -1,0 +1,10 @@
+en:
+  admin:
+    salary_types:
+      edit_salary_type: "Edit Salary Type"
+      add_salary_type: "Add Salary Type"
+      errors: "Min salary or max salary cannot be blank."
+      tables:
+        name: "Name"
+        min_salary: "Min salary"
+        max_salary: "Max salary"

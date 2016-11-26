@@ -1,0 +1,16 @@
+#admin-salary-types {
+  table {
+    .name {
+      width: 40%
+    }
+
+    .min-salary, .max-salary {
+      width: 20%;
+    }
+
+    .action {
+      width: 20%;
+      text-align: right;
+    }
+  }
+}

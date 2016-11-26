@@ -1,0 +1,25 @@
+<%= form_for [:admin, salary_type], remote: true do |f| %>
+  <div class="modal fade" id="admin-salary-type-form" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-content" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">
+            <%= salary_type.new_record? ? t("admin.salary_types.add_salary_type") : t("admin.salary_types.edit_salary_type") %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="errors"></div>
+          <%= f.text_field :name, class: "form-control" %>
+          <%= f.number_field :min_salary, class: "form-control" %>
+          <%= f.number_field :max_salary, class: "form-control" %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            <%= t "actions.close" %>
+          </button>
+          <%= f.submit t("actions.save"), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

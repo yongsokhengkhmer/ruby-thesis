@@ -1,0 +1,7 @@
+<% if @salary_type.valid? %>
+  $(".salary-type-<%= @salary_type.id %>").replaceWith("<%= j render 'admin/salary_types/salary_type', salary_type: @salary_type %>");
+  $("#admin-salary-type-form").modal("hide");
+  $(".flash").html("<%= j render 'layouts/flash' %>")
+<% else %>
+  $(".errors").html("<%= j render 'shared/error_messages', object: @salary_type %>")
+<% end %>
