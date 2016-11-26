@@ -1,0 +1,24 @@
+<div class="row post-managers" id="admin-feedbacks">
+  <div class="col-md-3">
+    <%= render "shared/admin_left_menu", active_name: "admin_feedbacks" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title"><%= t "admin.left_menus.feedbacks" %></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="content"><%= t "admin.feedbacks.subject" %></th>
+            <th class="sender"><%= t "admin.feedbacks.sender" %></th>
+            <th class="sent_date"><%= t "admin.feedbacks.sent_date" %></th>
+            <th class="action"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @feedbacks %>
+        </tbody>
+      </table>
+      <%= render_pagination @feedbacks %>
+    </div>
+  </div>
+</div>
