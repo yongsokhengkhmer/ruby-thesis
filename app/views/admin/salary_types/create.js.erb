@@ -1,0 +1,8 @@
+<% if @salary_type.valid? %>
+  $(".data-list").html("<%= j render partial: 'admin/salary_types/salary_type', collection: @salary_types, as: :salary_type %>")
+  $(".paginate-data").html("<%= j render_pagination @salary_types %>")
+  $("#admin-salary-type-form").modal("hide");
+  $(".flash").html("<%= j render 'layouts/flash' %>")
+<% else %>
+  $(".errors").html("<%= j render 'shared/error_messages', object: @salary_type %>")
+<% end %>

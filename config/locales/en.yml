@@ -86,6 +86,7 @@ en:
       job_posts: "Job Posts"
       feedbacks: "Feedbacks"
       job_types: "Job Types"
+      salary_types: "Salary Types"
     flashes:
       applicants:
         destroy:
@@ -106,3 +107,10 @@ en:
           success: "Job type successfully update."
         destroy:
           success: "Job type has been deleted."
+      salary_types:
+        create:
+          success: "Salary type successfully created."
+        update:
+          success: "Salary type successfully update."
+        destroy:
+          success: "Salary type has been deleted."

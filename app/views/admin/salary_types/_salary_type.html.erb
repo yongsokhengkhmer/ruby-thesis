@@ -1,0 +1,11 @@
+<tr class="salary-type-<%= salary_type.id %>">
+  <td><%= salary_type.name %></td>
+  <td><%= salary_type.min_salary %></td>
+  <td><%= salary_type.max_salary %></td>
+  <td class="action">
+    <%= link_to t("actions.edit"), edit_admin_salary_type_path(salary_type),
+      remote: true %> &nbsp;
+    <%= link_to t("actions.delete"), admin_salary_type_path(salary_type),
+      method: :delete, data: {confirm: t("confirms.confirm_delete")} %>
+  </td>
+</tr>

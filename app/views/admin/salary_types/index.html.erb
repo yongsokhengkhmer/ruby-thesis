@@ -1,0 +1,32 @@
+<div class="row post-managers" id="admin-salary-types">
+  <div class="col-md-3">
+    <%= render "shared/admin_left_menu", active_name: "admin_salary_types" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title">
+        <%= t "admin.left_menus.salary_types" %>
+        <%= link_to t("actions.add"), new_admin_salary_type_path, remote: true,
+          class: "btn btn-primary pull-right" %>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="name"><%= t "admin.salary_types.tables.name" %></th>
+            <th class="min-salary">
+              <%= t "admin.salary_types.tables.min_salary" %></th>
+            <th class="max-salary">
+              <%= t "admin.salary_types.tables.max_salary" %></th>
+            <th class="action"></th>
+          </tr>
+        </thead>
+        <tbody class="data-list">
+          <%= render partial: "admin/salary_types/salary_type",
+            collection: @salary_types, as: :salary_type %>
+        </tbody>
+      </table>
+      <div class="paginate-data"><%= render_pagination @salary_types %></div>
+    </div>
+  </div>
+  <div class="salary-type-container"></div>
+</div>
