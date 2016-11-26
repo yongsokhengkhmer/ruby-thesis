@@ -87,6 +87,7 @@ en:
       feedbacks: "Feedbacks"
       job_types: "Job Types"
       salary_types: "Salary Types"
+      countries: "Countries"
     flashes:
       applicants:
         destroy:
@@ -114,3 +115,10 @@ en:
           success: "Salary type successfully update."
         destroy:
           success: "Salary type has been deleted."
+      countries:
+        create:
+          success: "Country successfully created."
+        update:
+          success: "Country successfully update."
+        destroy:
+          success: "Country has been deleted."

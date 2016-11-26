@@ -1,0 +1,7 @@
+en:
+  admin:
+    countries:
+      add_country: "Add country"
+      edit_country: "Edit country"
+      tables:
+        name: "Name"

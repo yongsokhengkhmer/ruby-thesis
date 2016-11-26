@@ -1,0 +1,7 @@
+<% if @country.valid? %>
+  $(".country-<%= @country.id %>").replaceWith("<%= j render 'admin/countries/country', country: @country %>");
+  $("#admin-country-form").modal("hide");
+  $(".flash").html("<%= j render 'layouts/flash' %>")
+<% else %>
+  $(".errors").html("<%= j render 'shared/error_messages', object: @country %>")
+<% end %>

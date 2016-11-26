@@ -1,0 +1,28 @@
+<div class="row post-managers" id="admin-countries">
+  <div class="col-md-3">
+    <%= render "shared/admin_left_menu", active_name: "admin_countries" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title">
+        <%= t "admin.left_menus.countries" %>
+        <%= link_to t("actions.add"), new_admin_country_path, remote: true,
+          class: "btn btn-primary pull-right" %>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="name"><%= t "admin.countries.tables.name" %></th>
+            <th class="action"></th>
+          </tr>
+        </thead>
+        <tbody class="data-list">
+          <%= render partial: "admin/countries/country", collection: @countries,
+            as: :country %>
+        </tbody>
+      </table>
+      <div class="paginate-data"><%= render_pagination @countries %></div>
+    </div>
+  </div>
+  <div class="country-form-container"></div>
+</div>
