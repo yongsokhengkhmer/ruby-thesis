@@ -40,5 +40,6 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:index, :show, :destroy]
     resources :job_types, except: :show
     resources :salary_types, except: :show
+    resources :countries, except: :show
   end
 end

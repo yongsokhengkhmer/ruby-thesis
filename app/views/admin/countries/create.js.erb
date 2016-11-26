@@ -1,0 +1,8 @@
+<% if @country.valid? %>
+  $(".data-list").html("<%= j render partial: 'admin/countries/country', collection: @countries, as: :country %>")
+  $(".paginate-data").html("<%= j render_pagination @countries %>")
+  $("#admin-country-form").modal("hide");
+  $(".flash").html("<%= j render 'layouts/flash' %>")
+<% else %>
+  $(".errors").html("<%= j render 'shared/error_messages', object: @country %>")
+<% end %>

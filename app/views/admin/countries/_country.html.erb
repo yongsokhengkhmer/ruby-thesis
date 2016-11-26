@@ -1,0 +1,9 @@
+<tr class="country-<%= country.id %>">
+  <td><%= country.name %></td>
+  <td class="action">
+    <%= link_to t("actions.edit"), edit_admin_country_path(country),
+      remote: true %> &nbsp;
+    <%= link_to t("actions.delete"), admin_country_path(country),
+      method: :delete, data: {confirm: t("confirms.confirm_delete")} %>
+  </td>
+</tr>
