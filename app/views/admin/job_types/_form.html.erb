@@ -1,0 +1,22 @@
+<%= form_for [:admin, job_type], remote: true do |f| %>
+  <div class="modal fade" id="admin-job-type-form" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-content" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><%= job_type.new_record? ? t("admin.job_types.add_job_type") : t("admin.job_types.edit_job_type")  %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="errors"></div>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            <%= t "actions.close" %>
+          </button>
+          <%= f.submit t("actions.save"), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

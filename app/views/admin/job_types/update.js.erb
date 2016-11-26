@@ -1,0 +1,7 @@
+<% if @job_type.valid? %>
+  $(".job-type-<%= @job_type.id %>").replaceWith("<%= j render 'admin/job_types/job_type', job_type: @job_type %>");
+  $("#admin-job-type-form").modal("hide");
+  $(".flash").html("<%= j render 'layouts/flash' %>")
+<% else %>
+  $(".errors").html("<%= j render 'shared/error_messages', object: @job_type %>")
+<% end %>
