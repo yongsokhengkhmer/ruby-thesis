@@ -1,0 +1,9 @@
+<tr class="job-type-<%= job_type.id %>">
+  <td><%= job_type.name %></td>
+  <td class="action">
+    <%= link_to t("actions.edit"), edit_admin_job_type_path(job_type),
+      remote: true %> &nbsp;
+    <%= link_to t("actions.delete"), admin_job_type_path(job_type),
+      method: :delete, data: {confirm: t("confirms.confirm_delete")} %>
+  </td>
+</tr>

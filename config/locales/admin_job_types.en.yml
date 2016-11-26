@@ -1,0 +1,7 @@
+en:
+  admin:
+    job_types:
+      edit_job_type: "Edit Job Type"
+      add_job_type: "Add Job Type"
+      tables:
+        name: "Name"

@@ -1,0 +1,8 @@
+<% if @job_type.valid? %>
+  $(".data-list").html("<%= j render partial: 'admin/job_types/job_type', collection: @job_types, as: :job_type %>")
+  $(".paginate-data").html("<%= j render_pagination @job_types %>")
+  $("#admin-job-type-form").modal("hide");
+  $(".flash").html("<%= j render 'layouts/flash' %>")
+<% else %>
+  $(".errors").html("<%= j render 'shared/error_messages', object: @job_type %>")
+<% end %>

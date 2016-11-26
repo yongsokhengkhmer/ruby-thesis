@@ -1,0 +1,28 @@
+<div class="row post-managers" id="admin-job-types">
+  <div class="col-md-3">
+    <%= render "shared/admin_left_menu", active_name: "admin_job_types" %>
+  </div>
+  <div class="col-md-9">
+    <div class="post-list white-bg">
+      <div class="list-title">
+        <%= t "admin.left_menus.job_types" %>
+        <%= link_to t("actions.add"), new_admin_job_type_path, remote: true,
+          class: "btn btn-primary pull-right" %>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="name"><%= t "admin.job_types.tables.name" %></th>
+            <th class="action"></th>
+          </tr>
+        </thead>
+        <tbody class="data-list">
+          <%= render partial: "admin/job_types/job_type", collection: @job_types,
+            as: :job_type %>
+        </tbody>
+      </table>
+      <div class="paginate-data"><%= render_pagination @job_types %></div>
+    </div>
+  </div>
+  <div class="job-type-container"></div>
+</div>

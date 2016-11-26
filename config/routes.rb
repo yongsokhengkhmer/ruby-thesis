@@ -38,5 +38,6 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :destroy]
     resources :job_posts, only: :index
     resources :feedbacks, only: [:index, :show, :destroy]
+    resources :job_types, except: :show
   end
 end
