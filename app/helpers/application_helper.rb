@@ -93,4 +93,8 @@ module ApplicationHelper
       "#{t 'posts.up_to'} #{number_to_currency job_post.max_salary}"
     end
   end
+
+  def set_root_path
+    current_user.present? && current_user.admin? ? admin_root_path : root_path
+  end
 end

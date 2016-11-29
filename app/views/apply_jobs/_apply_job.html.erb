@@ -1,5 +1,5 @@
 <tr>
   <td><%= link_to job_post.name, job_post.post.activity %></td>
-  <td><%= job_post.job_type_name %></td>
+  <td><%= job_post.job_types.map(&:name).join ", " %></td>
   <td><%= l job_post.created_at, format: :datetime %></td>
 </tr>

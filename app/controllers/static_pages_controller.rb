@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    redirect_to admin_root_path if current_user.admin?
     @activities = Activity.all
     @job_types = JobType.all
     @post = Post.new

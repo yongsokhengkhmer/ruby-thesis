@@ -1,4 +1,4 @@
-#post-form, #edit-post-modal, #posts {
+#post-form, #edit-post-modal {
   background: WHITE;
   border: 1px solid #eee;
 
@@ -36,16 +36,6 @@
     border: none;
     margin-top: 10px;
     width: 200px;
-  }
-
-  table {
-    .content {
-      width: 80%;
-    }
-
-    .date {
-      width: 20%;
-    }
   }
 }
 

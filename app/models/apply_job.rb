@@ -12,7 +12,7 @@ class ApplyJob < ApplicationRecord
   scope :select_by_job, ->job_post_id{where job_post_id: job_post_id}
   scope :order_by_user, ->{joins(:user).includes(:user).order "users.name"}
   scope :load_apply_jobs, ->do
-    preload(job_post: [:job_type, post: :activity]).order created_at: :desc
+    preload(job_post: [:job_types, post: :activity]).order created_at: :desc
   end
 
   after_create :push_notification

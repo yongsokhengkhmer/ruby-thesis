@@ -1,10 +1,17 @@
 class Ability
   include CanCan::Ability
 
-  def initialize user
+  def initialize user, controller_namespace
     user ||= User.new
-    if user.admin? || user.recruiter? || user.applicant?
-      can :manage, :all
+    can :manage, :all
+    if controller_namespace == "Admin" && (user.recruiter? || user.applicant?)
+      cannot :manage, :all
+    end
+
+    if user.applicant?
+      cannot :manage, JobPost
+    elsif user.recruiter?
+      cannot :manage, ApplyJob
     end
   end
 end
