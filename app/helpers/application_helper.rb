@@ -93,4 +93,12 @@ module ApplicationHelper
       "#{t 'posts.up_to'} #{number_to_currency job_post.max_salary}"
     end
   end
+
+  def emoji content
+    data = {":dog" => "dog", ":smile" => "smile"}
+    content.gsub(/:([\w+-]+)/) do |emj|
+      data.has_key?(emj) ? image_tag("emoji/#{data[emj]}.gif", title: data[emj]) : emj
+    end.html_safe
+  end
+
 end
