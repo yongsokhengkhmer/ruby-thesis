@@ -5,7 +5,11 @@ $(document).on("turbolinks:load", function(){
       maxItems: 3
     });
     $("#salary").selectize();
-    CKEDITOR.replace("post-content");
+
+    if($("#post-content").length > 0) {
+      CKEDITOR.replace("post-content");
+    }
+
     $(".ckbox-negotiable").unbind("click").on("click", function() {
       if($(this).is(":checked")) {
         $(".salary-input input").val("");

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
-  root "static_pages#home"
   resources :users, only: :show do
     get "followings" => "follow_infos#followings"
     get "followers" => "follow_infos#followers"
@@ -33,6 +32,7 @@ Rails.application.routes.draw do
   get "searches/jobs"
 
   namespace :admin do
+    root to: "applicants#index"
     resources :applicants, only: [:index, :destroy]
     resources :recruiters, only: [:index, :destroy]
     resources :posts, only: [:index, :destroy]
@@ -42,4 +42,5 @@ Rails.application.routes.draw do
     resources :salary_types, except: :show
     resources :countries, except: :show
   end
+  root "static_pages#home"
 end
