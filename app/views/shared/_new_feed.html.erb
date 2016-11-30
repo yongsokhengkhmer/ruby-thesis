@@ -17,7 +17,7 @@
         <div class="post-date">
           <%= "#{activity.user.user_profile_current_position} · " if activity.user.user_profile %>
           <%= l activity.created_at, format: :datetime %> &nbsp;
-          <%= status_post activity.trackable %>
+          <%= status_activity activity %>
         </div>
       </div>
       <div class="media-right">

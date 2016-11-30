@@ -3,6 +3,7 @@ class SharePostsController < ApplicationController
 
   def new
     @post = Post.find params[:share_post][:post_id]
+    @share_post.build_activity
 
     respond_to do |format|
       format.js

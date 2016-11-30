@@ -26,9 +26,12 @@
 
   <div class="pull-right">
     <span class="pull-left">
-      <%= ff.select :status, options_for_select(Post.statuses.keys
-        .collect{|status| [t("post_statuses.#{status}"), status]}, ff.object.status),
-        {}, {class: "form-control btn-status"} %>
+      <%= ff.fields_for :activity do |fff| %>
+        <%= fff.hidden_field :user_id, value: current_user.id %>
+        <%= fff.select :status, options_for_select(Activity.statuses.keys
+          .collect{|status| [t("post_statuses.#{status}"), status]}, fff.object.status),
+          {}, {class: "form-control btn-status"} %>
+        <% end %>
     </span>
     <span>
       <%= ff.submit ff.object.new_record? ? t("actions.post") : t("actions.save"),

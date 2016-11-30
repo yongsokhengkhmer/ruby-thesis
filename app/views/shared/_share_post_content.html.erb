@@ -12,7 +12,7 @@
         <div class="post-date">
           <%= "#{post.user.user_profile_current_position} · " if post.user.user_profile %>
           <%= l post.created_at, format: :datetime %> &nbsp;
-          <%= status_post post %>
+          <%= status_activity post.activity %>
         </div>
       </div>
     </li>

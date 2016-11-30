@@ -1,0 +1,11 @@
+<div id="activity" class="new-feed-activity">
+  <%= render partial: "shared/activity", collection: activities, as: :activity %>
+</div>
+<div class="new-feed-load-more">
+  <span class="loading" hidden>
+    <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+    <span class="sr-only"><%= t "labels.loading" %></span>
+  </span>
+  <div class="new-feed-paginate" hidden><%= render_pagination activities %></div>
+</div>
+<%= render "shared/modal_container" %>

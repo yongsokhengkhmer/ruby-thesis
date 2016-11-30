@@ -1,0 +1,7 @@
+$("#activity").append("<%= j render partial: 'shared/activity', collection: @activities, as: :activity %>");
+$(".new-feed-load-more .loading").hide();
+<% if @activities.next_page %>
+  $(".new-feed-paginate").html("<%= j render_pagination @activities %>");
+<% else %>
+  $(".new-feed-paginate").remove();
+<% end %>

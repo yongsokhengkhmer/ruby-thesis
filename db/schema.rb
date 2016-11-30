@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20161119080525) do
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "trackable_id"
     t.string   "trackable_type"
+    t.integer  "status"
     t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -186,7 +187,6 @@ ActiveRecord::Schema.define(version: 20161119080525) do
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535
     t.string   "image"
-    t.integer  "status"
     t.integer  "user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
@@ -223,7 +223,6 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "content"
     t.integer  "user_id"
     t.integer  "post_id"
-    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_share_posts_on_post_id", using: :btree

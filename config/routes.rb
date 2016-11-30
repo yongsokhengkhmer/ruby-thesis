@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     get "followings" => "follow_infos#followings"
     get "followers" => "follow_infos#followers"
+    resources :activities, only: :index
   end
   resources :job_posts, only: [:index, :show] do
     resources :apply_jobs, only: [:new, :create]
