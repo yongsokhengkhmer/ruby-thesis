@@ -10,21 +10,17 @@
   </div>
   <div class="col-md-3">
     <div class="white-bg">
-      <strong><%= t "labels.suggest_recruiters" %></strong>
-      <% @recruiters.each do |recruiter| %>
-        <div class="suggest-box">
-          <%= render "profiles/user_media", user: recruiter %>
-        </div>
-      <% end %>
+      <strong><%= link_to t("labels.suggest_recruiters"),
+        recommendations_recruiters_path %></strong>
+      <%= render partial: "recommendations/suggest_list", collection: @recruiters,
+        as: :user %>
     </div>
 
     <div class="white-bg">
-      <strong><%= t "labels.suggest_applicants" %></strong>
-      <% @applicants.each do |applicant| %>
-        <div class="suggest-box">
-          <%= render "profiles/user_media", user: applicant %>
-        </div>
-      <% end %>
+      <strong><%= link_to t("labels.suggest_applicants"),
+        recommendations_applicants_path %></strong>
+      <%= render partial: "recommendations/suggest_list", collection: @applicants,
+        as: :user %>
     </div>
 
     <% if current_user.applicant? %>

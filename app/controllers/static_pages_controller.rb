@@ -13,11 +13,15 @@ class StaticPagesController < ApplicationController
         @post.build_activity
 
         if current_user.recruiter?
-          recruiter_ids = RecruitersIndex.suggest_to_recruiter current_user
-          applicant_ids = ApplicantsIndex.suggest_to_recruiter current_user
+          recruiter_ids = RecruitersIndex.suggest_to_recruiter(current_user)
+            .per Settings.recommendation.per_page
+          applicant_ids = ApplicantsIndex.suggest_to_recruiter(current_user)
+            .per Settings.recommendation.per_page
         elsif current_user.applicant?
-          recruiter_ids = RecruitersIndex.suggest_to_applicant current_user
-          applicant_ids = ApplicantsIndex.suggest_to_applicant current_user
+          recruiter_ids = RecruitersIndex.suggest_to_applicant(current_user)
+            .per Settings.recommendation.per_page
+          applicant_ids = ApplicantsIndex.suggest_to_applicant(current_user)
+            .per Settings.recommendation.per_page
           suggest_jobs = JobsIndex.suggest_to_applicant(current_user).map &:id
           @suggest_jobs = JobPost.preload(post: [:user, :activity]).by_ids_order suggest_jobs
         else

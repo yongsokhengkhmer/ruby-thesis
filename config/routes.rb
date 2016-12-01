@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   get "searches/users"
   get "searches/jobs"
+  get "recommendations/recruiters" => "recommendations#recruiters"
+  get "recommendations/applicants" => "recommendations#applicants"
 
   namespace :admin do
     root to: "applicants#index"

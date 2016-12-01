@@ -1,0 +1,5 @@
+$(".suggest-list").append("<%= j render partial: 'recommendations/suggest_list', collection: @applicants, as: :user  %>")
+$(".recommend-spinner").hide();
+<% unless @result_ids.next_page %>
+  $(".applicants-paginate .btn-load-more").remove();
+<% end %>

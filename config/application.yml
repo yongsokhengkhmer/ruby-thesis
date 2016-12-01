@@ -23,6 +23,8 @@ defaults: &defaults
     limit: 10
   search:
     user_per_page: 15
+  recommendation:
+    per_page: 5
 
 development:
   <<: *defaults
