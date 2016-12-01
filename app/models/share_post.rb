@@ -2,21 +2,20 @@ class SharePost < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  SHARE_POST_PARAMS = [:post_id, :content, :status]
+  SHARE_POST_PARAMS = [:post_id, :content, activity_attributes: [:id, :user_id, :status]]
 
   has_one :activity, as: :trackable, dependent: :destroy
 
   has_many :notifications, as: :trackable, dependent: :destroy
 
-  enum status: [:public_post, :private_post]
-
   delegate :user_id, to: :post, prefix: true, allow_nil: true
 
-  after_create :create_activity_and_push_notification
+  accepts_nested_attributes_for :activity
+
+  after_create :push_notification
 
   private
-  def create_activity_and_push_notification
-    create_activity user_id: user_id
-    SharePostJob.perform_now(self) if public_post?
+  def push_notification
+    SharePostJob.perform_now(self) if activity.public_post?
   end
 end

@@ -45,6 +45,8 @@
           <%= render "profiles/following_list", user: @user, followings: @followings %>
         <% elsif controller.action_name == "followers" %>
           <%= render "profiles/follower_list", user: @user, followers: @followers %>
+        <% elsif controller.controller_name == "activities" && controller.action_name == "index" %>
+          <%= render "profiles/activity_list", activities: @activities,  user: @user %>
         <% else %>
           <%= render "profiles/tab", tab_name: "about", user: @user %>
           <div class="tab-content">

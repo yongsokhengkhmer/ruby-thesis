@@ -71,3 +71,17 @@ $(document).on("turbolinks:load ajaxComplete", function() {
     lessLink: "<a href='#'>"+ I18n.t("new_feeds.actions.read_less") +"</a>"
   });
 });
+
+$(document).on("turbolinks:load", function() {
+  if($(".new-feed-activity").length > 0) {
+    $(window).off("scroll").bindWithDelay("scroll", function() {
+      if($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
+        var next_url = $(".new-feed-load-more .pagination .next_page a").attr("href");
+        if(next_url) {
+          $(".new-feed-load-more .loading").show();
+          $.getScript(next_url);
+        }
+      }
+    }, 300);
+  }
+});

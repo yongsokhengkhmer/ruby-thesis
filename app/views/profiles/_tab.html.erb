@@ -15,4 +15,7 @@
       <span class="badge follower-number"><%= user.followers.size %></span>
     <% end %>
   </li>
+  <li role="presentation" class="<%= active_post_navbar 'activities', tab_name %>">
+    <%= link_to t("profiles.tabs.activities"), user_activities_path(user) %>
+  </li>
 </ul>

@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
   mount_uploader :image, PostImageUploader
 
-  POST_PARAMS = [:image, :content, :status, job_post_attributes: [:id, :name,
-    :country_id, :negotiable, :min_salary, :max_salary, job_type_ids: []]]
+  POST_PARAMS = [:image, :content, job_post_attributes: [:id, :name,
+    :country_id, :negotiable, :min_salary, :max_salary, job_type_ids: []],
+    activity_attributes: [:id, :user_id, :status]]
 
   belongs_to :user
 
@@ -14,9 +15,8 @@ class Post < ApplicationRecord
 
   validates :content, presence: true, if: lambda {image.blank? || job_post.present?}
 
-  enum status: [:public_post, :private_post]
-
   accepts_nested_attributes_for :job_post
+  accepts_nested_attributes_for :activity
 
   delegate :name, to: :user, prefix: true, allow_nil: true
   delegate :id, :name, :location, to: :job_post, prefix: true, allow_nil: true
@@ -25,11 +25,10 @@ class Post < ApplicationRecord
     includes(:job_post, :activity).where(job_posts: {post_id: nil}).order created_at: :desc
   end
 
-  after_create :create_activity_and_push_notification
+  after_create :push_notification
 
   private
-  def create_activity_and_push_notification
-    create_activity user_id: user_id
-   PostNotificationJob.perform_now(self) if public_post?
+  def push_notification
+   PostNotificationJob.perform_now(self) if activity.public_post?
   end
 end
