@@ -1,25 +1,46 @@
-<div class="row post-managers" id="job-posts">
-  <div class="col-md-3">
-    <%= render "shared/post_manager_left_navbar", active_name: "job_posts"  %>
-  </div>
-  <div class="col-md-6">
-    <%= render "shared/activity", activity: @job_post.post.activity %>
-  </div>
-  <div class="col-md-3">
-    <div class="apply-users white-bg">
-      <strong><%= t "job_posts.apply_users" %></strong>
-      <%= render partial: "job_posts/apply_job",
-        collection: @job_post.apply_jobs.order_by_user,
-        as: :apply_job %>
-    </div>
-    <div class="white-bg suggest-list">
-      <strong><%= t "labels.fitted_applicants" %></strong>
-      <% @suggest_applicants.each do |applicant| %>
-        <div class="suggest-box">
-          <%= render "profiles/user_media", user: applicant %>
+<% if params[:apply].present? %>
+  <div id="job-posts" class="row">
+    <div class="col-md-8">
+      <strong><%= t "job_posts.apply_users_for", job: @job_post.name %></strong>
+      <br><br>
+      <div class="apply-list">
+        <%= render partial: "job_posts/apply_job", collection: @apply_jobs,
+            as: :apply_job %>
+      </div>
+      <% if @apply_jobs.next_page %>
+        <div class="apply-paginate">
+          <%= link_to t("actions.load_more"), "javascript:void(0)",
+            class: "load-more" %>
+          <span class="apply-spinner" hidden>
+            <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+          </span>
         </div>
       <% end %>
     </div>
   </div>
-</div>
-<%= render "shared/modal_container" %>
+<% else %>
+  <div class="row post-managers" id="job-posts">
+    <div class="col-md-3">
+      <%= render "shared/post_manager_left_navbar", active_name: "job_posts"  %>
+    </div>
+    <div class="col-md-6">
+      <%= render "shared/activity", activity: @job_post.post.activity %>
+    </div>
+    <div class="col-md-3">
+      <div class="apply-users white-bg">
+        <strong><%= link_to t("job_posts.apply_users"),
+          job_post_apply_users_path(@job_post, "apply") %></strong>
+        <%= render partial: "job_posts/apply_job", collection: @apply_jobs,
+          as: :apply_job %>
+      </div>
+      <div class="white-bg suggest-list">
+        <strong><%= link_to t("labels.fitted_applicants"),
+          job_post_recommendations_path(@job_post.id) %></strong>
+        <%= render partial: "recommendations/suggest_list",
+          collection: @suggest_applicants, as: :user %>
+      </div>
+    </div>
+  </div>
+  <%= render "shared/modal_container" %>
+<% end %>

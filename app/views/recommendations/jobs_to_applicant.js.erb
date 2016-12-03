@@ -1,0 +1,5 @@
+$(".recommend-job-list").append("<%= j render partial: 'shared/suggest_job', collection: @suggest_jobs, as: :job %>")
+$(".recommend-spinner").hide();
+<% unless @result_ids.next_page %>
+  $(".recommend-paginate .btn-load-more").remove();
+<% end %>

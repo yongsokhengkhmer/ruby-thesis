@@ -1,0 +1,17 @@
+<div id="recommendations" class="row">
+  <div class="col-md-8">
+    <strong><%= t "labels.suggest_jobs" %></strong>
+    <div class="recommend-job-list">
+      <%= render partial: "shared/suggest_job", collection: @suggest_jobs, as: :job %>
+    </div>
+    <% if @result_ids.next_page %>
+      <div class="recommend-paginate">
+        <%= link_to t("load_more"), "javascript:void(0)", class: "btn-load-more" %>
+        <span class="recommend-spinner" hidden>
+          <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+          <span class="sr-only">Loading...</span>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>

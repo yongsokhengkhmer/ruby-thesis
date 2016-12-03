@@ -1,6 +1,7 @@
 en:
   job_posts:
     apply_users: "Apply Users"
+    apply_users_for: "Apply users for: %{job}"
     tables:
       name: "Name"
       job_type: "Job Type"

@@ -22,7 +22,8 @@ class StaticPagesController < ApplicationController
             .per Settings.recommendation.per_page
           applicant_ids = ApplicantsIndex.suggest_to_applicant(current_user)
             .per Settings.recommendation.per_page
-          suggest_jobs = JobsIndex.suggest_to_applicant(current_user).map &:id
+          suggest_jobs = JobsIndex.suggest_to_applicant(current_user)
+            .per(Settings.recommendation.per_page).map &:id
           @suggest_jobs = JobPost.preload(post: [:user, :activity]).by_ids_order suggest_jobs
         else
           recruiter_ids = []

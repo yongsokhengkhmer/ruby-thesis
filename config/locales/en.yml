@@ -27,6 +27,7 @@ en:
     suggest_applicants: "Applicants you may know"
     suggest_jobs: "Jobs you may apply"
     fitted_applicants: "Applicants may fit this job"
+    applicants_fit_job: "Applicants may fit: %{job}"
   notifications:
     notifications: "Notifications"
     see_all: "See All"
