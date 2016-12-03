@@ -38,13 +38,13 @@
               </div>
               <div class="notification-content">
                 <%= render partial: "shared/user_notification",
-                  collection: current_user
-                    .received_notifications
-                    .load_notifications(Settings.notifications.limit_show),
+                  collection: current_user.received_notifications
+                    .load_notifications.limit(Settings.notifications.limit_show),
                   as: :user_notification %>
               </div>
               <div class="notification-footer">
-                <span><strong><%= link_to t("notifications.see_all"), "" %></strong></span>
+                <span><strong><%= link_to t("notifications.see_all"),
+                  notifications_path %></strong></span>
               </div>
             </ul>
           </li>

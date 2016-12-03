@@ -3,8 +3,8 @@ class UserNotification < ApplicationRecord
   belongs_to :receiver, class_name: User, foreign_key: :receiver_id
   belongs_to :notification
 
-  scope :load_notifications, ->number do
-    order(created_at: :desc).limit(number).preload [{notification: :trackable}, :sender]
+  scope :load_notifications, -> do
+    order(created_at: :desc).preload [{notification: :trackable}, :sender]
   end
 
   delegate :created_at, to: :notification, prefix: true, allow_nil: true
