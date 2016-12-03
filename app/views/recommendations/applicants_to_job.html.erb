@@ -1,6 +1,6 @@
 <div id="recommendations" class="row">
   <div class="col-md-8">
-    <strong><%= t "labels.suggest_applicants" %></strong>
+    <strong><%= t("labels.applicants_fit_job", job: @job_post.name) %></strong>
     <%= render "recommendations/user_suggest_box", users: @users,
       result_ids: @result_ids %>
   </div>

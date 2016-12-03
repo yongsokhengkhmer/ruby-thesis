@@ -1,0 +1,5 @@
+$(".apply-list").append("<%= j render partial: 'job_posts/apply_job', collection: @apply_jobs, as: :apply_job  %>")
+$(".apply-spinner").hide();
+<% unless @apply_jobs.next_page %>
+  $(".apply-paginate .load-more").remove();
+<% end %>

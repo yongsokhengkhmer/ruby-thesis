@@ -1,0 +1,13 @@
+<div class="suggest-list">
+  <%= render partial: "recommendations/suggest_list", collection: users,
+    as: :user %>
+</div>
+<% if result_ids.next_page %>
+  <div class="recommend-paginate">
+    <%= link_to t("load_more"), "javascript:void(0)", class: "btn-load-more" %>
+    <span class="recommend-spinner" hidden>
+      <i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+      <span class="sr-only">Loading...</span>
+    </span>
+  </div>
+<% end %>

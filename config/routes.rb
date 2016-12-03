@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   end
   resources :job_posts, only: [:index, :show] do
     resources :apply_jobs, only: [:new, :create]
+    get "/:apply" => "job_posts#show", as: :apply_users
+    get "recommendations" => "recommendations#applicants_to_job"
   end
   resources :save_posts, only: [:index, :create, :destroy]
   resources :activities, only: [:show, :edit, :destroy]
@@ -33,6 +35,8 @@ Rails.application.routes.draw do
   get "searches/jobs"
   get "recommendations/recruiters" => "recommendations#recruiters"
   get "recommendations/applicants" => "recommendations#applicants"
+  get "recommendations/jobs_to_applicant" => "recommendations#jobs_to_applicant",
+    as: :recommend_jobs
 
   namespace :admin do
     root to: "applicants#index"
