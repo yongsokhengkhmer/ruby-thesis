@@ -13,11 +13,20 @@
     <%= render "conversations/messages", messages: messages %>
   </div>
   <div class="write">
-    <a href="" class="write-link attach"></a>
-    <%= text_field_tag :message, nil, data: {conversation_id: conversation.id,
-      receiver_id: conversation_partner.id} %>
-    <a href="" class="write-link smiley"></a>
-    <a href="javascript:void(0)" class="write-link send btn-send-message"></a>
+    <%= form_for Message.new, html:{id: "chat-form"}, remote: true do |f| %>
+      <div hidden>
+        <%= f.file_field :file_attachment, class: "file-attachment" %>
+        <%= f.file_field :image_attachment, class: "image-attachment",
+          accept: "image/jpg,image/png,image/jpeg,image/gif" %>
+        <%= f.hidden_field :conversation_id, value: conversation.id %>
+        <%= f.hidden_field :receiver_id, value: conversation_partner.id %>
+      </div>
+
+      <a href="javascript:void(0)" class="write-link attach attach-file"></a>
+      <a href="javascript:void(0)" class="write-link attach attach-image"></a>
+      <%= f.text_field :content, id: "message" %>
+      <a href="javascript:void(0)" class="write-link send btn-send-message"></a>
+    <% end %>
   </div>
   <div hidden class="message-paginate">
     <%= render_pagination messages %>
