@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:new, :create]
   resources :conversations, only: [:index, :show, :create]
   resources :messages, only: [:create]
+  resources :notifications, only: :index
+
   get "searches/users"
   get "searches/jobs"
   get "recommendations/recruiters" => "recommendations#recruiters"

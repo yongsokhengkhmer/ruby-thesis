@@ -1,0 +1,11 @@
+<div id="notifications">
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="notification-list white-bg">
+        <%= render partial: "shared/user_notification", collection: @notifications,
+          as: :user_notification %>
+      </ul>
+      <%= render_pagination @notifications %>
+    </div>
+  </div>
+</div>

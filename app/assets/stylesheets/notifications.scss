@@ -1,0 +1,25 @@
+#notifications {
+  .notification-list li {
+    list-style: none;
+    padding: 10px;
+    line-height: 20px;
+    border-bottom: 1px solid #f4f4f4;
+
+    .content-img {
+      margin-right: 10px;
+    }
+
+    .content-text {
+      color: #444444;
+    }
+
+    .content-date {
+      color: #999;
+      font-size: 12px;
+    }
+  }
+
+  .notification-list li:hover {
+    background-color: #fcfcfc;
+  }
+}
