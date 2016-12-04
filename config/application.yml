@@ -4,6 +4,7 @@ defaults: &defaults
       small_avatar: "40x40"
       xsmall_avatar: "30x30"
       media_post: "80"
+      width150: "150"
   roles:
     admin: "admin"
     recruiter: "recruiter"
