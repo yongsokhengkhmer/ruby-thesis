@@ -7,3 +7,4 @@
   $(".people .conversation-<%= @message.conversation_id %> .time").html("<%= l @message.created_at, format: :datetime %>");
   $(".people .conversation-<%= @message.conversation_id %>").insertBefore(".person:first");
 <% end %>
+$(".uploading-spinner").remove();

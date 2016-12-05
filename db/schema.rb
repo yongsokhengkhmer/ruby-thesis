@@ -165,12 +165,14 @@ ActiveRecord::Schema.define(version: 20161119080525) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
+    t.string   "file_attachment"
+    t.string   "image_attachment"
     t.integer  "conversation_id"
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.boolean  "read",            default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "read",             default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
     t.index ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
     t.index ["sender_id"], name: "index_messages_on_sender_id", using: :btree
