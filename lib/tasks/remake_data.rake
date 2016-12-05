@@ -2,6 +2,8 @@ namespace :db do
   desc "remake database data"
   task remake_data: :environment do
     Rake::Task["db:migrate:reset"].invoke
+    Rake::Task["chewy:reset"].invoke
+
     Chewy.strategy(:atomic) do
       puts "Create countries ..."
       ["Cambodia", "Vietnam", "Thailand"].each do |name|

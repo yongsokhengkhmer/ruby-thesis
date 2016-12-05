@@ -8,6 +8,7 @@ class CreateEducations < ActiveRecord::Migration[5.0]
       t.string :field_of_study
       t.string :description
       t.references :user, foreign_key: true, index: true
+      t.datetime :deleted_at, index: true
 
       t.timestamps
     end
