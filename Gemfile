@@ -27,6 +27,7 @@ gem "remotipart", "~> 1.2"
 gem "jasny-bootstrap-rails"
 gem "unparser"
 gem "chewy"
+gem "jquery-fileupload-rails"
 group :development, :test do
   gem "pry"
   gem "faker", "1.4.2"

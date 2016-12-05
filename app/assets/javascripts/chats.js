@@ -1,5 +1,12 @@
 $(document).on("turbolinks:load ajaxComplete", function() {
   if($("#chats").length > 0) {
+    $(document).on("keyup keypress", "form input[type='text']", function(e) {
+      if(e.keyCode == 13) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
     $(".btn-send-message").unbind("click").on("click", function() {
       chat_submit();
     });
@@ -9,6 +16,50 @@ $(document).on("turbolinks:load ajaxComplete", function() {
         chat_submit();
       }
     });
+
+    $(".attach-file").unbind("click").on("click", function() {
+      $(".file-attachment").click();
+    });
+
+    $(".attach-image").unbind("click").on("click", function() {
+      console.log("a");
+
+      $(".image-attachment").click();
+    });
+
+    $(".file-attachment").unbind("change").on("change", function() {
+      if(this.files.length > 0) {
+        if(this.files[0].size > 25 * 1048576) { // max size: 25Mb
+          alert(I18n.t("chats.messages.file_too_large", {max_size: "25"}));
+        } else {
+          // $(".chat").append("<div class='bubble me uploading-spinner'><i class='fa fa-circle-o-notch fa-spin fa-fw'></i></div>")
+
+          var conversation_id = $("#message").data("conversation-id");
+          $("#chat-form").submit();
+          set_read(conversation_id);
+        }
+      }
+    });
+
+    $(".image-attachment").unbind("change").on("change", function() {
+      if(this.files.length > 0) {
+        var ext = $(this).val().split(".").pop().toLowerCase();
+        if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) {
+          alert(I18n.t("chats.messages.invalid_image"));
+          return;
+        }
+
+        if(this.files[0].size > 2 * 1048576) { // max size: 2Mb
+          alert(I18n.t("chats.messages.file_too_large", {max_size: "2"}));
+          return;
+        }
+
+        var conversation_id = $("#message").data("conversation-id");
+        $("#chat-form").submit();
+        set_read(conversation_id);
+      }
+    });
+
 
     $("#message").unbind("focus").on("focus", function(e) {
       var chat = $(".chat")[0];
@@ -32,10 +83,8 @@ $(document).on("turbolinks:load ajaxComplete", function() {
     function chat_submit() {
       var content = $("#message").val();
       var conversation_id = $("#message").data("conversation-id");
-      var receiver_id = $("#message").data("receiver-id");
       if (content !== "") {
-        $.post("/messages", {message: {content: content,
-          conversation_id: conversation_id, receiver_id: receiver_id}});
+        $("#chat-form").submit();
         $("#message").val("");
       }
       set_read(conversation_id);

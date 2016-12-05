@@ -1,11 +1,15 @@
 class Message < ApplicationRecord
-  MESSAGE_PARAMS = [:content, :conversation_id, :receiver_id]
+  mount_uploader :file_attachment, ChatFileAttachmentUploader
+  mount_uploader :image_attachment, ChatImageAttachmentUploader
+
+  MESSAGE_PARAMS = [:content, :conversation_id, :receiver_id, :file_attachment,
+    :image_attachment]
 
   belongs_to :conversation
   belongs_to :sender, class_name: "User", foreign_key: :sender_id
   belongs_to :receiver, class_name: "User", foreign_key: :receiver_id
 
-  validates :content, presence: true
+  validate :content_valid
   validates :conversation_id, presence: true
   validates :sender_id, presence: true
   validates :receiver_id, presence: true
@@ -31,5 +35,11 @@ class Message < ApplicationRecord
 
   def update_conversation
     conversation.update_attributes updated_at: Time.zone.now
+  end
+
+  def content_valid
+    if content.nil? && file_attachment.nil? && image_attachment.nil?
+      errors.add :base, I18n.t("chats.messages.errors")
+    end
   end
 end

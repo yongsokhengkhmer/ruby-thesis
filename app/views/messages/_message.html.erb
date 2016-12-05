@@ -1,4 +1,12 @@
 <div class="bubble <%= user_side %>"
   title="<%= l message.created_at, format: :datetime %>">
-  <%= message.content %>
+  <% if(content = message.content).present? %>
+    <%= content %>
+  <% elsif(file_attachment = message.file_attachment).present? %>
+    <%= link_to file_attachment.file.identifier, file_attachment.url %>
+  <% elsif(image_attachment = message.image_attachment).present? %>
+    <%= link_to image_tag(image_attachment.url,
+      width: Settings.images.sizes.width150, class: "img-responsive"),
+      image_attachment.url, target: "_blank" %>
+  <% end %>
 </div>

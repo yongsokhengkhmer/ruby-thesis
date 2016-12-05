@@ -15,5 +15,7 @@
  *= require font-awesome
  *= require selectize
  *= require jasny-bootstrap.min
+ *= require jquery.fileupload
+ *= require jquery.fileupload-ui
  *= require_self
  */

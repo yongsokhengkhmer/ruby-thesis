@@ -5,3 +5,7 @@ en:
     to: "To: "
     actions:
       create: "Create"
+    messages:
+      errors: "At least one content, attachment or image must be exist."
+      invalid_image: "Invalid image extension."
+      file_too_large: "File is too large. Maximun file upload: %{max_size}Mb."

@@ -22,4 +22,5 @@
 //= require ckeditor/init
 //= require jquery.remotipart
 //= require jasny-bootstrap.min
+//=require jquery-fileupload/basic
 //= require_tree .
