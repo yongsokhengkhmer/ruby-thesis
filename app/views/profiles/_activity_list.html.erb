@@ -1,2 +1,6 @@
 <%= render "profiles/tab", tab_name: "activities", user: user %>
-<%= render "shared/activity_list", activities: activities %>
+<div class="row">
+  <div class="col-md-8">
+    <%= render "shared/activity_list", activities: activities %>
+  </div>
+</div>

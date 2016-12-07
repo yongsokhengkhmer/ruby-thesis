@@ -8,8 +8,8 @@
         </div>
         <div class="modal-body content">
           <%= f.select :receiver_id, options_for_select(
-            User.all.map{|u| [u.name, u.id]}), {prompt: t("chats.select_user")},
-            {id: "receiver-select"}  %>
+            User.except_user(current_user).all.map{|u| [u.name, u.id]}),
+            {prompt: t("chats.select_user")}, {id: "receiver-select"} %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">
