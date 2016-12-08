@@ -4,6 +4,7 @@ class CreateSalaryTypes < ActiveRecord::Migration[5.0]
       t.string :name
       t.float :min_salary
       t.float :max_salary
+      t.datetime :deleted_at, index: true
 
       t.timestamps
     end

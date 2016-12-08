@@ -17,16 +17,20 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "trackable_type"
     t.integer  "status"
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["deleted_at"], name: "index_activities_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
   end
 
   create_table "apply_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "job_post_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["deleted_at"], name: "index_apply_jobs_on_deleted_at", using: :btree
     t.index ["job_post_id"], name: "index_apply_jobs_on_job_post_id", using: :btree
     t.index ["user_id"], name: "index_apply_jobs_on_user_id", using: :btree
   end
@@ -35,9 +39,11 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.text     "content",     limit: 65535
     t.integer  "activity_id"
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["activity_id"], name: "index_comments_on_activity_id", using: :btree
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
@@ -46,30 +52,38 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "website"
     t.text     "description",   limit: 65535
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["deleted_at"], name: "index_company_profiles_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_company_profiles_on_user_id", using: :btree
   end
 
   create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["deleted_at"], name: "index_conversations_on_deleted_at", using: :btree
     t.index ["receiver_id"], name: "index_conversations_on_receiver_id", using: :btree
     t.index ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
   end
 
   create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_countries_on_deleted_at", using: :btree
   end
 
   create_table "degrees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_degrees_on_deleted_at", using: :btree
   end
 
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -77,8 +91,10 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "link"
     t.string   "description"
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["deleted_at"], name: "index_documents_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
   end
 
@@ -90,9 +106,11 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "field_of_study"
     t.string   "description"
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["degree_id"], name: "index_educations_on_degree_id", using: :btree
+    t.index ["deleted_at"], name: "index_educations_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_educations_on_user_id", using: :btree
   end
 
@@ -104,8 +122,10 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.date     "end_date"
     t.string   "description"
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["deleted_at"], name: "index_experiences_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_experiences_on_user_id", using: :btree
   end
 
@@ -113,16 +133,20 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "subject"
     t.text     "content",    limit: 65535
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["deleted_at"], name: "index_feedbacks_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
   end
 
   create_table "job_post_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "job_post_id"
     t.integer  "job_type_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["deleted_at"], name: "index_job_post_types_on_deleted_at", using: :btree
     t.index ["job_post_id"], name: "index_job_post_types_on_job_post_id", using: :btree
     t.index ["job_type_id"], name: "index_job_post_types_on_job_type_id", using: :btree
   end
@@ -134,16 +158,20 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.float    "max_salary", limit: 24
     t.boolean  "negotiable",            default: false
     t.integer  "post_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.index ["country_id"], name: "index_job_posts_on_country_id", using: :btree
+    t.index ["deleted_at"], name: "index_job_posts_on_deleted_at", using: :btree
     t.index ["post_id"], name: "index_job_posts_on_post_id", using: :btree
   end
 
   create_table "job_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_job_types_on_deleted_at", using: :btree
   end
 
   create_table "like_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -171,9 +199,11 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.boolean  "read",             default: false
+    t.datetime "deleted_at"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.index ["deleted_at"], name: "index_messages_on_deleted_at", using: :btree
     t.index ["receiver_id"], name: "index_messages_on_receiver_id", using: :btree
     t.index ["sender_id"], name: "index_messages_on_sender_id", using: :btree
   end
@@ -182,16 +212,20 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.integer  "trackable_id"
     t.string   "trackable_type"
     t.string   "notify_type"
+    t.datetime "deleted_at"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["deleted_at"], name: "index_notifications_on_deleted_at", using: :btree
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535
     t.string   "image"
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["deleted_at"], name: "index_posts_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
@@ -207,16 +241,20 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "name"
     t.float    "min_salary", limit: 24
     t.float    "max_salary", limit: 24
+    t.datetime "deleted_at"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.index ["deleted_at"], name: "index_salary_types_on_deleted_at", using: :btree
   end
 
   create_table "save_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "activity_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["activity_id"], name: "index_save_posts_on_activity_id", using: :btree
+    t.index ["deleted_at"], name: "index_save_posts_on_deleted_at", using: :btree
     t.index ["user_id", "activity_id"], name: "index_save_posts_on_user_id_and_activity_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_save_posts_on_user_id", using: :btree
   end
@@ -225,8 +263,10 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "content"
     t.integer  "user_id"
     t.integer  "post_id"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_share_posts_on_deleted_at", using: :btree
     t.index ["post_id"], name: "index_share_posts_on_post_id", using: :btree
     t.index ["user_id"], name: "index_share_posts_on_user_id", using: :btree
   end
@@ -235,16 +275,20 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.string   "name"
     t.string   "description"
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["deleted_at"], name: "index_skills_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_skills_on_user_id", using: :btree
   end
 
   create_table "user_job_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "job_type_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["deleted_at"], name: "index_user_job_types_on_deleted_at", using: :btree
     t.index ["job_type_id"], name: "index_user_job_types_on_job_type_id", using: :btree
     t.index ["user_id"], name: "index_user_job_types_on_user_id", using: :btree
   end
@@ -254,8 +298,10 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.integer  "status",          default: 0
+    t.datetime "deleted_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["deleted_at"], name: "index_user_notifications_on_deleted_at", using: :btree
     t.index ["notification_id"], name: "index_user_notifications_on_notification_id", using: :btree
     t.index ["receiver_id"], name: "index_user_notifications_on_receiver_id", using: :btree
     t.index ["sender_id"], name: "index_user_notifications_on_sender_id", using: :btree
@@ -266,8 +312,10 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.date     "birth_date"
     t.string   "current_position"
     t.integer  "user_id"
+    t.datetime "deleted_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["deleted_at"], name: "index_user_profiles_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end
 
@@ -290,9 +338,11 @@ ActiveRecord::Schema.define(version: 20161119080525) do
     t.integer  "role"
     t.integer  "status"
     t.float    "expected_salary",        limit: 24
+    t.datetime "deleted_at"
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.index ["country_id"], name: "index_users_on_country_id", using: :btree
+    t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

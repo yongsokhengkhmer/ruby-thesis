@@ -7,6 +7,7 @@ class CreateJobPosts < ActiveRecord::Migration[5.0]
       t.float :max_salary
       t.boolean :negotiable, default: false
       t.references :post, foreign_key: true, index: true
+      t.datetime :deleted_at, index: true
 
       t.timestamps
     end

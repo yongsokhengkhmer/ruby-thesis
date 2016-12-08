@@ -5,6 +5,7 @@ class CreateCompanyProfiles < ActiveRecord::Migration[5.0]
       t.string :website
       t.text :description
       t.references :user, foreign_key: true, index: true
+      t.datetime :deleted_at, index: true
 
       t.timestamps
     end

@@ -28,6 +28,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.integer :role
       t.integer :status
       t.float :expected_salary
+      t.datetime :deleted_at, index: true
 
       t.timestamps null: false
     end

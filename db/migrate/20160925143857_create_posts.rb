@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.0]
       t.text :content
       t.string :image
       t.references :user, foreign_key: true, index: true
+      t.datetime :deleted_at, index: true
 
       t.timestamps
     end
