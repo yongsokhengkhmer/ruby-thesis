@@ -20,24 +20,26 @@
           <%= status_activity activity %>
         </div>
       </div>
-      <div class="media-right">
-        <div class="dropdown post-actions">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-            aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li class="save-post-<%= activity.id %>">
-              <%= render "shared/save_action", activity: activity %>
-            </li>
-            <% if activity.user_id == current_user.id %>
-              <li><%= link_to t("new_feeds.actions.edit_post"),
-                edit_activity_path(activity), remote: true %></li>
-              <li><%= link_to t("new_feeds.actions.delete_post"), activity,
-                method: :delete, data: {confirm: t("confirms.confirm_delete")},
-                remote: true %></li>
-            <% end %>
-          </ul>
+      <% unless current_user.admin? %>
+        <div class="media-right">
+          <div class="dropdown post-actions">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+              aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="save-post-<%= activity.id %>">
+                <%= render "shared/save_action", activity: activity %>
+              </li>
+              <% if activity.user_id == current_user.id %>
+                <li><%= link_to t("new_feeds.actions.edit_post"),
+                  edit_activity_path(activity), remote: true %></li>
+                <li><%= link_to t("new_feeds.actions.delete_post"), activity,
+                  method: :delete, data: {confirm: t("confirms.confirm_delete")},
+                  remote: true %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
+      <% end %>
     </li>
   </ul>
 
@@ -48,30 +50,34 @@
     <%= render "shared/post_content", post: post %>
   <% end %>
 
-  <div class="post-react">
-    <span class="like">
-      <%= render "shared/button_like", activity: activity %>
-    </span>
-    <span class="comment show-comments">
-      <%= link_to "javascript:void(0)", data: {count: (count = activity.comments.size)} do %>
-        <i class="fa fa-comment" aria-hidden="true"></i>
-        <%= t "new_feeds.reacts.comment" %>
-        <span class="comment-count"><%= react_number count %></span>
-      <% end %>
-    </span>
-    <span class="share">
-      <%= link_to "javascript:void(0)", class: "share-post-action",
-        data: {post_id: post.id} do %>
-        <i class="fa fa-share" aria-hidden="true"></i>
-        <%= t "new_feeds.reacts.share" %>
-      <% end %>
-    </span>
-    <% if post.job_post.present? && current_user.applicant? %>
-      <span class="apply job-post-<%= post.job_post_id %>">
-        <%= render "shared/apply_job_action", job_post_id: post.job_post_id %>
+  <% unless current_user.admin? %>
+    <div class="post-react">
+      <span class="like">
+        <%= render "shared/button_like", activity: activity %>
       </span>
-    <% end %>
-  </div>
+      <span class="comment show-comments">
+        <%= link_to "javascript:void(0)", data: {count: (count = activity.comments.size)} do %>
+          <i class="fa fa-comment" aria-hidden="true"></i>
+          <%= t "new_feeds.reacts.comment" %>
+          <span class="comment-count"><%= react_number count %></span>
+        <% end %>
+      </span>
+      <% unless post.user == current_user %>
+        <span class="share">
+          <%= link_to "javascript:void(0)", class: "share-post-action",
+            data: {post_id: post.id} do %>
+            <i class="fa fa-share" aria-hidden="true"></i>
+            <%= t "new_feeds.reacts.share" %>
+          <% end %>
+        </span>
+      <% end %>
+      <% if post.job_post.present? && current_user.applicant? %>
+        <span class="apply job-post-<%= post.job_post_id %>">
+          <%= render "shared/apply_job_action", job_post_id: post.job_post_id %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="comments comments-activity-<%= activity.id %>"
     data-activity-id="<%= activity.id %>">

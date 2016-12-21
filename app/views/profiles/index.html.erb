@@ -18,7 +18,7 @@
             <%= t "profiles.actions.edit_profile" %>
           <% end %>
         <% end %>
-        <% unless @user == current_user %>
+        <% unless current_user.admin? || @user == current_user %>
           <span class="mark-interest-actions">
             <% if(mark_interest = current_user.mark_interests.by_marked_id @user.id).present? %>
               <%= render "mark_interests/unmark_interest",
@@ -38,29 +38,27 @@
         <% end %>
       </div>
     </div>
-
-    <div class="row">
-      <div>
-        <% if controller.action_name == "followings" %>
-          <%= render "profiles/following_list", user: @user, followings: @followings %>
-        <% elsif controller.action_name == "followers" %>
-          <%= render "profiles/follower_list", user: @user, followers: @followers %>
-        <% elsif controller.controller_name == "activities" && controller.action_name == "index" %>
-          <%= render "profiles/activity_list", activities: @activities,  user: @user %>
-        <% else %>
-          <%= render "profiles/tab", tab_name: "about", user: @user %>
-          <div class="tab-content">
-            <% if @user.applicant? %>
-              <%= render "profiles/applicant_profile_detail" %>
-            <% elsif @user.admin? %>
-              <%= render "profiles/basic_info" %>
-            <% else %>
-              <%= render "profiles/company_profile_detail" %>
-            <% end %>
-          </div>
-        <% end %>
+    <% unless @user.admin? %>
+      <div class="row">
+        <div>
+          <% if controller.action_name == "followings" %>
+            <%= render "profiles/following_list", user: @user, followings: @followings %>
+          <% elsif controller.action_name == "followers" %>
+            <%= render "profiles/follower_list", user: @user, followers: @followers %>
+          <% elsif controller.controller_name == "activities" && controller.action_name == "index" %>
+            <%= render "profiles/activity_list", activities: @activities,  user: @user %>
+          <% else %>
+            <%= render "profiles/tab", tab_name: "about", user: @user %>
+            <div class="tab-content">
+              <% if @user.applicant? %>
+                <%= render "profiles/applicant_profile_detail" %>
+              <% else %>
+                <%= render "profiles/company_profile_detail" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
-
-    </div>
+    <% end %>
   </div>
 </div>
