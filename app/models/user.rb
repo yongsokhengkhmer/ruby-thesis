@@ -94,7 +94,7 @@ class User < ApplicationRecord
     end
   end
 
-  scope :except_user, ->user {where.not id: user.id}
+  scope :except_user, ->user {where.not id: user.id, role: roles[:admin]}
 
   def apply_job? job_post_id
     apply_jobs.select_by_job(job_post_id).present?
