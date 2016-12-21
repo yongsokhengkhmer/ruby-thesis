@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to job_post.name, job_post %></td>
+  <td><%= link_to job_post.name, job_post.post.activity %></td>
   <td><%= job_post.job_types.map(&:name).join ", " %></td>
   <td><%= l job_post.created_at, format: :datetime %></td>
   <td><%= link_to t("actions.delete"), admin_post_path(job_post.post),

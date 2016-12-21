@@ -61,7 +61,7 @@ module ApplicationHelper
     elsif notification.notify_type == Settings.notifications.notify_types.follow
       user_notification.sender
     elsif notification.notify_type == Settings.notifications.notify_types.feedback
-      notification.trackable
+      admin_feedback_path notification.trackable_id
     end
   end
 
