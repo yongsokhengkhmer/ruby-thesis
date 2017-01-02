@@ -24,8 +24,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
 
   enum role: [:admin, :applicant, :recruiter]
 

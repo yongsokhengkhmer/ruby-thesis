@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  load_and_authorize_resource
+  load_resource
   before_action :load_trackable, only: [:edit, :destroy]
 
   def index

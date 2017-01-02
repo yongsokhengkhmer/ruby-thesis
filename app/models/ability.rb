@@ -8,6 +8,10 @@ class Ability
       cannot :manage, :all
     end
 
+    if controller_namespace != "Admin" && user.admin?
+      cannot :manage, :all
+    end
+
     if user.applicant?
       cannot :manage, JobPost
     elsif user.recruiter?

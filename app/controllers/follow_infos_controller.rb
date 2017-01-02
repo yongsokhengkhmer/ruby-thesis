@@ -1,5 +1,5 @@
 class FollowInfosController < ApplicationController
-  load_and_authorize_resource :user
+  load_resource :user
 
   def followings
     @followings = @user.followeds.preload(followed: :user_profile).page params[:page]
