@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  load_and_authorize_resource class: false
+
   def users
     name = params[:name]
     job_type = params[:job_types]

@@ -8,7 +8,6 @@ class ApplicantsIndex < Chewy::Index
     field :job_types, value: -> {job_types.pluck :name}
     field :schools, value: -> {educations.pluck :school}
     field :skills, value: -> {skills.pluck :name}
-    field :position, value: -> {user_profile.current_position if user_profile}
     field :expected_salary, type: "float", value: -> {expected_salary}
     field :negotiable, type: "boolean", value: -> {true}
   end
@@ -35,7 +34,6 @@ class ApplicantsIndex < Chewy::Index
           }},
           {match: {job_types: applicant.job_types.pluck(:name).join(" ")}},
           {match: {skills: applicant.skills.pluck(:name).join(" ")}},
-          {match: {position: applicant.user_profile ? applicant.user_profile.current_position : ""}}
         ]
       })
     end

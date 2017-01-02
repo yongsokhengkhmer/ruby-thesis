@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     resources :activities, only: :index
   end
   resources :job_posts, only: [:index, :show] do
+    get "recommendations" => "recommendations#applicants_to_job"
     resources :apply_jobs, only: [:new, :create]
     get "/:apply" => "job_posts#show", as: :apply_users
-    get "recommendations" => "recommendations#applicants_to_job"
   end
   resources :save_posts, only: [:index, :create, :destroy]
   resources :activities, only: [:show, :edit, :destroy]
